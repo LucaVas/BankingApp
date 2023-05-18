@@ -15,3 +15,11 @@ class Holder():
     
     def __repr__(self) -> str:
         return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date})"
+    
+    def block(self, is_blocked: bool) -> None:
+        if is_blocked is True:
+            self.is_blocked = True
+        elif is_blocked is False:
+            self.is_blocked = False
+        else:
+            raise ValueError
