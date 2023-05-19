@@ -2,7 +2,7 @@ from datetime import datetime
 
 class Holder():
     def __init__(self, first: str, last: str, birth_date: str, password: bytes):
-        self.id = 0
+        self.id = 99
         self.first_name = first
         self.last_name = last
         self.birth_date = datetime.strptime(birth_date, "%d%m%Y").date()

@@ -37,8 +37,8 @@ class AccountInformation(AccountGui):
         # Label for currency choice
         self.currency_label = ctk.CTkLabel(self, text="Choose the currency", fg_color="transparent", text_color="white", font=("tahoma", 15))
         self.currency_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
-
-        self.currency_option = ctk.CTkOptionMenu(self, values=["EUR", "USD"], command=self.optionmenu_callback)
+        # Option for currency choice
+        self.currency_option = ctk.CTkOptionMenu(self, values=["EUR", "USD"])
         self.currency_option.grid(row=1, column=1, padx=10, pady=(10,10), sticky="w")
 
         # Label for account balance entry
@@ -52,8 +52,8 @@ class AccountInformation(AccountGui):
         # Label for interest rate choice
         self.interest_rate_label = ctk.CTkLabel(self, text="Choose interest rate", fg_color="transparent", text_color="white", font=("tahoma", 15))
         self.interest_rate_label.grid(row=3, column=0, padx=10, pady=(10,10), sticky="w")
-
-        self.interest_option = ctk.CTkOptionMenu(self, values=["1.8", "2.0"], command=self.optionmenu_callback)
+        # Option for interest rate choice
+        self.interest_option = ctk.CTkOptionMenu(self, values=["1.8", "2.0"])
         self.interest_option.grid(row=3, column=1, padx=10, pady=(10,10), sticky="w")
 
         # Error log lable
@@ -63,10 +63,6 @@ class AccountInformation(AccountGui):
         # Create account button
         self.button = ctk.CTkButton(self, width=40, height=40, text="Create account", text_color="black", font=("tahoma", 16), command=self.check_content)
         self.button.grid(row=5, column=1, padx=20, pady=20, sticky="ew")
-
-
-    def optionmenu_callback(self, choice):
-        print("Optionmenu choice:", choice)
 
 
     def check_content(self):
