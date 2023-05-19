@@ -7,9 +7,9 @@ from gui_app import App, WelcomeWindow
 app = WelcomeWindow()
 app.mainloop()
 
-holder_info = App.main_content[0]
-password_info = App.main_content[1]
+holder_info = App.holder_info
+password_info = App.password
 
-holder = Holder(holder_info["first"],holder_info["last"],holder_info["birth_date"],password_info["password"])
+holder = Holder(App.holder_info[0],App.holder_info[1],App.holder_info[2],password_info[0])
 print(repr(holder))
 

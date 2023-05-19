@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import bcrypt
 
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_appearance_mode("dark") # "system" (default), "dark", "light"
@@ -9,7 +10,8 @@ class App(ctk.CTk):
     Main class where I run my application
     """
 
-    main_content: list[dict[str, str]] = []
+    holder_info: list[str] = []
+    password: list[bytes] = []
 
     def __init__(self):
         super().__init__()
@@ -69,12 +71,6 @@ class HolderRegistrationWindow(App):
         self.grid_columnconfigure((0,1), weight=1)
         self.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
-        self.content: dict[str, str] = {
-            "first": "",
-            "last": "",
-            "birth_date": ""            
-        }
-
 
         # Title: Registration
         self.welcome_label = ctk.CTkLabel(self, text="Registration", fg_color="transparent", text_color="white", font=("tahoma", 24))
@@ -97,24 +93,20 @@ class HolderRegistrationWindow(App):
 
         # Continue button
 
-        self.start_button = ctk.CTkButton(self, width=40, height=40, text="Continue", text_color="black", font=("tahoma", 16), command=self.save_content)
+        self.start_button = ctk.CTkButton(self, width=40, height=40, text="Continue", text_color="black", font=("tahoma", 16), command=self.check_content)
         self.start_button.grid(row=5, column=1, padx=20, pady=20, sticky="ew")
 
 
-    def save_content(self) -> None:
-
-        self.content["first"] = self.first_name_entry.get()
-        self.content["last"] = self.last_name_entry.get()
-        self.content["birth_date"] = self.birth_date_entry.get()
-
-        self.check_content()
-
     def check_content(self) -> None:
+        
+        first = self.first_name_entry.get()
+        last = self.last_name_entry.get()
+        birth_date = self.birth_date_entry.get()
 
-        if not self.content["first"] or not self.content["last"] or not self.content["birth_date"]:
+        if not first or not last or not birth_date:
             self.error_label.configure(text="Some fields are empty!")
         else:
-            App.main_content.append(self.content)
+            App.holder_info = [el for el in [first, last, birth_date]]
             self.next_window()
         
 
@@ -137,11 +129,6 @@ class PasswordRegistrationWindow(App):
         self.grid_columnconfigure((0,1), weight=1)
         self.grid_rowconfigure((0,1,2,3,4), weight=1)
 
-        self.content: dict[str, str] = {
-            "password": "",
-            "repeated_password": "",
-        }
-
         # Title: Registration
         self.welcome_label = ctk.CTkLabel(self, text="Registration", fg_color="transparent", text_color="white", font=("tahoma", 24))
         self.welcome_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
@@ -160,22 +147,23 @@ class PasswordRegistrationWindow(App):
 
         # Continue button
 
-        self.start_button = ctk.CTkButton(self, width=50, height=40, text="Confirm registration", text_color="black", font=("tahoma", 16), command=self.save_content)
+        self.start_button = ctk.CTkButton(self, width=50, height=40, text="Confirm registration", text_color="black", font=("tahoma", 16), command=self.check_password)
         self.start_button.grid(row=4, column=1, padx=20, pady=20, sticky="ew")
 
 
-    def save_content(self) -> None:
-        self.content["password"] = self.password_entry.get()
-        self.content["repeated_password"] = self.repeated_password_entry.get()
-
-        self.check_password()
-
+    def hash_password(self, password: bytes) -> bytes:
+        return bcrypt.hashpw(password, bcrypt.gensalt())
 
     def check_password(self) -> None:
-        if not self.content["password"] or not self.content["repeated_password"] or self.content["password"] != self.content["repeated_password"]:
+
+        password = self.password_entry.get()
+        repeated_password = self.repeated_password_entry.get()
+
+        if not password or not repeated_password or password != repeated_password:
             self.welcome_label.configure(text="The two passwords don't match!", text_color="red")
-        elif self.content["password"] == self.content["repeated_password"]:
-            App.main_content.append(self.content)
+        elif password == repeated_password:
+            hashed = self.hash_password(bytes(password, 'utf-8'))
+            App.password.append(hashed)
             self.button_callback()
         else:
             raise ValueError
