@@ -1,15 +1,24 @@
 from bank import Bank
 from holder import Holder
 from account import Account
-from gui_app import App, WelcomeWindow
+from gui_registration import Registration, WelcomeWindow
 
 
-app = WelcomeWindow()
-app.mainloop()
+def main():
 
-holder_info = App.holder_info
-password_info = App.password
 
-holder = Holder(App.holder_info[0],App.holder_info[1],App.holder_info[2],password_info[0])
-print(repr(holder))
+    registration()
 
+    holder_info = Registration.holder_info
+    password_info = Registration.password
+    new_holder = Holder(holder_info[0],holder_info[1],holder_info[2],password_info[0])
+
+
+
+def registration():
+    app = WelcomeWindow()
+    app.mainloop()
+
+
+if __name__ == "__main__":
+    main()

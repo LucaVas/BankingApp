@@ -5,7 +5,7 @@ ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dar
 ctk.set_appearance_mode("dark") # "system" (default), "dark", "light"
 
 
-class App(ctk.CTk):
+class Registration(ctk.CTk):
     """
     Main class where I run my application
     """
@@ -22,11 +22,8 @@ class App(ctk.CTk):
         self.geometry(f"{self.width}x{self.height}")
 
 
-
-
-
         
-class WelcomeWindow(App):
+class WelcomeWindow(Registration):
     """
     Class which contains my first welcome window
     """
@@ -61,7 +58,7 @@ class WelcomeWindow(App):
         
 
 
-class HolderRegistrationWindow(App):
+class HolderRegistrationWindow(Registration):
     """
     Class which contains the window of holder registration
     """
@@ -106,7 +103,7 @@ class HolderRegistrationWindow(App):
         if not first or not last or not birth_date:
             self.error_label.configure(text="Some fields are empty!")
         else:
-            App.holder_info = [el for el in [first, last, birth_date]]
+            Registration.holder_info = [el for el in [first, last, birth_date]]
             self.next_window()
         
 
@@ -119,7 +116,7 @@ class HolderRegistrationWindow(App):
 
 
 
-class PasswordRegistrationWindow(App):
+class PasswordRegistrationWindow(Registration):
     """
     Class which contains the window of holder registration
     """
@@ -163,7 +160,7 @@ class PasswordRegistrationWindow(App):
             self.welcome_label.configure(text="The two passwords don't match!", text_color="red")
         elif password == repeated_password:
             hashed = self.hash_password(bytes(password, 'utf-8'))
-            App.password.append(hashed)
+            Registration.password.append(hashed)
             self.button_callback()
         else:
             raise ValueError
