@@ -9,6 +9,8 @@ class App(ctk.CTk):
     Main class where I run my application
     """
 
+    main_content: list[dict[str, str]] = []
+
     def __init__(self):
         super().__init__()
 
@@ -16,6 +18,8 @@ class App(ctk.CTk):
         self.width = "500"
         self.height = "300"
         self.geometry(f"{self.width}x{self.height}")
+
+
 
 
 
@@ -110,6 +114,7 @@ class HolderRegistrationWindow(App):
         if not self.content["first"] or not self.content["last"] or not self.content["birth_date"]:
             self.error_label.configure(text="Some fields are empty!")
         else:
+            App.main_content.append(self.content)
             self.next_window()
         
 
@@ -170,6 +175,7 @@ class PasswordRegistrationWindow(App):
         if not self.content["password"] or not self.content["repeated_password"] or self.content["password"] != self.content["repeated_password"]:
             self.welcome_label.configure(text="The two passwords don't match!", text_color="red")
         elif self.content["password"] == self.content["repeated_password"]:
+            App.main_content.append(self.content)
             self.button_callback()
         else:
             raise ValueError

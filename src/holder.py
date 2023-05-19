@@ -1,12 +1,12 @@
-from datetime import date, datetime
+from datetime import datetime
 
 class Holder():
-    def __init__(self):
+    def __init__(self, first: str, last: str, birth_date: str, password: str):
         self.id = 0
-        self.first_name = "Luca"
-        self.last_name = "Vassos"
-        self.birth_date = date(1994, 5, 14)
-        self.password = ""
+        self.first_name = first
+        self.last_name = last
+        self.birth_date = datetime.strptime(birth_date, "%d%m%Y").date()
+        self.password = password
         self.is_blocked = False
         self.onboarding_date = datetime.now()
 
@@ -14,7 +14,7 @@ class Holder():
         return f"Account holder: {self.first_name} {self.last_name}.\nDate of Birth: {self.birth_date}\nOnboarding date: {self.onboarding_date}\nAccount blocked: {self.is_blocked}"
     
     def __repr__(self) -> str:
-        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date})"
+        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date},Password{self.password})"
     
     def block(self, is_blocked: bool) -> None:
         if is_blocked is True:
