@@ -1,6 +1,6 @@
 class Bank:
     def __init__(self):
-        self.name = "Luca's bank"
+        self.name = "Bank 99"
         self.year = 2023
         self.shares_amount = 100
         self.share_price = 50.0

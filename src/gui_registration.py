@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import bcrypt
+from bank import Bank
 
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_appearance_mode("dark") # "system" (default), "dark", "light"
@@ -13,10 +14,10 @@ class RegistrationGui(ctk.CTk):
     holder_info: list[str] = []
     password: list[bytes] = []
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-        self.title("Luca's bank")
+        self.title("Bank 99")
         self.width = 500
         self.height = 300
 
@@ -34,14 +35,14 @@ class WelcomeWindow(RegistrationGui):
     """
     Class which contains my first welcome window
     """
-    def __init__(self):
+    def __init__(self, bank: Bank) -> None:
         super().__init__()
 
         self.grid_columnconfigure((0,1), weight=2)
         self.grid_rowconfigure((0,1), weight=1)
 
         # Title
-        self.welcome_label = ctk.CTkLabel(self, text="Welcome to Luca's Bank", fg_color="transparent", text_color="white", font=("tahoma", 24))
+        self.welcome_label = ctk.CTkLabel(self, text=f"Welcome to {bank.name}", fg_color="transparent", text_color="white", font=("tahoma", 24))
         self.welcome_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
 
         # Description

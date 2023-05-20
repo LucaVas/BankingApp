@@ -1,4 +1,6 @@
 import customtkinter as ctk
+from currency import Currency
+from bank import Bank
 
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_appearance_mode("dark") # "system" (default), "dark", "light"
@@ -29,7 +31,7 @@ class AccountInformation(AccountGui):
     """
     Class which contains the account creation window
     """
-    def __init__(self):
+    def __init__(self, bank: Bank, currency: Currency):
         super().__init__()
 
         self.grid_columnconfigure((0,1), weight=2)
@@ -43,7 +45,7 @@ class AccountInformation(AccountGui):
         self.currency_label = ctk.CTkLabel(self, text="Choose the currency", fg_color="transparent", text_color="white", font=("tahoma", 15))
         self.currency_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
         # Option for currency choice
-        self.currency_option = ctk.CTkOptionMenu(self, values=["EUR", "USD"])
+        self.currency_option = ctk.CTkOptionMenu(self, values=[curr for curr in list(Currency().__dict__.keys())])
         self.currency_option.grid(row=1, column=1, padx=10, pady=(10,10), sticky="w")
 
         # Label for account balance entry

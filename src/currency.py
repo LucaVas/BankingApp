@@ -1,10 +1,10 @@
-from enum import Enum
+class Currency():
+    def __init__(self) -> None:
+        self.GBP = "£"
+        self.USD = "$"
+        self.EUR = "€"
+        self.JPY = ""
+        self.RON = "lei"
+        self.PLN = "zl"
+        self.RUB = ""
 
-class Currency(Enum):
-    GBP = "£"
-    USD = "$"
-    EUR = "€"
-    JPY = "¥"
-    RON = "lei"
-    PLN = "zł"
-    RUB = "₽"
