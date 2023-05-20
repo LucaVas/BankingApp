@@ -1,7 +1,11 @@
 import customtkinter as ctk
+import tkinter
+from holder import Holder
+from account import Account
 
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_appearance_mode("dark") # "system" (default), "dark", "light"
+
 
 class MainGui(ctk.CTk):
     """
@@ -14,35 +18,42 @@ class MainGui(ctk.CTk):
         super().__init__()
 
         self.title("Luca's bank")
-        self.width = "1000"
-        self.height = "500"
-        self.geometry(f"{self.width}x{self.height}")
+        self.width = 1200
+        self.height = 700
+     
 
+        self.screen_width = self.winfo_screenwidth()
+        self.screen_height = self.winfo_screenheight()
+        self.x = (self.screen_width / 2) - (self.width / 2)
+        self.y = (self.screen_height / 2) - (self.height / 2)
+
+
+        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
 
 
 class MainWindow(MainGui):
     """
     Class which contains the main window of my application
     """
-    def __init__(self):
+    def __init__(self, holder: Holder, account: Account) -> None:
         super().__init__()
 
-        self.grid_columnconfigure((0,1,2,3), weight=2)
+        self.grid_columnconfigure((0,1,2,3), weight=1)
         self.grid_rowconfigure((0,1,2,3,4,5,6), weight=1)
 
 
-        """ First column """
+        """ Left side """
         # Label: "Your Account"
         self.title_label = ctk.CTkLabel(self, text="Your Account", fg_color="transparent", text_color="white", font=("tahoma", 24))
         self.title_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
 
         # Button: "Top-Up"
         self.button_top_up = ctk.CTkButton(self, width=40, height=40, text="Top-Up", text_color="black", font=("tahoma", 16), command=self.top_up)
-        self.button_top_up.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+        self.button_top_up.grid(row=2, column=0, padx=20, pady=20, sticky="ew")
 
         # Button: "Transfer"
         self.button_transfer = ctk.CTkButton(self, width=40, height=40, text="Transfer", text_color="black", font=("tahoma", 16), command=self.transfer)
-        self.button_transfer.grid(row=2, column=0, padx=20, pady=20, sticky="ew")
+        self.button_transfer.grid(row=3, column=0, padx=20, pady=20, sticky="ew")
 
         # Label: "Appearance mode"
         self.appearence_label = ctk.CTkLabel(self, text="> Appearence mode", fg_color="transparent", text_color="white", font=("tahoma", 15))
@@ -53,11 +64,11 @@ class MainWindow(MainGui):
         self.appearance_option.grid(row=6, column=0, padx=10, pady=(10,10), sticky="w")
 
 
-        """ Second column """
-        self.balance_frame = BalanceFrame(master=self)
+        """ Center """
+        self.balance_frame = BalanceFrame(self, account.balance, account.currency)
         self.balance_frame.grid(row=0, column=1, columnspan=2, padx=20, pady=20, sticky="nsew")
 
-        self.currency_frame = CurrencyFrame(master=self)
+        self.currency_frame = CurrencyFrame(self)
         self.currency_frame.grid(row=1, column=2, padx=20, pady=20, sticky="nsew")
 
         self.transfers_list_frame = TransfersListFrame(master=self)
@@ -68,15 +79,19 @@ class MainWindow(MainGui):
         self.message_label.grid(row=6, column=1, columnspan=2, padx=10, pady=(10,10), sticky="w")   
 
 
-        """ Fourth column """
-        self.account_info_frame = AccountInfoFrame(master=self)
+        """ Right side """
+        self.account_info_frame = AccountInfoFrame(self, holder.first_name, account.currency, account.interest_rate)
         self.account_info_frame.grid(row=0, column=3, rowspan=2, padx=20, pady=20, sticky="nsew")
     
         self.exchange_frame = ExchangeFrame(master=self)
         self.exchange_frame.grid(row=2, column=3, rowspan=2, padx=20, pady=20, sticky="nsew")
 
         self.bank_info_frame = BankInfoFrame(master=self)
-        self.bank_info_frame.grid(row=4, column=3, rowspan=3, padx=20, pady=20, sticky="nsew")
+        self.bank_info_frame.grid(row=4, column=3, rowspan=2, padx=20, pady=20, sticky="nsew")
+
+        # Button: "Log-out"
+        self.button_log_out = ctk.CTkButton(self, width=40, height=40, text="Log out", text_color="black", font=("tahoma", 18), command=self.log_out)
+        self.button_log_out.grid(row=6, column=3, padx=20, pady=20, sticky="ew")
 
     def top_up(self):
         pass
@@ -84,25 +99,28 @@ class MainWindow(MainGui):
     def transfer(self):
         pass
 
+    def log_out(self):
+        self.kill_window()
+
     def kill_window(self):
         self.destroy()
         
 
 class BalanceFrame(ctk.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, balance: float, currency: str, **kwargs):
         super().__init__(master, **kwargs)
 
         # Label: "Balance"
         self.balance_label = ctk.CTkLabel(self, text="> Balance", fg_color="transparent", text_color="white", font=("tahoma", 24))
-        self.balance_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
+        self.balance_label.grid(row=0, column=0, padx=(10, 40), pady=(10,10), sticky="w")
 
         # Label: Amount
-        self.amount_label = ctk.CTkLabel(self, text="1850", fg_color="transparent", text_color="white", font=("tahoma", 27))
-        self.amount_label.grid(row=0, column=3, padx=10, pady=(10,10), sticky="w")
+        self.amount_label = ctk.CTkLabel(self, text=str(balance), fg_color="transparent", text_color="white", font=("tahoma", 27))
+        self.amount_label.grid(row=0, column=3, padx=(50,10), pady=(10,10), sticky="w")
 
         # Label: Currency
 
-        self.currency_label = ctk.CTkLabel(self, text="EUR", fg_color="transparent", text_color="white", font=("tahoma", 27))
+        self.currency_label = ctk.CTkLabel(self, text=currency, fg_color="transparent", text_color="white", font=("tahoma", 27))
         self.currency_label.grid(row=0, column=4, padx=10, pady=(10,10), sticky="w")
 
 
@@ -119,37 +137,75 @@ class CurrencyFrame(ctk.CTkFrame):
         self.currency_label.grid(row=0, column=2, padx=10, pady=(10,10), sticky="w")
 
 
-class TransfersListFrame(ctk.CTkFrame):
+class TransfersListFrame(ctk.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
+        self.grid_columnconfigure((0,1,2,3,4,5), weight=1)
+        self.grid_rowconfigure((0), weight=1)
+
+        self.header = TransfersListRowFrame(self, "Action", "Amount", "From", "To", "Currency", "Date")
+        self.header.grid(row=0, column=0, columnspan=6, padx=(0,10), pady=20, sticky="ew")
+
+        self.row = TransfersListRowFrame(self, "Transfer", "100", "Luca", "Max", "EUR", "20/05/2023")
+        self.row.grid(row=TransfersListRowFrame.rows, column=0, columnspan=6, padx=0, pady=20, sticky="ew")
+
+        self.row = TransfersListRowFrame(self, "Top-Up", "20", "Luca", "Luca", "EUR", "04/05/2023")
+        self.row.grid(row=TransfersListRowFrame.rows, column=0, columnspan=6, padx=0, pady=20, sticky="ew")
+
+        self.row = TransfersListRowFrame(self, "Top-Up", "34", "Luca", "Luca", "EUR", "03/05/2023")
+        self.row.grid(row=TransfersListRowFrame.rows, column=0, columnspan=6, padx=0, pady=20, sticky="ew")
+
+        self.row = TransfersListRowFrame(self, "Transfer", "732", "Judita", "Luca", "EUR", "17/04/2023")
+        self.row.grid(row=TransfersListRowFrame.rows, column=0, columnspan=6, padx=0, pady=20, sticky="ew")
+
+
+class TransfersListRowFrame(ctk.CTkFrame):
+
+    rows=-1
+
+    def __init__(self, master, action: str, amount: str, acc_from: str, acc_to: str, currency: str, date: str, **kwargs):
+        super().__init__(master, **kwargs)
+
+        TransfersListRowFrame.rows += 1
+
+        self.action = action 
+        self.amount = amount
+        self.acc_from = acc_from
+        self.acc_to = acc_to
+        self.currency = currency
+        self.date = date
+
+        self.grid_columnconfigure((0,1,2,3,4,5), weight=1)
+        self.grid_rowconfigure((0), weight=0)
+
         # Label: Action
-        self.action_label = ctk.CTkLabel(self, text="Action", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.action_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
+        self.action_label = ctk.CTkLabel(self, text=action, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.action_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="ew")
 
         # Label: Amount
-        self.amount_label = ctk.CTkLabel(self, text="Amount", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.amount_label.grid(row=0, column=1, padx=10, pady=(10,10), sticky="w")
+        self.amount_label = ctk.CTkLabel(self, text=amount, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.amount_label.grid(row=0, column=1, padx=10, pady=(10,10), sticky="ew")
 
         # Label: From
-        self.from_label = ctk.CTkLabel(self, text="From", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.from_label.grid(row=0, column=2, padx=10, pady=(10,10), sticky="w")
+        self.from_label = ctk.CTkLabel(self, text=acc_from, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.from_label.grid(row=0, column=2, padx=10, pady=(10,10), sticky="ew")
 
         # Label: To
-        self.to_label = ctk.CTkLabel(self, text="To", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.to_label.grid(row=0, column=3, padx=10, pady=(10,10), sticky="w")
+        self.to_label = ctk.CTkLabel(self, text=acc_to, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.to_label.grid(row=0, column=3, padx=10, pady=(10,10), sticky="ew")
 
         # Label: Currency
-        self.currency_label = ctk.CTkLabel(self, text="USD", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.currency_label.grid(row=0, column=4, padx=10, pady=(10,10), sticky="w")
+        self.currency_label = ctk.CTkLabel(self, text=currency, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.currency_label.grid(row=0, column=4, padx=10, pady=(10,10), sticky="ew")
 
         # Label: Date
-        self.date_label = ctk.CTkLabel(self, text="19/05/2023", fg_color="transparent", text_color="white", font=("tahoma", 18))
-        self.date_label.grid(row=0, column=5, padx=10, pady=(10,10), sticky="w")
+        self.date_label = ctk.CTkLabel(self, text=date, fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.date_label.grid(row=0, column=5, padx=10, pady=(10,10), sticky="ew")
 
 
 class AccountInfoFrame(ctk.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, holder_name: str, account_currency: str, account_rate: float, **kwargs):
         super().__init__(master, **kwargs)
 
         # Label: "Holder"
@@ -157,7 +213,7 @@ class AccountInfoFrame(ctk.CTkFrame):
         self.holder_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
 
         # Label: Holder name
-        self.holder_name_label = ctk.CTkLabel(self, text="Luca", fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.holder_name_label = ctk.CTkLabel(self, text=holder_name, fg_color="transparent", text_color="white", font=("tahoma", 18))
         self.holder_name_label.grid(row=0, column=1, padx=10, pady=(10,10), sticky="w")
 
         # Label: "Currency"
@@ -165,7 +221,7 @@ class AccountInfoFrame(ctk.CTkFrame):
         self.currency_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
 
         # Label: Currency
-        self.currency_tag_label = ctk.CTkLabel(self, text="EUR", fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.currency_tag_label = ctk.CTkLabel(self, text=account_currency, fg_color="transparent", text_color="white", font=("tahoma", 18))
         self.currency_tag_label.grid(row=1, column=1, padx=10, pady=(10,10), sticky="w")
 
         # Label: "Rate"
@@ -173,7 +229,7 @@ class AccountInfoFrame(ctk.CTkFrame):
         self.rate_label.grid(row=2, column=0, padx=10, pady=(10,10), sticky="w")
 
         # Label: Interest rate
-        self.interest_rate_label = ctk.CTkLabel(self, text="2.0%", fg_color="transparent", text_color="white", font=("tahoma", 18))
+        self.interest_rate_label = ctk.CTkLabel(self, text=f"{account_rate:.2f}%", fg_color="transparent", text_color="white", font=("tahoma", 18))
         self.interest_rate_label.grid(row=2, column=1, padx=10, pady=(10,10), sticky="w")
 
 

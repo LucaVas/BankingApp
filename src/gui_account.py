@@ -14,11 +14,16 @@ class AccountGui(ctk.CTk):
         super().__init__()
 
         self.title("Luca's bank")
-        self.width = "500"
-        self.height = "300"
-        self.geometry(f"{self.width}x{self.height}")
+        self.width = 500
+        self.height = 300
+
+        self.screen_width = self.winfo_screenwidth()
+        self.screen_height = self.winfo_screenheight()
+        self.x = (self.screen_width / 2) - (self.width / 2)
+        self.y = (self.screen_height / 2) - (self.height / 2)
 
 
+        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
 
 class AccountInformation(AccountGui):
     """

@@ -9,24 +9,21 @@ from gui_main import MainWindow
 def main():
 
 
-    # registration()
+    registration()
 
-    # holder_info = RegistrationGui.holder_info
-    # password_info = RegistrationGui.password
-    # new_holder = Holder(holder_info[0],holder_info[1],holder_info[2],password_info[0])
+    holder_info = RegistrationGui.holder_info
+    password_info = RegistrationGui.password
+    new_holder = Holder(holder_info[0],holder_info[1],holder_info[2],password_info[0])
 
-    # account_setup()
+    account_setup()
 
-    # account_info = AccountInformation.account_info
-    # new_account = Account(new_holder.id, account_info[0], account_info[1], account_info[2])
+    account_info = AccountInformation.account_info
+    new_account = Account(new_holder.id, account_info[0], account_info[1], account_info[2])
 
-    # print(repr(new_holder))
-    # print(repr(new_account))
+    run_main_window(new_holder, new_account)
 
-    run_main_window()
-
-def run_main_window():
-    app = MainWindow()
+def run_main_window(holder: Holder, account: Account) -> None:
+    app = MainWindow(holder, account)
     app.mainloop()
 
 def registration():
