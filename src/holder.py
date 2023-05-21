@@ -9,6 +9,8 @@ class Holder():
         self.password = password
         self.is_blocked = False
         self.onboarding_date = datetime.now()
+        self.accounts: list[str] = ["LT123456"]
+        self.connected_accounts = ["LT123456789123"]
 
     def __str__(self) -> str:
         return f"Account holder: {self.first_name} {self.last_name}.\nDate of Birth: {self.birth_date}\nOnboarding date: {self.onboarding_date}\nAccount blocked: {self.is_blocked}"
