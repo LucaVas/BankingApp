@@ -1,11 +1,15 @@
 import tkinter as tk
 from tkinter import messagebox
-from top_up_window import TopUpWindow
+from .top_up_window import TopUpWindow
 
 
 class MainWindow(tk.Tk):
-    def __init__(self):
+    def __init__(self, holder, account, bank):
         super().__init__()
+
+        self.holder = holder
+        self.account = account
+        self.bank = bank
 
         # geometry & positioning
         self.width = 600
@@ -21,7 +25,7 @@ class MainWindow(tk.Tk):
         # self.iconbitmap("img/bank-50.png")
         self.title("Bank99")
         self.balance_label_text = "Your balance:"
-        self.balance_amount_label_text = 0.0
+        self.balance_amount_label_text = self.account.balance
         self.acc_text = ""
         self.top_up_button_text = "Top up"
         self.log_out_button_text = "Log out"
@@ -55,7 +59,3 @@ class MainWindow(tk.Tk):
 
     def log_out(self):
         self.destroy()
-
-
-main = MainWindow()
-main.start()
