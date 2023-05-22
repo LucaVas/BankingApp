@@ -30,19 +30,19 @@ class HolderInfoFrame(tk.LabelFrame):
 
         # widgets
         self.holder_name_label = tk.Label(self, text=self.holder_name_label_text)
-        self.holder_name_label.grid(row=0, column=0)
+        self.holder_name_label.grid(row=0, column=0, pady=(10, 0), padx=(0, 20), sticky="w")
         self.holder_name_data_label = tk.Label(self, text=self.holder_name_data_label_text)
-        self.holder_name_data_label.grid(row=0, column=1)
+        self.holder_name_data_label.grid(row=0, column=1, pady=(10, 0), sticky="w")
 
         self.info_currency_label = tk.Label(self, text=self.info_currency_label_text)
-        self.info_currency_label.grid(row=1, column=0)
+        self.info_currency_label.grid(row=1, column=0, pady=(10, 10), padx=(0, 20), sticky="w")
         self.info_currency_data_label = tk.Label(self, text=self.info_currency_data_label_text)
-        self.info_currency_data_label.grid(row=1, column=1)
+        self.info_currency_data_label.grid(row=1, column=1, pady=(10, 10), sticky="w")
 
         self.info_interest_rate_label = tk.Label(self, text=self.info_interest_rate_label_text)
-        self.info_interest_rate_label.grid(row=2, column=0)
+        self.info_interest_rate_label.grid(row=2, column=0, pady=(0, 10), padx=(0, 20), sticky="w")
         self.info_interest_rate_data_label = tk.Label(self, text=self.info_interest_rate_data_label_text)
-        self.info_interest_rate_data_label.grid(row=2, column=1)
+        self.info_interest_rate_data_label.grid(row=2, column=1, pady=(0, 10), sticky="w")
 
 
 

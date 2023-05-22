@@ -29,19 +29,19 @@ class BankInfoFrame(tk.LabelFrame):
 
         # widgets
         self.shares_amount_label = tk.Label(self, text=self.shares_amount_label_text)
-        self.shares_amount_label.grid(row=0, column=0)
+        self.shares_amount_label.grid(row=0, column=0, pady=(10, 0), padx=(0, 20), sticky="w")
         self.shares_amount_data_label = tk.Label(self, text=self.shares_amount_data_label_text)
-        self.shares_amount_data_label.grid(row=0, column=1)
+        self.shares_amount_data_label.grid(row=0, column=1, pady=(10, 0), sticky="w")
 
         self.shares_price_label = tk.Label(self, text=self.shares_price_label_text)
-        self.shares_price_label.grid(row=1, column=0)
+        self.shares_price_label.grid(row=1, column=0, pady=(10, 10), padx=(0, 20), sticky="w")
         self.shares_price_data_label = tk.Label(self, text=self.shares_price_data_label_text)
-        self.shares_price_data_label.grid(row=1, column=1)
+        self.shares_price_data_label.grid(row=1, column=1, pady=(10, 10), sticky="w")
 
         self.shares_delta_label = tk.Label(self, text=self.shares_delta_label_text)
-        self.shares_delta_label.grid(row=2, column=0)
+        self.shares_delta_label.grid(row=2, column=0, pady=(0, 10), padx=(0, 20), sticky="w")
         self.shares_delta_data_label = tk.Label(self, text=self.shares_delta_data_label_text)
-        self.shares_delta_data_label.grid(row=2, column=1)
+        self.shares_delta_data_label.grid(row=2, column=1, pady=(0, 10), sticky="w")
 
 
 

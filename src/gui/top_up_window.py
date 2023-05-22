@@ -7,9 +7,9 @@ class TopUpWindow(tk.Toplevel):
         super().__init__()
 
         self.parent_window = parent
-        self.width = 400
-        self.height = 300
-        self.geometry(f"{self.width}x{self.height}+{int(self.parent_window.x)}+{int(self.parent_window.y)}")
+        # self.width = 400
+        # self.height = 300
+        # self.geometry(f"{self.width}x{self.height}+{int(self.parent_window.x)}+{int(self.parent_window.y)}")
         # prevent window to get hidden when pop up appears
         self.attributes("-topmost", True)
 
@@ -66,11 +66,11 @@ class TopUpWindow(tk.Toplevel):
 
 
     def top_up(self, amount: float) -> None:
-        current_amount = self.parent_window.balance_amount_label.cget("text")
+        current_amount = self.parent_window.balance_frame.balance_amount_label.cget("text")
         account_from = self.account_from_optionmenu_var.get()
 
-        self.parent_window.balance_amount_label.configure(text=current_amount + amount)
-        self.parent_window.acc.configure(text=account_from)
+        self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount + amount)
+        self.parent_window.balance_frame.acc.configure(text=account_from)
 
         self.close()
 
