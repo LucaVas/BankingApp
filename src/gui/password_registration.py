@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import bcrypt
 
 
 class PasswordRegistrationWindow(tk.Tk):
@@ -62,12 +63,17 @@ class PasswordRegistrationWindow(tk.Tk):
         elif password != repeated_password:
             self.show_error()
         else:        
-            self.register_password(password)
+            hashed = self.hash_password(bytes(password, 'utf-8'))
+            self.register_password(hashed)
     
-    def register_password(self, password:str) -> None:
-        self.password = bytes(password, encoding='utf-8')
+    def hash_password(self, password: bytes) -> bytes:
+        return bcrypt.hashpw(password, bcrypt.gensalt())
+    
+    def register_password(self, password: bytes) -> None:
+        self.password = password
 
         self.close()
+        
         
     def show_error(self) -> None:
         # parent=self keeps the popup window in front
