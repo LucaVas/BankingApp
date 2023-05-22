@@ -10,7 +10,7 @@ def main() -> None:
 
     # Holder registration
     name, surname, birth_date = holder_registration()
-    new_holder = Holder(name, surname, birth_date, b"test")
+    new_holder = Holder(name, surname, birth_date)
 
     # Password registration
     password = password_registration()
