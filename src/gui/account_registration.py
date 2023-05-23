@@ -3,8 +3,10 @@ from tkinter import messagebox
 
 
 class AccountRegistrationWindow(tk.Tk):
-    def __init__(self):
+    def __init__(self, currency_obj):
         super().__init__()
+
+        self.currency_list = currency_obj.currencies
 
         # geometry & positioning
         self.width = 1000
@@ -33,11 +35,7 @@ class AccountRegistrationWindow(tk.Tk):
         ]
         self.interest_rate_optionmenu_var = tk.StringVar()
         self.currency_label_text = "> Select the account currency:"
-        self.currency_optionmenu_options = [
-            "EUR",
-            "GBP",
-            "USD"
-        ]
+        self.currency_optionmenu_options = self.currency_list
         self.currency_optionmenu_var = tk.StringVar()
         self.amount_label_text = "> Enter the initial balance amount:"
         self.register_account_button_text = "Save account"
@@ -108,8 +106,3 @@ class AccountRegistrationWindow(tk.Tk):
 
     def close(self):
         self.destroy()
-
-
-if __name__ == "__main__":
-    app = AccountRegistrationWindow()
-    app.start()

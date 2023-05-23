@@ -7,15 +7,14 @@ from .exchange_frame import ExchangeFrame
 from .balance_exchange_frame import BalanceExchangeFrame
 from .transfer_window import TransferWindow
 
-
-
 class MainWindow(tk.Tk):
-    def __init__(self, holder, account, bank, padding=(20, 20)):
+    def __init__(self, holder, account, bank, currency_obj, padding=(20, 20)):
         super().__init__()
 
         self.holder = holder
         self.account = account
         self.bank = bank
+        self.currency_obj = currency_obj
 
 
         # geometry & positioning
@@ -58,7 +57,7 @@ class MainWindow(tk.Tk):
         self.balance_frame = BalanceFrame(self, self.account, padding=(20, 20))
         self.balance_frame.grid(row=1, column=2, padx=20, pady=20, columnspan=2)
 
-        self.exchange_frame = ExchangeFrame(self, self.account, padding=(20, 20))
+        self.exchange_frame = ExchangeFrame(self, self.account, self.currency_obj, padding=(20, 20))
         self.exchange_frame.grid(row=3, column=4, padx=20, pady=20, rowspan=2)
 
         self.balance_exchange_frame = BalanceExchangeFrame(self, self.exchange_frame, padding=(20, 20))
