@@ -107,8 +107,13 @@ class TransferWindow(tk.Toplevel):
     def transfer(self, amount: float, current_amount: float, recipient_account: str, reason: str) -> None:
 
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount - amount)
+        self.clear_exchanged_balance()
 
         self.close()
+    
+    def clear_exchanged_balance(self) -> None:
+        self.parent_window.balance_exchange_frame.exchange_balance_amount_label.configure(text="") 
+        self.parent_window.balance_exchange_frame.exchange_currency_label.configure(text="") 
 
     def show_error(self, text:str) -> None:
         # parent=self keeps the popup window in front

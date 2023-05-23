@@ -27,42 +27,37 @@ def main() -> None:
     bank = Bank(market_data, company_info)
 
     # # Holder registration
-    name, surname, birth_date = holder_registration()
+    name, surname, birth_date = holder_registration(bank)
     new_holder = Holder(name, surname, birth_date)
 
     # # Password registration
-    password = password_registration()
+    password = password_registration(bank)
     new_holder.password = password
 
-    exchange_rates = get_exchange_rates(exchange_url, API_KEY, base_currency)
-    currency_obj = Currency(exchange_rates)
     # # Account registration
-
-    # TODO: do not call twice the same api
-
-    balance, interest_rate, currency = account_registration(currency_obj)
+    balance, interest_rate, currency = account_registration(bank)
     new_account = Account(new_holder.id, balance, interest_rate, currency)
     
-    new_exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
-    currency_obj.exchange_rates = new_exchange_rates
+    exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
+    currency_obj = Currency(exchange_rates)
     
     # Main window
     run_main_window(new_holder, new_account, bank, currency_obj)
 
 
 
-def holder_registration():
-    registration = HolderRegistrationWindow()
+def holder_registration(bank: Bank):
+    registration = HolderRegistrationWindow(bank)
     registration.start()
     return registration.holder_name, registration.holder_surname, registration.holder_birth_date
 
-def password_registration():
-    pass_registration = PasswordRegistrationWindow()
+def password_registration(bank: Bank):
+    pass_registration = PasswordRegistrationWindow(bank)
     pass_registration.start()
     return pass_registration.password
 
-def account_registration(currency_obj: Currency) -> tuple[float, float, str]:
-    acc_registration = AccountRegistrationWindow(currency_obj)
+def account_registration(bank: Bank) -> tuple[float, str, str]:
+    acc_registration = AccountRegistrationWindow(Currency.list_of_currencies, bank)
     acc_registration.start()
     return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency
 

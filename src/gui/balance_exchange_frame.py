@@ -19,11 +19,15 @@ class BalanceExchangeFrame(tk.LabelFrame):
             }
         )
 
-        self.exchange_balance_amount_label_text = 100
-        self.exchange_currency_label_text = self.exchange_frame.currency_optionmenu_var.get()
+        self.exchange_labance_label_text = "> Exchanged to"
+        self.exchange_balance_amount_label_text = " "
+        self.exchange_currency_label_text = " "
 
 
         # widgets
+        self.exchange_balance_amount_label = tk.Label(self, text=self.exchange_labance_label_text, font=("Tahoma", 15))
+        self.exchange_balance_amount_label.grid(row=0, column=0, pady=(10, 10), sticky="w")
+        
         self.exchange_balance_amount_label = tk.Label(self, text=self.exchange_balance_amount_label_text, font=("Tahoma", 15))
         self.exchange_balance_amount_label.grid(row=0, column=1, pady=(10, 0), sticky="w")
 

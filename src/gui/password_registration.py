@@ -4,22 +4,22 @@ import bcrypt
 
 
 class PasswordRegistrationWindow(tk.Tk):
-    def __init__(self):
+    def __init__(self, bank):
         super().__init__()
 
         # geometry & positioning
-        self.width = 1000
-        self.height = 600
-        self.screen_width = self.winfo_screenwidth()
-        self.screen_height = self.winfo_screenheight()
-        self.x = (self.screen_width / 2) - (self.width / 2)
-        self.y = (self.screen_height / 2) - (self.height / 2)
-        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
+        # self.width = 1000
+        # self.height = 600
+        # self.screen_width = self.winfo_screenwidth()
+        # self.screen_height = self.winfo_screenheight()
+        # self.x = (self.screen_width / 2) - (self.width / 2)
+        # self.y = (self.screen_height / 2) - (self.height / 2)
+        # self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
         self.attributes("-topmost", True)
 
 
         # holder information
-        self.title("Bank99")
+        self.title(bank.name)
         self.password = ""
 
         # widgets variables
@@ -84,8 +84,3 @@ class PasswordRegistrationWindow(tk.Tk):
 
     def close(self):
         self.destroy()
-
-
-if __name__ == "__main__":
-    app = PasswordRegistrationWindow()
-    app.start()

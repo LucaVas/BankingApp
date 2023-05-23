@@ -1,9 +1,28 @@
 from typing import Optional
 
 class Currency():
+
+    list_of_currencies = [
+        "AUD", 
+        "CHF", 
+        "CZK", 
+        "DKK", 
+        "EUR",
+        "GBP",
+        "HRK",
+        "HUF",
+        "JPY",
+        "NOK",
+        "PLN",
+        "RON",
+        "RUB",
+        "SEK",
+        "USD"
+    ]
+
     def __init__(self, exchange_rates: dict[str, float]) -> None:
         self.exchange_rates = exchange_rates
-        self.currencies = list(exchange_rates.keys())
+        self.currencies = self.list_of_currencies
     
 
     def __str__(self) -> str:

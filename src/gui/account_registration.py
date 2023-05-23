@@ -3,24 +3,24 @@ from tkinter import messagebox
 
 
 class AccountRegistrationWindow(tk.Tk):
-    def __init__(self, currency_obj):
+    def __init__(self, list_of_currencies: list[str], bank):
         super().__init__()
 
-        self.currency_list = currency_obj.currencies
+        self.currency_list = list_of_currencies
 
         # geometry & positioning
-        self.width = 1000
-        self.height = 600
-        self.screen_width = self.winfo_screenwidth()
-        self.screen_height = self.winfo_screenheight()
-        self.x = (self.screen_width / 2) - (self.width / 2)
-        self.y = (self.screen_height / 2) - (self.height / 2)
-        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
+        # self.width = 1000
+        # self.height = 600
+        # self.screen_width = self.winfo_screenwidth()
+        # self.screen_height = self.winfo_screenheight()
+        # self.x = (self.screen_width / 2) - (self.width / 2)
+        # self.y = (self.screen_height / 2) - (self.height / 2)
+        # self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
         self.attributes("-topmost", True)
 
 
         # holder information
-        self.title("Bank99")
+        self.title(bank.name)
         self.balance = 0.0
         self.currency = ""
         self.interest_rate = ""
@@ -29,9 +29,9 @@ class AccountRegistrationWindow(tk.Tk):
         self.account_registration_label_text = "Account registration"
         self.interest_rate_label_text = "> Select the interest rate:"
         self.interest_rate_optionmenu_options = [
-            1.8,
-            2.0,
-            2.5
+            "1.8",
+            "2.0",
+            "2.5"
         ]
         self.interest_rate_optionmenu_var = tk.StringVar()
         self.currency_label_text = "> Select the account currency:"

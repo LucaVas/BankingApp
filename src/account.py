@@ -2,14 +2,14 @@ from currency import Currency
     
         
 class Account:
-    def __init__(self, owner_id: int, balance: float, interest_rate: float, currency: str = "EUR") -> None:
+    def __init__(self, owner_id: int, balance: float, interest_rate: str, currency: str = "EUR") -> None:
         self.id = 451
         self.account_number = "LT1234567890"
         self.owner_id = owner_id
         self.is_active = True
         self._balance = balance
         self.currency = currency
-        self._interest_rate = interest_rate
+        self._interest_rate = float(interest_rate)
 
     def __str__(self) -> str:
         return f"This account holds {self.balance:.2f} {self.currency}. The account's interest rate is {self.interest_rate}."

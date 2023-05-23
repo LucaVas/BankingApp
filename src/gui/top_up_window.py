@@ -78,11 +78,15 @@ class TopUpWindow(tk.Toplevel):
 
     def top_up(self, amount: float) -> None:
         current_amount = self.parent_window.balance_frame.balance_amount_label.cget("text")
-        account_from = self.account_from_optionmenu_var.get()
-
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount + amount)
 
+        self.clear_exchanged_balance()
+
         self.close()
+
+    def clear_exchanged_balance(self) -> None:
+        self.parent_window.balance_exchange_frame.exchange_balance_amount_label.configure(text="") 
+        self.parent_window.balance_exchange_frame.exchange_currency_label.configure(text="") 
 
     def show_error(self) -> None:
         # parent=self keeps the popup window in front
