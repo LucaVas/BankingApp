@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 
 class TopUpWindow(tk.Toplevel):
-    def __init__(self, parent) -> None:
+    def __init__(self, parent, padding=(20,20)) -> None:
         super().__init__()
 
         self.parent_window = parent
@@ -12,6 +12,17 @@ class TopUpWindow(tk.Toplevel):
         # self.geometry(f"{self.width}x{self.height}+{int(self.parent_window.x)}+{int(self.parent_window.y)}")
         # prevent window to get hidden when pop up appears
         self.attributes("-topmost", True)
+
+        self.padding = padding
+        self.configure(
+            {   
+                "highlightthickness" : 0,
+                # border thickness
+                "bd" : 1,
+                "padx" : self.padding[0],
+                "pady" : self.padding[1]
+            }
+        )
 
         self.title("Top Up")
         self.main_lable_text = "Top Up"
@@ -45,7 +56,7 @@ class TopUpWindow(tk.Toplevel):
         self.account_from_optionmenu = tk.OptionMenu(self, self.account_from_optionmenu_var, *self.account_from_optionmenu_options)
         # default option
         self.account_from_optionmenu_var.set(self.account_from_optionmenu_options[0])
-        self.account_from_optionmenu.grid(row=2, column=1)
+        self.account_from_optionmenu.grid(row=2, column=1, sticky="ew")
 
         self.button = tk.Button(self, text=self.top_up_button_text, command=lambda: self.validate_top_up())
         self.button.grid(row=3, column=1)
@@ -62,7 +73,7 @@ class TopUpWindow(tk.Toplevel):
         if amount < 0 or not amount:
             self.show_error()
         else:
-            self.top_up(float(amount))
+            self.top_up(amount)
 
 
     def top_up(self, amount: float) -> None:
@@ -70,7 +81,6 @@ class TopUpWindow(tk.Toplevel):
         account_from = self.account_from_optionmenu_var.get()
 
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount + amount)
-        self.parent_window.balance_frame.acc.configure(text=account_from)
 
         self.close()
 

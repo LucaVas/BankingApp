@@ -4,6 +4,7 @@ from currency import Currency
 class Account:
     def __init__(self, owner_id: int, balance: float, interest_rate: float, currency: str = "EUR") -> None:
         self.id = 451
+        self.account_number = "LT1234567890"
         self.owner_id = owner_id
         self.is_active = True
         self._balance = balance

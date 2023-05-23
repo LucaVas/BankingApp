@@ -5,6 +5,7 @@ from .bank_info_frame import BankInfoFrame
 from .balance_frame import BalanceFrame
 from .exchange_frame import ExchangeFrame
 from .balance_exchange_frame import BalanceExchangeFrame
+from .transfer_window import TransferWindow
 
 
 
@@ -83,7 +84,8 @@ class MainWindow(tk.Tk):
         top_up_window.start()
 
     def open_transfer_window(self):
-        pass        
+        transfer_window = TransferWindow(self, self.account)
+        transfer_window.start()        
         
     def start(self):
         self.mainloop()
