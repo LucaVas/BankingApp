@@ -1,24 +1,16 @@
 import tkinter as tk
+import customtkinter as ctk
 
-class HolderInfoFrame(tk.LabelFrame):
-    def __init__(self, parent, holder, account, padding=(10,10)):
-        super().__init__()
+class HolderInfoFrame(ctk.CTkFrame):
+    def __init__(self, parent, holder, account):
+        super().__init__(parent)
 
         self.parent_window = parent
         self.holder = holder
         self.account = account
 
-        # format
-        self.padding = padding
-        self.configure(
-            {   
-                "highlightthickness" : 0,
-                # border thickness
-                "bd" : 1,
-                "padx" : self.padding[0],
-                "pady" : self.padding[1]
-            }
-        )
+        self.grid_columnconfigure((1, 2, 3), weight=1)
+        self.grid_rowconfigure((0, 1, 2), weight=1)
 
         self.holder_name_label_text = "> Holder: "
         self.holder_name_data_label_text = f"{self.holder.first_name} {self.holder.last_name}"
@@ -29,20 +21,20 @@ class HolderInfoFrame(tk.LabelFrame):
 
 
         # widgets
-        self.holder_name_label = tk.Label(self, text=self.holder_name_label_text)
-        self.holder_name_label.grid(row=0, column=0, pady=(10, 0), padx=(0, 20), sticky="w")
-        self.holder_name_data_label = tk.Label(self, text=self.holder_name_data_label_text)
-        self.holder_name_data_label.grid(row=0, column=1, pady=(10, 0), sticky="w")
+        self.holder_name_label = ctk.CTkLabel(self, text=self.holder_name_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="bold"))
+        self.holder_name_label.grid(row=0, column=0, padx=(15,0), sticky="w")
+        self.holder_name_data_label = ctk.CTkLabel(self, text=self.holder_name_data_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="normal"))
+        self.holder_name_data_label.grid(row=0, column=1, columnspan=2, sticky="ew")
 
-        self.info_currency_label = tk.Label(self, text=self.info_currency_label_text)
-        self.info_currency_label.grid(row=1, column=0, pady=(10, 10), padx=(0, 20), sticky="w")
-        self.info_currency_data_label = tk.Label(self, text=self.info_currency_data_label_text)
-        self.info_currency_data_label.grid(row=1, column=1, pady=(10, 10), sticky="w")
+        self.info_currency_label = ctk.CTkLabel(self, text=self.info_currency_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="bold"))
+        self.info_currency_label.grid(row=1, column=0, padx=(15,0), sticky="w")
+        self.info_currency_data_label = ctk.CTkLabel(self, text=self.info_currency_data_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="normal"))
+        self.info_currency_data_label.grid(row=1, column=1, columnspan=2, sticky="ew")
 
-        self.info_interest_rate_label = tk.Label(self, text=self.info_interest_rate_label_text)
-        self.info_interest_rate_label.grid(row=2, column=0, pady=(0, 10), padx=(0, 20), sticky="w")
-        self.info_interest_rate_data_label = tk.Label(self, text=self.info_interest_rate_data_label_text)
-        self.info_interest_rate_data_label.grid(row=2, column=1, pady=(0, 10), sticky="w")
+        self.info_interest_rate_label = ctk.CTkLabel(self, text=self.info_interest_rate_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="bold"))
+        self.info_interest_rate_label.grid(row=2, column=0, padx=(15,0), sticky="w")
+        self.info_interest_rate_data_label = ctk.CTkLabel(self, text=self.info_interest_rate_data_label_text, font=ctk.CTkFont("Tahoma", size=15, weight="normal"))
+        self.info_interest_rate_data_label.grid(row=2, column=1, columnspan=2, sticky="ew")
 
 
 

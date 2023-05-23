@@ -2,10 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 
-ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
-ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
-
-
 class AccountRegistrationWindow(ctk.CTk):
     def __init__(self, list_of_currencies: list[str], bank):
         super().__init__()
@@ -20,7 +16,6 @@ class AccountRegistrationWindow(ctk.CTk):
         self.x = (self.screen_width / 2) - (self.width / 2)
         self.y = (self.screen_height / 2) - (self.height / 2)
         self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
-        self.attributes("-topmost", True)
         self.attributes("-topmost", True)
 
         # grid layout

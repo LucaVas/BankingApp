@@ -3,11 +3,7 @@ import customtkinter as ctk
 from tkinter import messagebox
 from datetime import datetime, date
 
-ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
-ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
-
-
-class HolderRegistrationWindow(tk.Tk):
+class HolderRegistrationWindow(ctk.CTk):
     def __init__(self, bank):
         super().__init__()
 
@@ -40,9 +36,6 @@ class HolderRegistrationWindow(tk.Tk):
         self.holder_birth_date_separator_label_text = " / "
         self.register_button_text = "Register holder"
 
-        # style
-        self.btn_padx = 10
-        self.btn_pady = 5
 
         # widgets
         # ============ Top frame with main label ============ #

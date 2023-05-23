@@ -3,9 +3,6 @@ import customtkinter as ctk
 from tkinter import messagebox
 import bcrypt
 
-ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
-ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
-
 
 class PasswordRegistrationWindow(tk.Tk):
     def __init__(self, bank):

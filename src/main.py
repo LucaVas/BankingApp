@@ -9,6 +9,10 @@ from gui.account_registration import AccountRegistrationWindow
 from gui.main_window import MainWindow
 from datetime import datetime
 from decouple import config
+import customtkinter as ctk
+
+ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
 market_price_url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=BAC&interval=5min&apikey="
 market_company_info_url = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=BAC&apikey="
@@ -27,22 +31,25 @@ def main() -> None:
     bank = Bank(market_data, company_info)
 
     # # Holder registration
-    name, surname, birth_date = holder_registration(bank)
-    new_holder = Holder(name, surname, birth_date)
+    # name, surname, birth_date = holder_registration(bank)
+    # new_holder = Holder(name, surname, birth_date)
+    new_holder = Holder("Luca", "Vassos", datetime.strptime("19940514", "%Y%m%d").date())
 
     # # # Password registration
-    password = password_registration(bank)
-    new_holder.password = password
+    # password = password_registration(bank)
+    # new_holder.password = password
 
     # # # Account registration
-    balance, interest_rate, currency = account_registration(bank)
-    new_account = Account(new_holder.id, balance, interest_rate, currency)
+    # balance, interest_rate, currency = account_registration(bank)
+    # new_account = Account(new_holder.id, balance, interest_rate, currency)
+    new_account = Account(99, 100, "1.8", "EUR")
     
-    # exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
-    # currency_obj = Currency(exchange_rates)
     
-    # # Main window
-    # run_main_window(new_holder, new_account, bank, currency_obj)
+    exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
+    currency_obj = Currency(exchange_rates)
+    
+    # Main window
+    run_main_window(new_holder, new_account, bank, currency_obj)
 
 
 
