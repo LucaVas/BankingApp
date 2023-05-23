@@ -6,8 +6,8 @@ from gui.holder_registration import HolderRegistrationWindow
 from gui.password_registration import PasswordRegistrationWindow
 from gui.account_registration import AccountRegistrationWindow
 from gui.main_window import MainWindow
-from gui.top_up_window import TopUpWindow
 from datetime import datetime
+from api_fetcher import ApiFetcher
 
 
 def main() -> None:
@@ -26,12 +26,14 @@ def main() -> None:
     # balance, interest_rate, currency = account_registration()
     # new_account = Account(new_holder.id, balance, interest_rate, currency)
 
-    # TODO: MainWindow
+    # Main window
     test_holder = Holder("Luca", "Vassos", datetime.strptime("19940514", "%Y%m%d").date())
     test_account = Account(99, 150, 1.8, "EUR")
     run_main_window(test_holder, test_account, bank)
 
     # run_main_window(new_holder, new_account, bank)
+
+
 
 
 def holder_registration():
@@ -52,6 +54,8 @@ def account_registration():
 def run_main_window(holder: Holder, account: Account, bank: Bank) -> None:
     app = MainWindow(holder, account, bank)
     app.mainloop()
+
+
     
 
 if __name__ == "__main__":
