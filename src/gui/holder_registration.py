@@ -1,6 +1,10 @@
 import tkinter as tk
+import customtkinter as ctk
 from tkinter import messagebox
 from datetime import datetime, date
+
+ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
 class HolderRegistrationWindow(tk.Tk):
@@ -8,14 +12,18 @@ class HolderRegistrationWindow(tk.Tk):
         super().__init__()
 
         # geometry & positioning
-        # self.width = 1000
-        # self.height = 600
-        # self.screen_width = self.winfo_screenwidth()
-        # self.screen_height = self.winfo_screenheight()
-        # self.x = (self.screen_width / 2) - (self.width / 2)
-        # self.y = (self.screen_height / 2) - (self.height / 2)
-        # self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
+        self.width = 800
+        self.height = 300
+        self.screen_width = self.winfo_screenwidth()
+        self.screen_height = self.winfo_screenheight()
+        self.x = (self.screen_width / 2) - (self.width / 2)
+        self.y = (self.screen_height / 2) - (self.height / 2)
+        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
         self.attributes("-topmost", True)
+
+        # grid layout
+        self.grid_columnconfigure((0, 1, 3), weight=1)
+        self.grid_rowconfigure((0, 1, 2), weight=1)
 
 
         # holder information
@@ -37,35 +45,46 @@ class HolderRegistrationWindow(tk.Tk):
         self.btn_pady = 5
 
         # widgets
-        self.holder_registration_label = tk.Label(self, text=self.holder_registration_label_text)
-        self.holder_registration_label.grid(row=0, column=0)
+        # ============ Top frame with main label ============ #
+        self.holder_registration_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.holder_registration_frame.grid(row=0, column=0, columnspan=4, padx=(10, 10), pady=(10, 0), sticky="nsew")
+        self.holder_registration_frame.grid_rowconfigure(0, weight=1)
+        self.holder_registration_label = ctk.CTkLabel(self.holder_registration_frame, text=self.holder_registration_label_text, font=ctk.CTkFont(size=20, weight="normal"))
+        self.holder_registration_label.grid(row=0, column=0, padx=10, pady=(10,10))
 
-        self.holder_name_label = tk.Label(self, text=self.holder_name_label_text)
-        self.holder_name_label.grid(row=1, column=0)
-        self.holder_name_entry = tk.Entry(self, width=30, borderwidth=5)
-        self.holder_name_entry.grid(row=1, column=1)
+        # ============ Main frame with entries ============ #
+        self.entries_frame = ctk.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.entries_frame.grid(row=1, column=0, columnspan=4, padx=(10, 10), pady=(0, 10), sticky="nsew")
+        self.entries_frame.grid_rowconfigure((0,1,2), weight=1)
+        self.entries_frame.grid_columnconfigure((0,1,2,3,4,5), weight=1)
 
 
-        self.holder_surname_label = tk.Label(self, text=self.holder_surname_label_text)
-        self.holder_surname_label.grid(row=2, column=0)
-        self.holder_surname_entry = tk.Entry(self, width=30, borderwidth=5)
-        self.holder_surname_entry.grid(row=2, column=1)
+        self.holder_name_label = ctk.CTkLabel(self.entries_frame, text=self.holder_name_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.holder_name_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
+        self.holder_name_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_name_entry.grid(row=0, column=1, padx=10, pady=(10,10))
+
+        self.holder_surname_label = ctk.CTkLabel(self.entries_frame, text=self.holder_surname_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.holder_surname_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
+        self.holder_surname_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_surname_entry.grid(row=1, column=1, padx=10, pady=(10,10))
 
 
-        self.holder_birth_date_label = tk.Label(self, text=self.holder_birth_date_label_text)
-        self.holder_birth_date_label.grid(row=3, column=0)
-        self.holder_birth_date_year_entry = tk.Entry(self, width=10, borderwidth=5)
-        self.holder_birth_date_year_entry.grid(row=3, column=1)
-        self.holder_birth_date_separator_label = tk.Label(self, text=self.holder_birth_date_separator_label_text)
-        self.holder_birth_date_separator_label.grid(row=3, column=2)
-        self.holder_birth_date_month_entry = tk.Entry(self, width=10, borderwidth=5)
-        self.holder_birth_date_month_entry.grid(row=3, column=3)
-        self.holder_birth_date_separator_label = tk.Label(self, text=self.holder_birth_date_separator_label_text)
-        self.holder_birth_date_separator_label.grid(row=3, column=4)
-        self.holder_birth_date_day_entry = tk.Entry(self, width=10, borderwidth=5)
-        self.holder_birth_date_day_entry.grid(row=3, column=5)
+        self.holder_birth_date_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.holder_birth_date_label.grid(row=2, column=0, padx=10, pady=(10,10), sticky="w")
+        self.holder_birth_date_year_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_year_entry.grid(row=2, column=1, padx=10, pady=(10,10))
+        self.holder_birth_date_separator_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_separator_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.holder_birth_date_separator_label.grid(row=2, column=2, padx=10, pady=(10,10))
+        self.holder_birth_date_month_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_month_entry.grid(row=2, column=3, padx=10, pady=(10,10))
+        self.holder_birth_date_separator_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_separator_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.holder_birth_date_separator_label.grid(row=2, column=4, padx=10, pady=(10,10))
+        self.holder_birth_date_day_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_day_entry.grid(row=2, column=5, padx=10, pady=(10,10))
 
-        self.register_button = tk.Button(self, text=self.register_button_text, padx=self.btn_padx, pady=self.btn_pady, state="active", command=self.validate_registration).grid(row=4,column=6)
+        # ============ Bottom row with button ============ #
+        self.register_button = ctk.CTkButton(self, text=self.register_button_text, state="active", width=40, height=40, text_color="black", font=("tahoma", 16), command=self.validate_registration).grid(row=5, column=3, padx=10, pady=(10,10), sticky="ew")
 
 
     def validate_registration(self) -> None:

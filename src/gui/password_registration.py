@@ -1,21 +1,28 @@
 import tkinter as tk
+import customtkinter as ctk
 from tkinter import messagebox
 import bcrypt
+
+ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
 class PasswordRegistrationWindow(tk.Tk):
     def __init__(self, bank):
         super().__init__()
 
-        # geometry & positioning
-        # self.width = 1000
-        # self.height = 600
-        # self.screen_width = self.winfo_screenwidth()
-        # self.screen_height = self.winfo_screenheight()
-        # self.x = (self.screen_width / 2) - (self.width / 2)
-        # self.y = (self.screen_height / 2) - (self.height / 2)
-        # self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
+        self.width = 800
+        self.height = 300
+        self.screen_width = self.winfo_screenwidth()
+        self.screen_height = self.winfo_screenheight()
+        self.x = (self.screen_width / 2) - (self.width / 2)
+        self.y = (self.screen_height / 2) - (self.height / 2)
+        self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
         self.attributes("-topmost", True)
+
+        # grid layout
+        self.grid_columnconfigure((0, 1, 3), weight=1)
+        self.grid_rowconfigure((0, 1, 2), weight=1)
 
 
         # holder information
@@ -33,25 +40,36 @@ class PasswordRegistrationWindow(tk.Tk):
         self.btn_pady = 5
 
         # widgets
-        self.password_registration_label = tk.Label(self, text=self.password_registration_label_text)
-        self.password_registration_label.grid(row=0, column=0)
+        # ============ Top frame with main label ============ #
+        self.password_registration_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.password_registration_frame.grid(row=0, column=0, columnspan=4, padx=(10, 10), pady=(10, 0), sticky="nsew")
+        self.password_registration_frame.grid_rowconfigure(0, weight=1)
+        self.password_registration_label = ctk.CTkLabel(self.password_registration_frame, text=self.password_registration_label_text, font=ctk.CTkFont(size=20, weight="normal"))
+        self.password_registration_label.grid(row=0, column=0, padx=10, pady=(10,10))
 
-        self.password_label = tk.Label(self, text=self.password_label_text)
-        self.password_label.grid(row=1, column=0)
-        self.password_entry = tk.Entry(self, width=30, borderwidth=5)
-        self.password_entry.grid(row=1, column=1)
+        # ============ Main frame with entries ============ #
+        self.entries_frame = ctk.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.entries_frame.grid(row=1, column=0, columnspan=3, padx=(10, 10), pady=(0, 10), sticky="nsew")
+        self.entries_frame.grid_rowconfigure((0,1), weight=1)
+        self.entries_frame.grid_columnconfigure((0,1,2), weight=1)
+
+        self.password_label = ctk.CTkLabel(self.entries_frame, text=self.password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.password_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
+        self.password_entry = ctk.CTkEntry(self.entries_frame)
+        self.password_entry.grid(row=0, column=1, padx=10, pady=(10,10))
 
 
-        self.repeat_password_label = tk.Label(self, text=self.repeat_password_label_text)
-        self.repeat_password_label.grid(row=2, column=0)
-        self.repeat_password_entry = tk.Entry(self, width=30, borderwidth=5)
-        self.repeat_password_entry.grid(row=2, column=1)
+        self.repeat_password_label = ctk.CTkLabel(self.entries_frame, text=self.repeat_password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
+        self.repeat_password_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
+        self.repeat_password_entry = ctk.CTkEntry(self.entries_frame)
+        self.repeat_password_entry.grid(row=1, column=1, padx=10, pady=(10,10))
 
 
-        self.message_label = tk.Label(self, text="")
-        self.message_label.grid(row=3, column=0)
+        self.message_label = ctk.CTkLabel(self, text="")
+        self.message_label.grid(row=2, column=0, columnspan=3)
 
-        self.register_password_button = tk.Button(self, text=self.register_password_button_text, padx=self.btn_padx, pady=self.btn_pady, state="active", command=self.validate_password_registration).grid(row=4,column=2)
+        # ============ Bottom row with button ============ #
+        self.register_password_button = ctk.CTkButton(self, text=self.register_password_button_text, state="active", width=40, height=40, text_color="black", font=("tahoma", 16), command=self.validate_password_registration).grid(row=3, column=3, padx=10, pady=(10,10), sticky="ew")
 
 
     def validate_password_registration(self) -> None:

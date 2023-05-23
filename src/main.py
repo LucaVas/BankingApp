@@ -30,19 +30,19 @@ def main() -> None:
     name, surname, birth_date = holder_registration(bank)
     new_holder = Holder(name, surname, birth_date)
 
-    # # Password registration
+    # # # Password registration
     password = password_registration(bank)
     new_holder.password = password
 
-    # # Account registration
+    # # # Account registration
     balance, interest_rate, currency = account_registration(bank)
     new_account = Account(new_holder.id, balance, interest_rate, currency)
     
-    exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
-    currency_obj = Currency(exchange_rates)
+    # exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
+    # currency_obj = Currency(exchange_rates)
     
-    # Main window
-    run_main_window(new_holder, new_account, bank, currency_obj)
+    # # Main window
+    # run_main_window(new_holder, new_account, bank, currency_obj)
 
 
 
