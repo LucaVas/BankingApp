@@ -19,7 +19,7 @@ class HolderRegistrationWindow(ctk.CTk):
         self.attributes("-topmost", True)
 
         # grid layout
-        self.grid_columnconfigure((0, 1, 3), weight=1)
+        self.grid_columnconfigure((0, 1, 2), weight=1)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
 

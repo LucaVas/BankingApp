@@ -3,6 +3,7 @@ from holder import Holder
 from account import Account
 from currency import Currency
 from api_fetcher import ApiFetcher
+from gui.welcome_window import WelcomeWindow
 from gui.holder_registration import HolderRegistrationWindow
 from gui.password_registration import PasswordRegistrationWindow
 from gui.account_registration import AccountRegistrationWindow
@@ -23,46 +24,64 @@ API_KEY = config('EXCHANGE_KEY')
 
 
 def main() -> None:
-
+    
     market_data = get_market_data(market_price_url, MARKET_KEY)
     company_info = get_market_data(market_company_info_url, MARKET_KEY)
     bank = Bank(market_data, company_info)
-    
+
     # load the database
     temp_db = load_database(db_name)
 
     # instantiate the writer
     writer = Writer(db_name)
 
+    # === Welcome user === #
+    welcome_window = WelcomeWindow(bank)
+    welcome_window.start()
+
+
+    if welcome_window.choice == 1:
+        holder, account = start_registration_process(bank, writer, temp_db)
+    elif welcome_window.choice == 2:
+        start_login_process(bank)
+    else:
+        raise Exception("Process not found")
+
+        
+    # Get exchange rates
+    exchange_rates = get_exchange_rates(exchange_url, API_KEY, account.currency)
+    currency_obj = Currency(exchange_rates)
+    
+    # # Main window
+    run_main_window(holder, account, bank, currency_obj)
+
+
+    # writer.write_to_file(temp_db)
+
+
+def start_registration_process(bank, writer, temp_db):
     # === Holder registration === #
+    # new_holder = Holder("Paolo", "Marconi", datetime.strptime("19900511", "%Y%m%d").date())
     name, surname, birth_date = holder_registration(bank)
     new_holder = Holder(name, surname, birth_date)
-    # new_holder = Holder("Paolo", "Marconi", datetime.strptime("19900511", "%Y%m%d").date())
 
     # === Password registration === #
     password = password_registration(bank)
     new_holder.password = password
 
-    # === Account registration === #
+    # # === Account registration === #
+    # new_account = Account(99, 100, "1.8", "EUR")
     balance, interest_rate, currency = account_registration(bank)
     new_account = Account(new_holder.id, balance, interest_rate, currency)
-    # new_account = Account(99, 100, "1.8", "EUR")
-        
-    # # Get exchange rates
-    # exchange_rates = get_exchange_rates(exchange_url, API_KEY, new_account.currency)
-    # currency_obj = Currency(exchange_rates)
 
     # === Store new user to temporary database dict === #
     writer.temp_write(new_holder, new_account, temp_db)
-    
-    # # Main window
-    # run_main_window(new_holder, new_account, bank, currency_obj)
+
+    return new_holder, new_account
 
 
-    writer.write_to_file(temp_db)
-
-
-
+def start_login_process(bank):
+    print("login")
 
 def load_database(db_name):
     reader = Reader(db_name)
