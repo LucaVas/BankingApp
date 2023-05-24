@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime, date
 
 class Holder():
@@ -6,7 +7,7 @@ class Holder():
         self.first_name = first
         self.last_name = last
         self.birth_date = birth_date
-        self._password = b""
+        self._password: bytes
         self.is_blocked = False
         self.onboarding_date = datetime.now()
         self.accounts: list[str] = ["LT123456"]
@@ -33,3 +34,23 @@ class Holder():
             self.is_blocked = False
         else:
             raise ValueError
+    
+    @classmethod
+    def load(cls, id: int, db: dict) -> Holder | None:
+        for holder in db["holders"]:
+            if holder["id"] == id:
+                current_holder = Holder(holder["first"], holder["last"], date.fromisoformat(holder["birth_date"]))
+                current_holder.id = holder["id"]
+                current_holder.password = bytes(holder["password"], 'utf-8')
+                current_holder.is_blocked = holder["is_blocked"]
+                current_holder.onboarding_date = datetime.fromisoformat(holder["onboarding_date"])
+                current_holder.accounts = [account["number"] for account in holder["accounts"]]
+                current_holder.connected_accounts = [account for account in holder["connected_accounts"]]
+
+                return current_holder
+            else:
+                continue
+        return None
+
+            
+            

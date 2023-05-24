@@ -1,4 +1,4 @@
-from currency import Currency
+from __future__ import annotations
     
         
 class Account:
@@ -54,3 +54,17 @@ class Account:
     def change_interest_rate(self, rate: float) -> None:
         self.interest_rate = rate
         print(f"Interest rate updated. New interest rate: {self.interest_rate:.2f} %.")
+
+    @classmethod
+    def load(cls, id: int, db: dict) -> Account | None:
+        for holder in db["holders"]:
+            if holder["id"] == id:
+                current_account = Account(id, holder["accounts"][0]["balance"], str(holder["accounts"][0]["interest_rate"]), holder["accounts"][0]["base_currency"])
+                current_account.id = holder["accounts"][0]["id"]
+                current_account.account_number = holder["accounts"][0]["number"]
+                current_account.is_active = holder["accounts"][0]["is_active"]
+
+                return current_account
+            else:
+                continue
+        return None

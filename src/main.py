@@ -4,6 +4,7 @@ from account import Account
 from currency import Currency
 from api_fetcher import ApiFetcher
 from gui.welcome_window import WelcomeWindow
+from gui.login_window import LoginWindow
 from gui.holder_registration import HolderRegistrationWindow
 from gui.password_registration import PasswordRegistrationWindow
 from gui.account_registration import AccountRegistrationWindow
@@ -43,7 +44,7 @@ def main() -> None:
     if welcome_window.choice == 1:
         holder, account = start_registration_process(bank, writer, temp_db)
     elif welcome_window.choice == 2:
-        start_login_process(bank)
+        holder, account = start_login_process(bank, writer, temp_db)
     else:
         raise Exception("Process not found")
 
@@ -56,7 +57,7 @@ def main() -> None:
     run_main_window(holder, account, bank, currency_obj)
 
 
-    # writer.write_to_file(temp_db)
+    writer.write_to_file(temp_db)
 
 
 def start_registration_process(bank, writer, temp_db):
@@ -80,8 +81,15 @@ def start_registration_process(bank, writer, temp_db):
     return new_holder, new_account
 
 
-def start_login_process(bank):
-    print("login")
+def start_login_process(bank, writer, temp_db):
+    login_window = LoginWindow(bank, temp_db)
+    login_window.start()
+
+    holder = Holder.load(login_window.id, temp_db)
+    account = Account.load(holder.id, temp_db)
+
+    return holder, account
+
 
 def load_database(db_name):
     reader = Reader(db_name)
@@ -92,7 +100,7 @@ def holder_registration(bank: Bank):
     registration.start()
     return registration.holder_name, registration.holder_surname, registration.holder_birth_date
 
-def password_registration(bank: Bank):
+def password_registration(bank: Bank) -> bytes:
     pass_registration = PasswordRegistrationWindow(bank)
     pass_registration.start()
     return pass_registration.password

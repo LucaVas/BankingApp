@@ -5,16 +5,16 @@
             "first": "Luca",
             "last": "Vassos",
             "birth_date": "1994-05-14",
-            "password": "b'$2b$12$.ghX83ZzcnQqLgclbmUcauLhu3tadOOacqXym/EK3.M.y9usPydse'",
+            "password": "$2b$12$.l7ue84a5tpvHLt0jpY3D.2vRcxMyTaKERy4HLlfCE1aGdgoNTdZu",
             "is_blocked": false,
-            "onboarding_date": "2023-05-24 20:35:47.513070",
+            "onboarding_date": "2023-05-24 22:34:31.890130",
             "accounts": [
                 {
                     "id": 451,
                     "number": "LT1234567890",
-                    "base_currency": "GBP",
-                    "balance": 1500.0,
-                    "interest_rate": 2.0,
+                    "base_currency": "AUD",
+                    "balance": 123.0,
+                    "interest_rate": 1.8,
                     "is_active": true
                 }
             ],
