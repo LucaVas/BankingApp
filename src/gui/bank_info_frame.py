@@ -16,7 +16,7 @@ class BankInfoFrame(ctk.CTkFrame):
         self.shares_price_label_text = "> PPS: "
         self.shares_price_data_label_text = self.bank.share_price
         self.shares_delta_label_text = "> Shares price delta: "
-        self.shares_delta_data_label_text = f"{self.bank.shares_delta}%"
+        self.shares_delta_data_label_text = f"{self.bank.shares_delta:.2f}%"
 
 
         # widgets

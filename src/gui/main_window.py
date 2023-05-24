@@ -8,6 +8,9 @@ from .exchange_frame import ExchangeFrame
 from .balance_exchange_frame import BalanceExchangeFrame
 from .transfer_window import TransferWindow
 
+ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
+
 class MainWindow(tk.Tk):
     def __init__(self, holder, account, bank, currency_obj):
         super().__init__()
