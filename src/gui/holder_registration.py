@@ -3,6 +3,7 @@ import customtkinter as ctk
 from tkinter import messagebox
 from datetime import datetime, date
 
+
 class HolderRegistrationWindow(ctk.CTk):
     def __init__(self, bank):
         super().__init__()

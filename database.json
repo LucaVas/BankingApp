@@ -1,9 +1,26 @@
-[
-    {
-        "user_id": 0,
-        "user_first": "",
-        "user_last": "",
-        "user_birth_date": "",
-        "user_password": ""
-    }
-]
+{
+    "holders": [
+        {
+            "id": 99,
+            "first": "Luca",
+            "last": "Vassos",
+            "birth_date": "1994-05-14",
+            "password": "b'$2b$12$.ghX83ZzcnQqLgclbmUcauLhu3tadOOacqXym/EK3.M.y9usPydse'",
+            "is_blocked": false,
+            "onboarding_date": "2023-05-24 20:35:47.513070",
+            "accounts": [
+                {
+                    "id": 451,
+                    "number": "LT1234567890",
+                    "base_currency": "GBP",
+                    "balance": 1500.0,
+                    "interest_rate": 2.0,
+                    "is_active": true
+                }
+            ],
+            "connected_accounts": [
+                "LT123456789123"
+            ]
+        }
+    ]
+}

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 
+
 class AccountRegistrationWindow(ctk.CTk):
     def __init__(self, list_of_currencies: list[str], bank):
         super().__init__()

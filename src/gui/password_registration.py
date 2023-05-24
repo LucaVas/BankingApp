@@ -4,7 +4,8 @@ from tkinter import messagebox
 import bcrypt
 
 
-class PasswordRegistrationWindow(tk.Tk):
+
+class PasswordRegistrationWindow(ctk.CTk):
     def __init__(self, bank):
         super().__init__()
 
