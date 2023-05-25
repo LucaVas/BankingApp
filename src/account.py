@@ -1,11 +1,12 @@
 from __future__ import annotations
 import shortuuid
+import random
     
         
 class Account:
     def __init__(self, owner_id: int, balance: float, interest_rate: str, currency: str = "EUR", id = shortuuid.uuid()) -> None:
         self.id = id
-        self.account_number = "LT1234567890"
+        self.account_number = self.create_account_number()
         self.owner_id = owner_id
         self.is_active = True
         self._balance = balance
@@ -55,6 +56,10 @@ class Account:
     def change_interest_rate(self, rate: float) -> None:
         self.interest_rate = rate
         print(f"Interest rate updated. New interest rate: {self.interest_rate:.2f} %.")
+
+    def create_account_number(self) -> str:
+        rand_digits = random.randint(10**15, (10**16)-1)
+        return f"LT99{rand_digits}"
 
     @classmethod
     def load(cls, id: int, db: dict) -> Account | None:
