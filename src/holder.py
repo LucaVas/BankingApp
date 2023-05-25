@@ -10,6 +10,7 @@ class Holder():
         self._password: bytes
         self.is_blocked = False
         self.onboarding_date = datetime.now()
+        self.last_access = datetime.now()
         self.accounts: list[str] = ["LT123456"]
         self.connected_accounts = ["LT123456789123"]
 
@@ -36,14 +37,15 @@ class Holder():
             raise ValueError
     
     @classmethod
-    def load(cls, id: int, db: dict) -> Holder | None:
+    def load(cls, login_window, db: dict) -> Holder | None:
         for holder in db["holders"]:
-            if holder["id"] == id:
+            if holder["id"] == login_window.id:
                 current_holder = Holder(holder["first"], holder["last"], date.fromisoformat(holder["birth_date"]))
                 current_holder.id = holder["id"]
                 current_holder.password = bytes(holder["password"], 'utf-8')
                 current_holder.is_blocked = holder["is_blocked"]
                 current_holder.onboarding_date = datetime.fromisoformat(holder["onboarding_date"])
+                current_holder.last_access = login_window.last_access
                 current_holder.accounts = [account["number"] for account in holder["accounts"]]
                 current_holder.connected_accounts = [account for account in holder["connected_accounts"]]
 

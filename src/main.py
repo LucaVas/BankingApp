@@ -85,8 +85,11 @@ def start_login_process(bank, writer, temp_db):
     login_window = LoginWindow(bank, temp_db)
     login_window.start()
 
-    holder = Holder.load(login_window.id, temp_db)
+    holder = Holder.load(login_window, temp_db)
     account = Account.load(holder.id, temp_db)
+
+    # === Store new user to temporary database dict === #
+    writer.temp_write(holder, account, temp_db)
 
     return holder, account
 

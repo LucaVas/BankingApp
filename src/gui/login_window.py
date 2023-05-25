@@ -2,11 +2,12 @@ import tkinter as tk
 import customtkinter as ctk
 from tkinter import messagebox
 import bcrypt
+from datetime import date, datetime
 
 
 
 class LoginWindow(ctk.CTk):
-    def __init__(self, bank, temp_db):
+    def __init__(self, bank, temp_db) -> None:
         super().__init__()
 
         self.db = temp_db
@@ -31,7 +32,7 @@ class LoginWindow(ctk.CTk):
         self.last = ""
         self.id: int
         self.password: bytes
-        self.access_date = ""
+        self.last_access: date
 
         # widgets variables
         self.login_label_text = "Log-in"
@@ -83,7 +84,9 @@ class LoginWindow(ctk.CTk):
             hashed = bytes(holder["password"], 'utf-8')
             if self.first == holder["first"] and self.last == holder["last"] and bcrypt.checkpw(self.password, hashed):
                 self.id = holder["id"]
+                self.last_access = datetime.now()
                 self.close()
+                return
             else:
                 continue  
 
