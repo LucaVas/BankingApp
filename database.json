@@ -1,26 +1,26 @@
 {
     "holders": [
         {
-            "id": "XbNza7mj8TVVNpNb2ER7vV",
+            "id": "4BWwz8owJjQYAC889azUH2",
             "first": "Luca",
             "last": "Vassos",
             "birth_date": "1994-05-14",
-            "password": "$2b$12$U.cquUSEBo2NnFEWnsopxeNWqNtWae.9qh.3LXx5Z/Tm2xFmDrZD6",
+            "password": "$2b$12$DH3SXbcj6FYZVe185ZQlquRdXSPvQkpvB89Gry0DDVrG6cXOh9lIC",
             "is_blocked": false,
-            "onboarding_date": "2023-05-25 21:54:14.443582",
-            "last_access": "2023-05-25 21:54:14.443582",
+            "onboarding_date": "2023-05-25 22:10:37.135551",
+            "last_access": "2023-05-25 22:10:37.135551",
             "accounts": [
                 {
-                    "id": "ihf3ShnSHXLFvJk8nnd5yn",
-                    "number": "LT992098061070430561",
-                    "base_currency": "EUR",
-                    "balance": 15050.0,
-                    "interest_rate": 2.0,
+                    "id": "9TNGH8XsvaWKU4hoq2Y2HA",
+                    "number": "LT994762689881456126",
+                    "base_currency": "AUD",
+                    "balance": 124.0,
+                    "interest_rate": 1.8,
                     "is_active": true
                 }
             ],
             "connected_accounts": [
-                "LT123456789123"
+                "LT601234512345678901"
             ]
         }
     ]

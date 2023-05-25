@@ -56,25 +56,25 @@ class HolderRegistrationWindow(ctk.CTk):
         self.holder_name_label = ctk.CTkLabel(self.entries_frame, text=self.holder_name_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.holder_name_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
         self.holder_name_entry = ctk.CTkEntry(self.entries_frame)
-        self.holder_name_entry.grid(row=0, column=1, padx=10, pady=(10,10))
+        self.holder_name_entry.grid(row=0, column=1, padx=10, columnspan=3, pady=(10,10), sticky="ew")
 
         self.holder_surname_label = ctk.CTkLabel(self.entries_frame, text=self.holder_surname_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.holder_surname_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
         self.holder_surname_entry = ctk.CTkEntry(self.entries_frame)
-        self.holder_surname_entry.grid(row=1, column=1, padx=10, pady=(10,10))
+        self.holder_surname_entry.grid(row=1, column=1, padx=10, columnspan=3, pady=(10,10), sticky="ew")
 
 
         self.holder_birth_date_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.holder_birth_date_label.grid(row=2, column=0, padx=10, pady=(10,10), sticky="w")
-        self.holder_birth_date_year_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_year_entry = ctk.CTkEntry(self.entries_frame, justify='center')
         self.holder_birth_date_year_entry.grid(row=2, column=1, padx=10, pady=(10,10))
         self.holder_birth_date_separator_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_separator_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.holder_birth_date_separator_label.grid(row=2, column=2, padx=10, pady=(10,10))
-        self.holder_birth_date_month_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_month_entry = ctk.CTkEntry(self.entries_frame, justify='center')
         self.holder_birth_date_month_entry.grid(row=2, column=3, padx=10, pady=(10,10))
         self.holder_birth_date_separator_label = ctk.CTkLabel(self.entries_frame, text=self.holder_birth_date_separator_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.holder_birth_date_separator_label.grid(row=2, column=4, padx=10, pady=(10,10))
-        self.holder_birth_date_day_entry = ctk.CTkEntry(self.entries_frame)
+        self.holder_birth_date_day_entry = ctk.CTkEntry(self.entries_frame, justify='center')
         self.holder_birth_date_day_entry.grid(row=2, column=5, padx=10, pady=(10,10))
 
         # ============ Bottom row with button ============ #

@@ -72,8 +72,9 @@ def start_registration_process(bank, writer, temp_db):
 
     # # === Account registration === #
     # new_account = Account(99, 100, "1.8", "EUR")
-    balance, interest_rate, currency = account_registration(bank)
+    balance, interest_rate, currency, connected_account = account_registration(bank)
     new_account = Account(new_holder.id, balance, interest_rate, currency)
+    new_holder.connected_accounts.append(connected_account)
 
     # === Store new user to temporary database dict === #
     writer.temp_write(new_holder, new_account, temp_db)
@@ -108,10 +109,10 @@ def password_registration(bank: Bank) -> bytes:
     pass_registration.start()
     return pass_registration.password
 
-def account_registration(bank: Bank) -> tuple[float, str, str]:
+def account_registration(bank: Bank) -> tuple[float, str, str, str]:
     acc_registration = AccountRegistrationWindow(Currency.list_of_currencies, bank)
     acc_registration.start()
-    return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency
+    return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency, acc_registration.connected_account
 
 def run_main_window(holder: Holder, account: Account, bank: Bank, currency_obj: Currency, temp_db: dict, writer: Writer) -> None:
     app = MainWindow(holder, account, bank, currency_obj)

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from typing import Optional
 import customtkinter as ctk
+import re
 
 
 class TransferWindow(ctk.CTk):
@@ -78,12 +78,14 @@ class TransferWindow(ctk.CTk):
 
 
     def validate_recipient(self) -> str:
-        recipient_account = self.recipient_account_entry.get()
-        if len(recipient_account) != 20:
+        recipient_account = self.recipient_account_entry.get().strip()
+        pattern = r'^LT\d{18}$'
+
+        if re.match(pattern, recipient_account):
+            return recipient_account
+        else:
             self.show_error("Invalid recipient")
             raise Exception()
-        else:
-            return recipient_account
 
     def validate_reason(self) -> str:
         reason = self.reason_entry.get()

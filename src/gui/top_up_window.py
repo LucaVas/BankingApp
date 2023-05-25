@@ -27,11 +27,7 @@ class TopUpWindow(ctk.CTk):
         self.main_label_text = "Top Up"
         self.amount_label_text = "> Insert the amount"
         self.account_from_label_text = "> Account from"
-        self.account_from_optionmenu_options = [
-            "LT1",
-            "LT2",
-            "LT3"
-        ]
+        self.account_from_optionmenu_options = self.parent_window.holder.connected_accounts
         self.account_from_optionmenu_var = tk.StringVar(value=self.account_from_optionmenu_options[0])
         self.top_up_button_text = "Top up"
 

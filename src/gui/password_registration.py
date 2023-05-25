@@ -54,13 +54,13 @@ class PasswordRegistrationWindow(ctk.CTk):
         self.password_label = ctk.CTkLabel(self.entries_frame, text=self.password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.password_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
         self.password_entry = ctk.CTkEntry(self.entries_frame)
-        self.password_entry.grid(row=0, column=1, padx=10, pady=(10,10))
+        self.password_entry.grid(row=0, column=1, padx=10, pady=(10,10), sticky="ew")
 
 
         self.repeat_password_label = ctk.CTkLabel(self.entries_frame, text=self.repeat_password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.repeat_password_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
         self.repeat_password_entry = ctk.CTkEntry(self.entries_frame)
-        self.repeat_password_entry.grid(row=1, column=1, padx=10, pady=(10,10))
+        self.repeat_password_entry.grid(row=1, column=1, padx=10, pady=(10,10), sticky="ew")
 
 
         self.message_label = ctk.CTkLabel(self, text="")
