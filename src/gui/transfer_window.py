@@ -114,6 +114,8 @@ class TransferWindow(ctk.CTk):
     def transfer(self, amount: float, current_amount: float, recipient_account: str, reason: str) -> None:
 
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount - amount)
+        self.account.balance = current_amount - amount
+
         self.clear_exchanged_balance()
 
         self.close()

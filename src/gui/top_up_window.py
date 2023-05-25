@@ -88,6 +88,9 @@ class TopUpWindow(ctk.CTk):
     def top_up(self, amount: float) -> None:
         current_amount = self.parent_window.balance_frame.balance_amount_label.cget("text")
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount + amount)
+        
+        self.parent_window.account.balance = current_amount + amount
+
 
         self.clear_exchanged_balance()
 

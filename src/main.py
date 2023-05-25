@@ -54,7 +54,7 @@ def main() -> None:
     currency_obj = Currency(exchange_rates)
     
     # # Main window
-    run_main_window(holder, account, bank, currency_obj)
+    run_main_window(holder, account, bank, currency_obj, temp_db, writer)
 
 
     writer.write_to_file(temp_db)
@@ -113,9 +113,12 @@ def account_registration(bank: Bank) -> tuple[float, str, str]:
     acc_registration.start()
     return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency
 
-def run_main_window(holder: Holder, account: Account, bank: Bank, currency_obj: Currency) -> None:
+def run_main_window(holder: Holder, account: Account, bank: Bank, currency_obj: Currency, temp_db: dict, writer: Writer) -> None:
     app = MainWindow(holder, account, bank, currency_obj)
     app.mainloop()
+
+    # === Store new user to temporary database dict === #
+    writer.temp_write(holder, account, temp_db)
 
 def get_exchange_rates(url: str, key: str, base_currency: str) -> dict:
     data = fetch_api(url, key, base_currency)
