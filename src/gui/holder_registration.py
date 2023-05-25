@@ -82,11 +82,11 @@ class HolderRegistrationWindow(ctk.CTk):
 
 
     def validate_registration(self) -> None:
-        name = self.holder_name_entry.get()
-        surname = self.holder_surname_entry.get()
-        birth_date_year = self.holder_birth_date_year_entry.get()
-        birth_date_month = self.holder_birth_date_month_entry.get()
-        birth_date_day = self.holder_birth_date_day_entry.get()
+        name = self.holder_name_entry.get().strip()
+        surname = self.holder_surname_entry.get().strip()
+        birth_date_year = self.holder_birth_date_year_entry.get().strip()
+        birth_date_month = self.holder_birth_date_month_entry.get().strip()
+        birth_date_day = self.holder_birth_date_day_entry.get().strip()
 
         if not name or not surname:
             self.show_error()
@@ -140,8 +140,8 @@ class HolderRegistrationWindow(ctk.CTk):
         
         
     def register_holder(self, name:str, surname:str, birth_date:date) -> None:
-        self.holder_name = name
-        self.holder_surname = surname
+        self.holder_name = name.capitalize()
+        self.holder_surname = surname.capitalize()
         self.holder_birth_date = birth_date
 
         self.close()

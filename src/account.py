@@ -1,9 +1,10 @@
 from __future__ import annotations
+import shortuuid
     
         
 class Account:
-    def __init__(self, owner_id: int, balance: float, interest_rate: str, currency: str = "EUR") -> None:
-        self.id = 451
+    def __init__(self, owner_id: int, balance: float, interest_rate: str, currency: str = "EUR", id = shortuuid.uuid()) -> None:
+        self.id = id
         self.account_number = "LT1234567890"
         self.owner_id = owner_id
         self.is_active = True

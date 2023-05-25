@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime, date
+import shortuuid
 
 class Holder():
-    def __init__(self, first: str, last: str, birth_date: date):
-        self.id = 99
+    def __init__(self, first: str, last: str, birth_date: date, id = shortuuid.uuid()):
+        self.id = id
         self.first_name = first
         self.last_name = last
         self.birth_date = birth_date
