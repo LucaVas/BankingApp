@@ -8,7 +8,7 @@
             "password": "$2b$12$DH3SXbcj6FYZVe185ZQlquRdXSPvQkpvB89Gry0DDVrG6cXOh9lIC",
             "is_blocked": false,
             "onboarding_date": "2023-05-25 22:10:37.135551",
-            "last_access": "2023-05-25 22:10:37.135551",
+            "last_access": "2023-05-26 18:56:54.300601",
             "accounts": [
                 {
                     "id": "9TNGH8XsvaWKU4hoq2Y2HA",
@@ -22,6 +22,66 @@
             "connected_accounts": [
                 "LT601234512345678901"
             ]
+        },
+        {
+            "id": "RXCrVecdjXxDkQ7fz64T9i",
+            "first": "Judita",
+            "last": "Vassos",
+            "birth_date": "1996-06-16",
+            "password": "$2b$12$1znR0vihnbrdWC5UxHzhEeLgx12X4pUgwO.12FTdlY.ppuH3QHkXq",
+            "is_blocked": false,
+            "onboarding_date": "2023-05-26 16:39:29.069827",
+            "last_access": "2023-05-26 16:39:29.069832",
+            "accounts": [
+                {
+                    "id": "iCVSMD3LxVBonKPhBvSGmX",
+                    "number": "LT997835768186661734",
+                    "base_currency": "EUR",
+                    "balance": 2270.0,
+                    "interest_rate": 2.0,
+                    "is_active": true
+                }
+            ],
+            "connected_accounts": [
+                "LT601234512345678901"
+            ]
+        }
+    ],
+    "history": [
+        {
+            "id": "4BWwz8owJjQYAC889azUH2",
+            "action": "transfer",
+            "amount": 150,
+            "recipient_account": "LT601234512345678901",
+            "datestamp": "2023-05-24 16:39:29.069832"
+        },
+        {
+            "id": "RXCrVecdjXxDkQ7fz64T9i",
+            "action": "transfer",
+            "amount": 180,
+            "recipient_account": "LT601234512345678901",
+            "datestamp": "2023-05-22 16:39:29.069832"
+        },
+        {
+            "id": "RXCrVecdjXxDkQ7fz64T9i",
+            "action": "top-up",
+            "amount": 200,
+            "recipient_account": "LT601234512345678901",
+            "datestamp": "2023-05-25 16:39:29.069832"
+        },
+        {
+            "id": "4BWwz8owJjQYAC889azUH2",
+            "action": "top-up",
+            "amount": 50,
+            "recipient_account": "LT601234512345678901",
+            "datestamp": "2023-05-21 16:39:29.069832"
+        },
+        {
+            "id": "4BWwz8owJjQYAC889azUH2",
+            "action": "transfer",
+            "amount": 378,
+            "recipient_account": "LT601234512345678901",
+            "datestamp": "2023-05-26 16:39:29.069832"
         }
     ]
-}
+} 

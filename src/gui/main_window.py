@@ -7,23 +7,25 @@ from .balance_frame import BalanceFrame
 from .exchange_frame import ExchangeFrame
 from .balance_exchange_frame import BalanceExchangeFrame
 from .transfer_window import TransferWindow
+from .treeview_frame import TreeViewFrame
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
 class MainWindow(tk.Tk):
-    def __init__(self, holder, account, bank, currency_obj):
+    def __init__(self, holder, account, bank, currency_obj, temp_db):
         super().__init__()
 
         self.holder = holder
         self.account = account
         self.bank = bank
         self.currency_obj = currency_obj
+        self.temp_db = temp_db
 
 
         # geometry & positioning
-        self.width = 1200
-        self.height = 500
+        self.width = 1500
+        self.height = 700
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)
@@ -80,6 +82,8 @@ class MainWindow(tk.Tk):
         self.balance_exchange_frame = BalanceExchangeFrame(self, self.exchange_frame)
         self.balance_exchange_frame.grid(row=1, column=1, columnspan=4, padx=(5,5), pady=(5,5), sticky="nsew")
 
+        self.treeview_frame = TreeViewFrame(self, self.holder, self.temp_db)
+        self.treeview_frame.grid(row=2, column=1, rowspan=5, columnspan=4, padx=(5,5), pady=(5,5), sticky="nsew")
 
         # buttons
         self.log_out_button = ctk.CTkButton(self, text=self.log_out_button_text, state="active", command=self.log_out)
