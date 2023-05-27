@@ -90,18 +90,25 @@ class MainWindow(tk.Tk):
         self.log_out_button = ctk.CTkButton(self, text=self.log_out_button_text, state="active", command=self.log_out)
         self.log_out_button.grid(row=6,column=5, padx=(5,5), pady=(5,5))
 
+        self.top_up_window = None
+        self.transfer_window = None
+
 
     def change_appearance_mode_event(self, appearance_mode: str):
         ctk.set_appearance_mode(appearance_mode)
 
     
     def open_top_up_window(self):
-        top_up_window = TopUpWindow(self, self.temp_db, self.holder, self.writer, self.treeview_frame, self.account)
-        top_up_window.start()
+        if self.top_up_window is None or not self.top_up_window.winfo_exists():
+            self.top_up_toplevel_window = TopUpWindow(self, self.temp_db, self.holder, self.writer, self.treeview_frame, self.account)
+        else:
+            self.top_up_toplevel_window.focus()  # if window exists focus it
 
     def open_transfer_window(self):
-        transfer_window = TransferWindow(self, self.account, self.temp_db, self.holder, self.writer, self.treeview_frame)
-        transfer_window.start()        
+        if self.transfer_window is None or not self.transfer_window.winfo_exists():
+            self.transfer_toplevel_window = TransferWindow(self, self.account, self.temp_db, self.holder, self.writer, self.treeview_frame)
+        else:
+            self.transfer_toplevel_window.focus()   
         
     def start(self):
         self.mainloop()

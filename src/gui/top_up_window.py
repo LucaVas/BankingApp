@@ -5,7 +5,7 @@ from datetime import datetime
 import logging
 
 
-class TopUpWindow(ctk.CTk):
+class TopUpWindow(ctk.CTkToplevel):
     def __init__(self, parent, temp_db, holder, writer, treeview_frame, account) -> None:
         super().__init__()
 
@@ -119,10 +119,6 @@ class TopUpWindow(ctk.CTk):
     def show_error(self) -> None:
         # parent=self keeps the popup window in front
         messagebox.showerror("Error", "Incorrect amount", parent=self)
-
-
-    def start(self) -> None:
-        self.mainloop()
 
     def close(self) -> None:
         self.destroy()

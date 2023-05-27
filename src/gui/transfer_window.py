@@ -5,7 +5,7 @@ import re
 from datetime import datetime
 
 
-class TransferWindow(ctk.CTk):
+class TransferWindow(ctk.CTkToplevel):
     def __init__(self, parent, account, temp_db, holder, writer, treeview_frame) -> None:
         super().__init__()
 
@@ -136,7 +136,6 @@ class TransferWindow(ctk.CTk):
         self.treeview_frame.add_record(action, amount, recipient_account, str(datestamp))
 
     def add_action_to_db(self, amount: float, action: str, recipient_account: str, datestamp: datetime, reason: str) -> None:
-        print(type(self.temp_db.get("history")))
         self.writer.temp_write_history(self.holder, action, amount, recipient_account, datestamp, reason, self.temp_db)
 
     def clear_exchanged_balance(self) -> None:
@@ -146,9 +145,6 @@ class TransferWindow(ctk.CTk):
     def show_error(self, text:str) -> None:
         # parent=self keeps the popup window in front
         messagebox.showerror("Error", text, parent=self)
-
-    def start(self) -> None:
-        self.mainloop()
 
     def close(self) -> None:
         self.destroy()
