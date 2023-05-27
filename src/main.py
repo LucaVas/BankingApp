@@ -18,13 +18,13 @@ from config import db_name, market_price_url, market_company_info_url, exchange_
 ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
-MARKET_KEY = config('MARKET_KEY')
-API_KEY = config('EXCHANGE_KEY')
-
+MARKET_KEY = config("MARKET_KEY")
+API_KEY = config("EXCHANGE_KEY")
 
 
 def main() -> None:
-    
+    """Main function to start the banking application."""
+
     market_data = get_market_data(market_price_url, MARKET_KEY)
     company_info = get_market_data(market_company_info_url, MARKET_KEY)
     bank = Bank(market_data, company_info)
@@ -39,7 +39,6 @@ def main() -> None:
     welcome_window = WelcomeWindow(bank)
     welcome_window.start()
 
-
     if welcome_window.choice == 1:
         holder, account = start_registration_process(bank, writer, temp_db)
     elif welcome_window.choice == 2:
@@ -47,19 +46,27 @@ def main() -> None:
     else:
         raise Exception("Process not found")
 
-        
     # Get exchange rates
     exchange_rates = get_exchange_rates(exchange_url, API_KEY, account.currency)
     currency_obj = Currency(exchange_rates)
-    
+
     # # Main window
     run_main_window(holder, account, bank, currency_obj, temp_db, writer)
-
 
     writer.write_to_file(temp_db)
 
 
 def start_registration_process(bank, writer, temp_db):
+    """Starts the registration process for a new holder and account.
+
+    Args:
+        bank: The Bank instance.
+        writer: The Writer instance for writing to the database.
+        temp_db: The temporary database.
+
+    Returns:
+        A tuple containing the new Holder and Account instances.
+    """
     # === Holder registration === #
     # new_holder = Holder("Paolo", "Marconi", datetime.strptime("19900511", "%Y%m%d").date())
     name, surname, birth_date = holder_registration(bank)
@@ -82,6 +89,16 @@ def start_registration_process(bank, writer, temp_db):
 
 
 def start_login_process(bank, writer, temp_db):
+    """Starts the login process for an existing holder.
+
+    Args:
+        bank: The Bank instance.
+        writer: The Writer instance for writing to the database.
+        temp_db: The temporary database.
+
+    Returns:
+        A tuple containing the existing Holder and Account instances.
+    """
     login_window = LoginWindow(bank, temp_db)
     login_window.start()
 
@@ -95,46 +112,137 @@ def start_login_process(bank, writer, temp_db):
 
 
 def load_database(db_name):
+    """Loads the database from the json file.
+
+    Args:
+        db_name: The name of the database file.
+
+    Returns:
+        The database dictionary.
+    """
     reader = Reader(db_name)
     return reader.read_file()
 
+
 def holder_registration(bank: Bank):
+    """Performs the holder registration process.
+
+    Args:
+        bank: The Bank instance.
+
+    Returns:
+        A tuple containing the name, surname, and birth date of the holder.
+    """
     registration = HolderRegistrationWindow(bank)
     registration.start()
-    return registration.holder_name, registration.holder_surname, registration.holder_birth_date
+    return (
+        registration.holder_name,
+        registration.holder_surname,
+        registration.holder_birth_date,
+    )
+
 
 def password_registration(bank: Bank) -> bytes:
+    """Performs the password registration process.
+
+    Args:
+        bank: The Bank instance.
+
+    Returns:
+        The password as bytes.
+    """
     pass_registration = PasswordRegistrationWindow(bank)
     pass_registration.start()
     return pass_registration.password
 
+
 def account_registration(bank: Bank) -> tuple[float, str, str, str]:
+    """Performs the account registration process.
+
+    Args:
+        bank: The Bank instance.
+
+    Returns:
+        A tuple containing the balance, interest rate, currency, and connected account of the new account.
+    """
     acc_registration = AccountRegistrationWindow(Currency.list_of_currencies, bank)
     acc_registration.start()
-    return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency, acc_registration.connected_account
+    return (
+        acc_registration.balance,
+        acc_registration.interest_rate,
+        acc_registration.currency,
+        acc_registration.connected_account,
+    )
 
-def run_main_window(holder: Holder, account: Account, bank: Bank, currency_obj: Currency, temp_db: dict, writer: Writer) -> None:
+
+def run_main_window(
+    holder: Holder,
+    account: Account,
+    bank: Bank,
+    currency_obj: Currency,
+    temp_db: dict,
+    writer: Writer,
+) -> None:
+    """Runs the main window of the banking application.
+
+    Args:
+        holder: The Holder instance.
+        account: The Account instance.
+        bank: The Bank instance.
+        currency_obj: The Currency instance.
+        temp_db: The temporary database.
+        writer: The Writer instance for writing to the database.
+    """
     app = MainWindow(holder, account, bank, currency_obj, temp_db, writer)
     app.mainloop()
 
     # === Store new user to temporary database dict === #
     writer.temp_write(holder, account, temp_db)
 
+
 def get_exchange_rates(url: str, key: str, base_currency: str) -> dict:
+    """Fetches the exchange rates from an API.
+
+    Args:
+        url: The URL of the API.
+        key: The API key.
+        base_currency: The base currency.
+
+    Returns:
+        A dictionary containing the exchange rates.
+    """
     data = fetch_api(url, key, base_currency)
     return data["data"]
 
+
 def get_market_data(url: str, key: str) -> dict:
+    """Fetches market data from an API.
+
+    Args:
+        url: The URL of the API.
+        key: The API key.
+
+    Returns:
+        A dictionary containing the market data.
+    """
     data = fetch_api(url, key)
     return data
 
+
 def fetch_api(url: str, key: str, base_currency: str = ""):
+    """Fetches data from an API.
+
+    Args:
+        url: The URL of the API.
+        key: The API key.
+        base_currency: The base currency.
+
+    Returns:
+        The fetched data.
+    """
     api_fetcher = ApiFetcher(url, key, base_currency)
     return api_fetcher.fetch()
 
-
-
-    
 
 if __name__ == "__main__":
     main()

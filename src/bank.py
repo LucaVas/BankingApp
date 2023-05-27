@@ -1,5 +1,5 @@
 class Bank:
-    def __init__(self, market_data: dict, company_info: dict[str, str]):       
+    def __init__(self, market_data: dict, company_info: dict[str, str]):
         self.name = company_info.get("Name")
         self.year = 1956
         self.shares_amount = company_info.get("SharesOutstanding")
@@ -11,12 +11,14 @@ class Bank:
 
     def __repr__(self) -> str:
         return f"Bank('{self.name}', {self.year}, {self.shares_amount}, {self.share_price}, {self.shares_delta})"
-    
+
     def calculate_shares(self, market_data: dict) -> tuple[float, float]:
         list_of_changes = list(market_data["Time Series (5min)"])
         last = list_of_changes[0]
         previous = list_of_changes[1]
 
         share_last_price = float(market_data["Time Series (5min)"][last]["4. close"])
-        delta = float(market_data["Time Series (5min)"][last]["4. close"]) - float(market_data["Time Series (5min)"][previous]["4. close"])
+        delta = float(market_data["Time Series (5min)"][last]["4. close"]) - float(
+            market_data["Time Series (5min)"][previous]["4. close"]
+        )
         return share_last_price, delta
