@@ -54,7 +54,7 @@ Contributions to the Banking Application are welcome. If you find any issues or 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). You are free to modify and distribute the application as per the terms of the license.
+This project is not licensed. You are free to modify and distribute the application.
 
 ## Acknowledgments
 
