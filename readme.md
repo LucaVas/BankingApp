@@ -58,4 +58,4 @@ This project is not licensed. You are free to modify and distribute the applicat
 
 ## Acknowledgments
 
-The Banking Application was developed using the Tkinter library and customtkinter module.
+The Banking Application was developed using the Tkinter library and customtkinter module. For more information on customtkinter, visit https://customtkinter.tomschimansky.com .
