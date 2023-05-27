@@ -42,7 +42,7 @@ class ExchangeFrame(ctk.CTkFrame):
 
         # widgets
         self.exchange_label = ctk.CTkLabel(self, text=self.exchange_label_text)
-        self.exchange_label.grid(row=0, column=0, columnspan=3, sticky="ew")
+        self.exchange_label.grid(row=0, column=0, columnspan=2, sticky="ew")
 
         # Option: account from
         self.currency_optionmenu = ctk.CTkOptionMenu(

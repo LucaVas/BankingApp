@@ -27,7 +27,7 @@ class BankInfoFrame(ctk.CTkFrame):
         self.parent_window = parent
         self.bank = bank
 
-        self.grid_columnconfigure((1, 2), weight=1)
+        self.grid_columnconfigure((0, 1, 2), weight=1)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
         self.shares_amount_label_text = "> Shares: "
@@ -49,7 +49,7 @@ class BankInfoFrame(ctk.CTkFrame):
             text=self.shares_amount_data_label_text,
             font=ctk.CTkFont("Tahoma", size=15, weight="normal"),
         )
-        self.shares_amount_data_label.grid(row=0, column=1, sticky="nsew")
+        self.shares_amount_data_label.grid(row=0, column=1, columnspan=2, sticky="nsew")
 
         self.shares_price_label = ctk.CTkLabel(
             self,
@@ -62,7 +62,7 @@ class BankInfoFrame(ctk.CTkFrame):
             text=self.shares_price_data_label_text,
             font=ctk.CTkFont("Tahoma", size=15, weight="normal"),
         )
-        self.shares_price_data_label.grid(row=1, column=1, sticky="nsew")
+        self.shares_price_data_label.grid(row=1, column=1, columnspan=2, sticky="nsew")
 
         self.shares_delta_label = ctk.CTkLabel(
             self,
@@ -75,4 +75,4 @@ class BankInfoFrame(ctk.CTkFrame):
             text=self.shares_delta_data_label_text,
             font=ctk.CTkFont("Tahoma", size=15, weight="normal"),
         )
-        self.shares_delta_data_label.grid(row=2, column=1, sticky="nsew")
+        self.shares_delta_data_label.grid(row=2, column=1, columnspan=2, sticky="nsew")

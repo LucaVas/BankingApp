@@ -31,7 +31,7 @@ class HolderInfoFrame(ctk.CTkFrame):
         self.holder = holder
         self.account = account
 
-        self.grid_columnconfigure((1, 2, 3), weight=1)
+        self.grid_columnconfigure((0, 1, 2), weight=1)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
         self.holder_name_label_text = "> Holder: "

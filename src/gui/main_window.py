@@ -47,7 +47,7 @@ class MainWindow(tk.Tk):
 
         # geometry & positioning
         self.width = 1500
-        self.height = 700
+        self.height = 900
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)
@@ -81,6 +81,7 @@ class MainWindow(tk.Tk):
         self.top_up_button = ctk.CTkButton(
             self.sidebar_frame,
             text=self.top_up_button_text,
+            height=50,
             state="active",
             command=self.open_top_up_window,
         )
@@ -88,6 +89,7 @@ class MainWindow(tk.Tk):
         self.transfer_button = ctk.CTkButton(
             self.sidebar_frame,
             text=self.transfer_button_text,
+            height=50,
             state="active",
             command=self.open_transfer_window,
         )
@@ -145,7 +147,7 @@ class MainWindow(tk.Tk):
 
         # buttons
         self.log_out_button = ctk.CTkButton(
-            self, text=self.log_out_button_text, state="active", command=self.log_out
+            self, text=self.log_out_button_text, width=200, height=50, state="active", command=self.log_out
         )
         self.log_out_button.grid(row=6, column=5, padx=(5, 5), pady=(5, 5))
 

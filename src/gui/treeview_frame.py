@@ -50,6 +50,7 @@ class TreeViewFrame(ctk.CTkFrame):
 
         self.tree = ttk.Treeview(self)
         self.tree["columns"] = ("Action", "Amount", "Recipient account", "Date")
+        self.tree["displaycolumns"] = (0,1,2,3)
         # format columns
         self.tree.column("#0", width=0, stretch="no")
         self.tree.column("Action", anchor="center", width=5)
