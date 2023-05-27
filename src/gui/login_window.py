@@ -40,6 +40,7 @@ class LoginWindow(ctk.CTk):
         self.surname_label_text = "> Enter your surname:"
         self.password_label_text = "> Enter your password:"
         self.login_button_text = "Log in"
+        self.switch_var = ctk.StringVar(value="off")
 
 
         # widgets
@@ -68,12 +69,21 @@ class LoginWindow(ctk.CTk):
 
         self.password_label = ctk.CTkLabel(self.entries_frame, text=self.password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.password_label.grid(row=2, column=0, padx=10, pady=(10,10), sticky="w")
-        self.password_entry = ctk.CTkEntry(self.entries_frame)
+        self.password_entry = ctk.CTkEntry(self.entries_frame, show="*")
         self.password_entry.grid(row=2, column=1, padx=10, pady=(10,10), sticky="ew")
 
         # ============ Bottom row with button ============ #
-        self.login_button = ctk.CTkButton(self, text=self.login_button_text, state="active", width=100, height=40, text_color="black", font=("tahoma", 16), command=self.validate_login_information).grid(row=2, column=2, padx=10, pady=(10,10), sticky="ew")
+        self.password_switch = ctk.CTkSwitch(self, text="Show password", command=self.toggle_password, variable=self.switch_var, onvalue="on", offvalue="off")
+        self.password_switch.grid(row=2, column=1, padx=10, pady=(10,10), sticky="ew")
+        self.login_button = ctk.CTkButton(self, text=self.login_button_text, state="active", width=100, height=40, text_color="black", font=("tahoma", 16), command=self.validate_login_information)
+        self.login_button.grid(row=2, column=2, padx=10, pady=(10,10), sticky="ew")
 
+
+    def toggle_password(self) -> None:
+        if self.password_entry.cget('show') == '':
+            self.password_entry.configure(show='*')
+        else:
+            self.password_entry.configure(show='')
 
     def validate_login_information(self) -> None:
         self.first = self.name_entry.get()

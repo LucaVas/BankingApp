@@ -34,10 +34,8 @@ class PasswordRegistrationWindow(ctk.CTk):
         self.password_label_text = "> Enter your password:"
         self.repeat_password_label_text = "> Repeat your password:"
         self.register_password_button_text = "Save password"
+        self.switch_var = ctk.StringVar(value="off")
 
-        # style
-        self.btn_padx = 10
-        self.btn_pady = 5
 
         # widgets
         # ============ Top frame with main label ============ #
@@ -55,22 +53,35 @@ class PasswordRegistrationWindow(ctk.CTk):
 
         self.password_label = ctk.CTkLabel(self.entries_frame, text=self.password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.password_label.grid(row=0, column=0, padx=10, pady=(10,10), sticky="w")
-        self.password_entry = ctk.CTkEntry(self.entries_frame)
+        self.password_entry = ctk.CTkEntry(self.entries_frame, show="*")
         self.password_entry.grid(row=0, column=1, padx=10, pady=(10,10), sticky="ew")
 
 
         self.repeat_password_label = ctk.CTkLabel(self.entries_frame, text=self.repeat_password_label_text, font=ctk.CTkFont(size=15, weight="normal"))
         self.repeat_password_label.grid(row=1, column=0, padx=10, pady=(10,10), sticky="w")
-        self.repeat_password_entry = ctk.CTkEntry(self.entries_frame)
+        self.repeat_password_entry = ctk.CTkEntry(self.entries_frame, show="*")
         self.repeat_password_entry.grid(row=1, column=1, padx=10, pady=(10,10), sticky="ew")
 
 
         self.message_label = ctk.CTkLabel(self, text="")
         self.message_label.grid(row=2, column=0, columnspan=3)
 
-        # ============ Bottom row with button ============ #
-        self.register_password_button = ctk.CTkButton(self, text=self.register_password_button_text, state="active", width=40, height=40, text_color="black", font=("tahoma", 16), command=self.validate_password_registration).grid(row=3, column=3, padx=10, pady=(10,10), sticky="ew")
+        # ============ Bottom row with button and password toggler ============ #
+        self.password_switch = ctk.CTkSwitch(self, text="Show password", command=self.toggle_password, variable=self.switch_var, onvalue="on", offvalue="off")
+        self.password_switch.grid(row=3, column=2, padx=10, pady=(10,10), sticky="ew")
 
+        self.register_password_button = ctk.CTkButton(self, text=self.register_password_button_text, state="active", width=40, height=40, text_color="black", font=("tahoma", 16), command=self.validate_password_registration)
+        self.register_password_button.grid(row=3, column=3, padx=10, pady=(10,10), sticky="ew")
+
+
+    def toggle_password(self) -> None:
+        if self.password_entry.cget('show') == '':
+            self.password_entry.configure(show='*')
+            self.repeat_password_entry.configure(show='*')
+
+        else:
+            self.password_entry.configure(show='')
+            self.repeat_password_entry.configure(show='')
 
     def validate_password_registration(self) -> None:
         password = self.password_entry.get()
