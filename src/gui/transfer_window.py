@@ -2,14 +2,19 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 import re
+from datetime import datetime
 
 
 class TransferWindow(ctk.CTk):
-    def __init__(self, parent, account) -> None:
+    def __init__(self, parent, account, temp_db, holder, writer, treeview_frame) -> None:
         super().__init__()
 
         self.parent_window = parent
         self.account = account
+        self.temp_db = temp_db
+        self.holder = holder
+        self.writer = writer
+        self.treeview_frame = treeview_frame
 
         # geometry & positioning
         self.width = 500
@@ -114,14 +119,26 @@ class TransferWindow(ctk.CTk):
             return amount, current_amount
 
     def transfer(self, amount: float, current_amount: float, recipient_account: str, reason: str) -> None:
+        action = "transfer"
+        datestamp = datetime.now() 
 
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount - amount)
         self.account.balance = current_amount - amount
 
+        self.add_action_to_treeview(amount, action, recipient_account, datestamp)
+        self.add_action_to_db(amount, action, recipient_account, datestamp, reason)
+
         self.clear_exchanged_balance()
 
         self.close()
-    
+
+    def add_action_to_treeview(self, amount: float, action: str, recipient_account: str, datestamp: datetime) -> None:
+        self.treeview_frame.add_record(action, amount, recipient_account, str(datestamp))
+
+    def add_action_to_db(self, amount: float, action: str, recipient_account: str, datestamp: datetime, reason: str) -> None:
+        print(type(self.temp_db.get("history")))
+        self.writer.temp_write_history(self.holder, action, amount, recipient_account, datestamp, reason, self.temp_db)
+
     def clear_exchanged_balance(self) -> None:
         self.parent_window.balance_exchange_frame.exchange_balance_amount_label.configure(text="") 
         self.parent_window.balance_exchange_frame.exchange_currency_label.configure(text="") 

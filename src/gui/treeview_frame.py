@@ -9,6 +9,7 @@ class TreeViewFrame(ctk.CTkFrame):
         self.parent_window = parent
         self.temp_db = temp_db
         self.holder = holder
+        self.counter = 0
 
         # style
         self.style = ttk.Style()
@@ -44,36 +45,50 @@ class TreeViewFrame(ctk.CTkFrame):
         self.tree.tag_configure("oddrow", background="#3b3b3b")
         self.tree.tag_configure("evenrow", background="#4f4f4f")
 
+        self.load_history()
 
+    def add_record(self, action: str, amount: float, recipient_account: str, datestamp: str) -> None:
+
+        val = (action.capitalize(), amount, recipient_account, datestamp)
+
+        if self.counter % 2 == 0:
+            self.tree.insert(parent='', 
+                            index=0, 
+                            iid=self.counter, 
+                            text="", 
+                            values=val,
+                            tags=("evenrow",))
+        else:
+            self.tree.insert(parent='', 
+                        index=0, 
+                        iid=self.counter, 
+                        text="", 
+                        values=val,
+                        tags=("oddrow",))
+        self.counter += 1
+
+    def load_history(self) -> None:
         # Add data
         self.history_record = self.temp_db["history"]
-        self.counter = 0
         for record in self.history_record:
+            val = (record["action"].capitalize(), record["amount"], record["recipient_account"], record["datestamp"])
             if record["id"] == self.holder.id:
                 if self.counter % 2 == 0:
                     self.tree.insert(parent='', 
-                                index='end', 
+                                index=0, 
                                 iid=self.counter, 
                                 text="", 
-                                values=(
-                                    record["action"].capitalize(), 
-                                    record["amount"], 
-                                    record["recipient_account"], 
-                                    record["datestamp"]),
+                                values=val,
                                 tags=("evenrow",))
                 else:
                     self.tree.insert(parent='', 
-                                index='end', 
+                                index=0, 
                                 iid=self.counter, 
                                 text="", 
-                                values=(
-                                    record["action"].capitalize(), 
-                                    record["amount"], 
-                                    record["recipient_account"], 
-                                    record["datestamp"]),
+                                values=val,
                                 tags=("oddrow",))        
             self.counter += 1
-        
+            
         
         self.tree.pack(fill=tk.BOTH, expand=True, padx=(5,5), pady=(5,5))
 

@@ -1,87 +1,45 @@
 {
     "holders": [
         {
-            "id": "4BWwz8owJjQYAC889azUH2",
-            "first": "Luca",
-            "last": "Vassos",
-            "birth_date": "1994-05-14",
-            "password": "$2b$12$DH3SXbcj6FYZVe185ZQlquRdXSPvQkpvB89Gry0DDVrG6cXOh9lIC",
+            "id": "CiGhabEyqH2EWQuKyeDmrM",
+            "first": "Pete",
+            "last": "Marco",
+            "birth_date": "1990-01-01",
+            "password": "$2b$12$hQwyu02FwqvPRZc/J8DPZu0uOuOLBjGkWOUcsCSKr2qcJEjXSx60a",
             "is_blocked": false,
-            "onboarding_date": "2023-05-25 22:10:37.135551",
-            "last_access": "2023-05-26 18:56:54.300601",
+            "onboarding_date": "2023-05-27 12:10:09.433650",
+            "last_access": "2023-05-27 12:13:37.219384",
             "accounts": [
                 {
-                    "id": "9TNGH8XsvaWKU4hoq2Y2HA",
-                    "number": "LT994762689881456126",
-                    "base_currency": "AUD",
-                    "balance": 124.0,
-                    "interest_rate": 1.8,
-                    "is_active": true
-                }
-            ],
-            "connected_accounts": [
-                "LT601234512345678901"
-            ]
-        },
-        {
-            "id": "RXCrVecdjXxDkQ7fz64T9i",
-            "first": "Judita",
-            "last": "Vassos",
-            "birth_date": "1996-06-16",
-            "password": "$2b$12$1znR0vihnbrdWC5UxHzhEeLgx12X4pUgwO.12FTdlY.ppuH3QHkXq",
-            "is_blocked": false,
-            "onboarding_date": "2023-05-26 16:39:29.069827",
-            "last_access": "2023-05-26 16:39:29.069832",
-            "accounts": [
-                {
-                    "id": "iCVSMD3LxVBonKPhBvSGmX",
-                    "number": "LT997835768186661734",
+                    "id": "ekAcQse4YXPeif8AQK6c8T",
+                    "number": "LT992215488056417836",
                     "base_currency": "EUR",
-                    "balance": 2270.0,
-                    "interest_rate": 2.0,
+                    "balance": 689.0,
+                    "interest_rate": 2.5,
                     "is_active": true
                 }
             ],
             "connected_accounts": [
-                "LT601234512345678901"
+                "LT779510278945612301"
             ]
         }
     ],
     "history": [
         {
-            "id": "4BWwz8owJjQYAC889azUH2",
-            "action": "transfer",
-            "amount": 150,
-            "recipient_account": "LT601234512345678901",
-            "datestamp": "2023-05-24 16:39:29.069832"
-        },
-        {
-            "id": "RXCrVecdjXxDkQ7fz64T9i",
-            "action": "transfer",
-            "amount": 180,
-            "recipient_account": "LT601234512345678901",
-            "datestamp": "2023-05-22 16:39:29.069832"
-        },
-        {
-            "id": "RXCrVecdjXxDkQ7fz64T9i",
+            "id": "CiGhabEyqH2EWQuKyeDmrM",
             "action": "top-up",
-            "amount": 200,
-            "recipient_account": "LT601234512345678901",
-            "datestamp": "2023-05-25 16:39:29.069832"
+            "amount": 77.0,
+            "reason": "Top up to self",
+            "recipient_account": "LT992215488056417836",
+            "datestamp": "2023-05-27 12:13:41.590889"
         },
         {
-            "id": "4BWwz8owJjQYAC889azUH2",
-            "action": "top-up",
-            "amount": 50,
-            "recipient_account": "LT601234512345678901",
-            "datestamp": "2023-05-21 16:39:29.069832"
-        },
-        {
-            "id": "4BWwz8owJjQYAC889azUH2",
+            "id": "CiGhabEyqH2EWQuKyeDmrM",
             "action": "transfer",
-            "amount": 378,
-            "recipient_account": "LT601234512345678901",
-            "datestamp": "2023-05-26 16:39:29.069832"
+            "amount": 42.0,
+            "reason": "Transfer back to connected account",
+            "recipient_account": "LT779510278945612301",
+            "datestamp": "2023-05-27 12:14:27.111703"
         }
     ]
-} 
+}

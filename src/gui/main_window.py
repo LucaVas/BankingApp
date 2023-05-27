@@ -13,7 +13,7 @@ ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
 class MainWindow(tk.Tk):
-    def __init__(self, holder, account, bank, currency_obj, temp_db):
+    def __init__(self, holder, account, bank, currency_obj, temp_db, writer):
         super().__init__()
 
         self.holder = holder
@@ -21,6 +21,7 @@ class MainWindow(tk.Tk):
         self.bank = bank
         self.currency_obj = currency_obj
         self.temp_db = temp_db
+        self.writer = writer
 
 
         # geometry & positioning
@@ -95,11 +96,11 @@ class MainWindow(tk.Tk):
 
     
     def open_top_up_window(self):
-        top_up_window = TopUpWindow(self)
+        top_up_window = TopUpWindow(self, self.temp_db, self.holder, self.writer, self.treeview_frame, self.account)
         top_up_window.start()
 
     def open_transfer_window(self):
-        transfer_window = TransferWindow(self, self.account)
+        transfer_window = TransferWindow(self, self.account, self.temp_db, self.holder, self.writer, self.treeview_frame)
         transfer_window.start()        
         
     def start(self):

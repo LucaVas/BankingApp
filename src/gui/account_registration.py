@@ -95,11 +95,11 @@ class AccountRegistrationWindow(ctk.CTk):
         try:
             amount = float(self.amount_entry.get())
         except (ValueError):
-            self.show_error()
+            self.show_error("Invalid amount")
             return
         
         if amount < 0:
-            self.show_error()
+            self.show_error("Invalid amount")
             return
         
         pattern = r'^LT\d{18}$'
@@ -107,7 +107,7 @@ class AccountRegistrationWindow(ctk.CTk):
         if re.match(pattern, connected_account):
             self.register_account(amount, connected_account)
         else:
-            self.show_error()
+            self.show_error("Invalid account")
             return
     
     def register_account(self, amount: float, connected_account: str) -> None:
@@ -119,9 +119,9 @@ class AccountRegistrationWindow(ctk.CTk):
         self.close()
 
 
-    def show_error(self) -> None:
+    def show_error(self, error: str) -> None:
         # parent=self keeps the popup window in front
-        messagebox.showerror("Error", "Balance input not correct", parent=self)
+        messagebox.showerror("Error", error, parent=self)
         
     def start(self):
         self.mainloop()

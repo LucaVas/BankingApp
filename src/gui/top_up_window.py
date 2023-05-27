@@ -1,13 +1,20 @@
 import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
+from datetime import datetime
+import logging
 
 
 class TopUpWindow(ctk.CTk):
-    def __init__(self, parent) -> None:
+    def __init__(self, parent, temp_db, holder, writer, treeview_frame, account) -> None:
         super().__init__()
 
         self.parent_window = parent
+        self.temp_db = temp_db
+        self.holder = holder
+        self.writer = writer
+        self.treeview_frame = treeview_frame
+        self.account = account
 
         # geometry & positioning
         self.width = 500
@@ -82,11 +89,18 @@ class TopUpWindow(ctk.CTk):
 
 
     def top_up(self, amount: float) -> None:
+        action = "top-up"
+        recipient_account = self.account.account_number 
+        datestamp = datetime.now()  
+        reason = "Top up to self"      
+        
         current_amount = self.parent_window.balance_frame.balance_amount_label.cget("text")
         self.parent_window.balance_frame.balance_amount_label.configure(text=current_amount + amount)
         
         self.parent_window.account.balance = current_amount + amount
 
+        self.add_action_to_treeview(amount, action, recipient_account, datestamp)
+        self.add_action_to_db(amount, action, recipient_account, datestamp, reason)
 
         self.clear_exchanged_balance()
 
@@ -96,9 +110,16 @@ class TopUpWindow(ctk.CTk):
         self.parent_window.balance_exchange_frame.exchange_balance_amount_label.configure(text="") 
         self.parent_window.balance_exchange_frame.exchange_currency_label.configure(text="") 
 
+    def add_action_to_treeview(self, amount: float, action: str, recipient_account: str, datestamp: datetime) -> None:
+        self.treeview_frame.add_record(action, amount, recipient_account, str(datestamp))
+
+    def add_action_to_db(self, amount: float, action: str, recipient_account: str, datestamp: datetime, reason) -> None:
+        self.writer.temp_write_history(self.holder, action, amount, recipient_account, datestamp, reason, self.temp_db)
+
     def show_error(self) -> None:
         # parent=self keeps the popup window in front
         messagebox.showerror("Error", "Incorrect amount", parent=self)
+
 
     def start(self) -> None:
         self.mainloop()

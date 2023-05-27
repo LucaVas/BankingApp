@@ -8,9 +8,23 @@ class Writer():
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"
+    
+    def temp_write_history(self, holder, action: str, amount: float, recipient: str, datestamp: datetime, reason, db: dict) -> None:
+        output = db.get("history")
+        data = {
+            "id": holder.id,
+            "action": action,
+            "amount": amount,
+            "reason": reason,
+            "recipient_account": recipient,
+            "datestamp": str(datestamp)
+        }
+         
+
+        output.append(data)
 
     def temp_write(self, holder, account, db: dict) -> None:
-        output = db["holders"]
+        output = db.get("holders")
         data = {
             "id": holder.id,
             "first": holder.first_name,

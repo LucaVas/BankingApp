@@ -115,7 +115,7 @@ def account_registration(bank: Bank) -> tuple[float, str, str, str]:
     return acc_registration.balance, acc_registration.interest_rate, acc_registration.currency, acc_registration.connected_account
 
 def run_main_window(holder: Holder, account: Account, bank: Bank, currency_obj: Currency, temp_db: dict, writer: Writer) -> None:
-    app = MainWindow(holder, account, bank, currency_obj, temp_db)
+    app = MainWindow(holder, account, bank, currency_obj, temp_db, writer)
     app.mainloop()
 
     # === Store new user to temporary database dict === #
