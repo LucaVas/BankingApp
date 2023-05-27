@@ -9,12 +9,11 @@ from gui.holder_registration import HolderRegistrationWindow
 from gui.password_registration import PasswordRegistrationWindow
 from gui.account_registration import AccountRegistrationWindow
 from gui.main_window import MainWindow
-from datetime import datetime
 from decouple import config
 import customtkinter as ctk
 from reader import Reader
 from writer import Writer
-from config import db_name, market_price_url, market_company_info_url, exchange_url, base_currency
+from config import db_name, market_price_url, market_company_info_url, exchange_url
 
 ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"

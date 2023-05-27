@@ -1,6 +1,5 @@
 import json
-from datetime import datetime, date
-from reader import Reader
+from datetime import datetime
 
 class Writer():
     def __init__(self, fname: str) -> None:

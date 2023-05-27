@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 import re
+import sys
 
 
 class AccountRegistrationWindow(ctk.CTk):
@@ -18,7 +19,9 @@ class AccountRegistrationWindow(ctk.CTk):
         self.x = (self.screen_width / 2) - (self.width / 2)
         self.y = (self.screen_height / 2) - (self.height / 2)
         self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
-        self.attributes("-topmost", True)
+        # self.attributes("-topmost", True)
+
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # grid layout
         self.grid_columnconfigure((0, 1, 3), weight=1)
@@ -125,6 +128,11 @@ class AccountRegistrationWindow(ctk.CTk):
         
     def start(self):
         self.mainloop()
+
+    def on_closing(self):
+        if messagebox.askokcancel("Quit", "Do you want to quit?\nIf you quit now, the registration process will be stopped.", parent=self):
+            self.destroy()
+            sys.exit()
 
     def close(self):
         self.destroy()

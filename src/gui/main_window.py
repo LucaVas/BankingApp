@@ -1,5 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
+from tkinter import messagebox
 from .top_up_window import TopUpWindow
 from .holder_info_frame import HolderInfoFrame
 from .bank_info_frame import BankInfoFrame
@@ -8,6 +9,7 @@ from .exchange_frame import ExchangeFrame
 from .balance_exchange_frame import BalanceExchangeFrame
 from .transfer_window import TransferWindow
 from .treeview_frame import TreeViewFrame
+import sys
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -22,6 +24,8 @@ class MainWindow(tk.Tk):
         self.currency_obj = currency_obj
         self.temp_db = temp_db
         self.writer = writer
+
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
 
         # geometry & positioning
@@ -112,6 +116,11 @@ class MainWindow(tk.Tk):
         
     def start(self):
         self.mainloop()
+
+    def on_closing(self):
+        if messagebox.askokcancel("Quit", "Do you want to quit? If so, the actions you took will not be saved."):
+            self.destroy()
+            sys.exit()
 
     def log_out(self):
         self.destroy()

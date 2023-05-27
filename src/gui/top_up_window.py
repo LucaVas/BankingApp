@@ -16,6 +16,8 @@ class TopUpWindow(ctk.CTkToplevel):
         self.treeview_frame = treeview_frame
         self.account = account
 
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
         # geometry & positioning
         self.width = 500
         self.height = 300
@@ -24,7 +26,7 @@ class TopUpWindow(ctk.CTkToplevel):
         self.x = (self.screen_width / 2) - (self.width / 2)
         self.y = (self.screen_height / 2) - (self.height / 2)
         self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
-        self.attributes("-topmost", True)
+        # self.attributes("-topmost", True)
 
         # grid layout
         self.grid_columnconfigure((0, 1, 2), weight=1)
@@ -119,6 +121,10 @@ class TopUpWindow(ctk.CTkToplevel):
     def show_error(self) -> None:
         # parent=self keeps the popup window in front
         messagebox.showerror("Error", "Incorrect amount", parent=self)
+
+    def on_closing(self):
+        if messagebox.askokcancel("Quit", "Do you want to quit?", parent=self):
+            self.destroy()
 
     def close(self) -> None:
         self.destroy()
