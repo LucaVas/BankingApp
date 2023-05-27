@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from gui.exchange_frame import ExchangeFrame
 
 
 class BalanceExchangeFrame(ctk.CTkFrame):
@@ -10,7 +11,7 @@ class BalanceExchangeFrame(ctk.CTkFrame):
         parent (tkinter.Widget): The parent widget to which this frame belongs.
         exchange_frame (tkinter.Widget): The exchange frame to which this balance frame belongs.
     """
-    def __init__(self, parent, exchange_frame):
+    def __init__(self, parent, exchange_frame: ExchangeFrame):
         """Initialize the current frame.
 
         Args:

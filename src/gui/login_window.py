@@ -1,14 +1,16 @@
-import tkinter as tk
 import customtkinter as ctk
 from tkinter import messagebox
 import bcrypt
 from datetime import date, datetime
+import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class LoginWindow(ctk.CTk):
     """Class representing the GUI for login window."""
 
-    def __init__(self, bank, temp_db) -> None:
+    def __init__(self, bank: Bank, temp_db: dict) -> None:
         """
         Initialize the LoginWindow.
 

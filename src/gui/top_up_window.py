@@ -2,14 +2,20 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 from datetime import datetime
-import logging
+from gui.treeview_frame import TreeViewFrame
+import sys
+sys.path.append("src")
+from holder import Holder
+from writer import Writer
+from account import Account
+
 
 
 class TopUpWindow(ctk.CTkToplevel):
     """A custom top-level window for performing a top-up operation."""
 
     def __init__(
-        self, parent, temp_db, holder, writer, treeview_frame, account
+        self, parent, temp_db: dict, holder: Holder, writer: Writer, treeview_frame: TreeViewFrame, account: Account
     ) -> None:
         """Initialize the current window.
 
@@ -200,7 +206,7 @@ class TopUpWindow(ctk.CTkToplevel):
         action: str,
         recipient_account: str,
         datestamp: datetime,
-        reason,
+        reason: str,
     ) -> None:
         """Add the top-up action to the temporary database.
 

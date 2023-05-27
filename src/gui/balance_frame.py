@@ -1,4 +1,7 @@
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from account import Account
 
 
 class BalanceFrame(ctk.CTkFrame):
@@ -10,7 +13,7 @@ class BalanceFrame(ctk.CTkFrame):
         parent (tkinter.Widget): The parent widget to which this frame belongs.
         account (Account): The account object for which the balance is displayed.
     """
-    def __init__(self, parent, account):
+    def __init__(self, parent, account: Account):
         """Initialize the current frame.
 
         Args:

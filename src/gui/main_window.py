@@ -1,15 +1,20 @@
 import tkinter as tk
 import customtkinter as ctk
-from tkinter import messagebox
-from .top_up_window import TopUpWindow
-from .holder_info_frame import HolderInfoFrame
-from .bank_info_frame import BankInfoFrame
-from .balance_frame import BalanceFrame
-from .exchange_frame import ExchangeFrame
-from .balance_exchange_frame import BalanceExchangeFrame
-from .transfer_window import TransferWindow
-from .treeview_frame import TreeViewFrame
 import sys
+sys.path.append("src")
+from tkinter import messagebox
+from gui.top_up_window import TopUpWindow
+from gui.holder_info_frame import HolderInfoFrame
+from gui.bank_info_frame import BankInfoFrame
+from gui.balance_frame import BalanceFrame
+from gui.exchange_frame import ExchangeFrame
+from gui.balance_exchange_frame import BalanceExchangeFrame
+from gui.transfer_window import TransferWindow
+from gui.treeview_frame import TreeViewFrame
+from bank import Bank
+from account import Account
+from writer import Writer
+from holder import Holder
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -18,7 +23,7 @@ ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dar
 class MainWindow(tk.Tk):
     """Main window of the application."""
 
-    def __init__(self, holder, account, bank, currency_obj, temp_db, writer):
+    def __init__(self, holder: Holder, account: Account, bank: Bank, currency_obj: dict, temp_db: dict, writer: Writer):
         """Initialize the main window.
 
         Args:

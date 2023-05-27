@@ -1,4 +1,8 @@
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from holder import Holder
+from account import Account
 
 
 class HolderInfoFrame(ctk.CTkFrame):
@@ -12,7 +16,7 @@ class HolderInfoFrame(ctk.CTkFrame):
         holder (Holder): The holder object containing the holder information.
         account (Account): The account object associated with the holder.
     """
-    def __init__(self, parent, holder, account):
+    def __init__(self, parent, holder: Holder, account: Account):
         """Initialize the current frame.
 
         Args:

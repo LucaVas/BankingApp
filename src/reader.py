@@ -1,9 +1,8 @@
 import json
 
-
 class Reader:
     def __init__(self, fname: str) -> None:
-        self.fname = fname
+        self.fname = f"../{fname}"
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"

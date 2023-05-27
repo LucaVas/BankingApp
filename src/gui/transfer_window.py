@@ -3,13 +3,19 @@ from tkinter import messagebox
 import customtkinter as ctk
 import re
 from datetime import datetime
+import sys
+sys.path.append("src")
+from account import Account
+from holder import Holder
+from writer import Writer
+from gui.treeview_frame import TreeViewFrame
 
 
 class TransferWindow(ctk.CTkToplevel):
     """A custom tkinter top-level window for transferring funds."""
 
     def __init__(
-        self, parent, account, temp_db, holder, writer, treeview_frame
+        self, parent, account: Account, temp_db: dict, holder: Holder, writer: Writer, treeview_frame: TreeViewFrame
     ) -> None:
         """Initialize the current window.
 

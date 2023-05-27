@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Writer:
     def __init__(self, fname: str) -> None:
-        self.fname = fname
+        self.fname = f"../{fname}"
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"

@@ -1,5 +1,8 @@
 import tkinter as tk
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from account import Account
 
 
 class ExchangeFrame(ctk.CTkFrame):
@@ -13,7 +16,7 @@ class ExchangeFrame(ctk.CTkFrame):
         account (Account): The account object associated with the exchange.
         currency_obj (Currency): The currency object containing currency-related information.
     """
-    def __init__(self, parent, account, currency_obj):
+    def __init__(self, parent, account: Account, currency_obj: dict):
         """Initialize the current frame.
 
         Args:
@@ -51,7 +54,7 @@ class ExchangeFrame(ctk.CTkFrame):
         # default option
         self.currency_optionmenu.grid(row=1, column=1)
 
-    def update_exchange(self, option):
+    def update_exchange(self, option: str):
         """Update the exchange information based on the selected currency.
 
         This method is called when a new currency option is selected. It retrieves the exchange rate,

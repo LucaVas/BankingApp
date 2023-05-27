@@ -1,6 +1,5 @@
 from typing import Optional
 
-
 class Currency:
     list_of_currencies = [
         "AUD",

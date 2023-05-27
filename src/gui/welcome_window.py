@@ -1,8 +1,11 @@
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class WelcomeWindow(ctk.CTk):
-    def __init__(self, bank):
+    def __init__(self, bank: Bank):
         """
         Represents a welcome window for the banking application.
 

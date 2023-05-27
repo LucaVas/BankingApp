@@ -1,3 +1,6 @@
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))  # Set the working directory to the parent directory of 'src'
+
 from bank import Bank
 from holder import Holder
 from account import Account
@@ -14,6 +17,8 @@ import customtkinter as ctk
 from reader import Reader
 from writer import Writer
 from config import db_name, market_price_url, market_company_info_url, exchange_url
+
+
 
 ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -56,7 +61,7 @@ def main() -> None:
     writer.write_to_file(temp_db)
 
 
-def start_registration_process(bank, writer, temp_db):
+def start_registration_process(bank: Bank, writer: Writer, temp_db: dict) -> tuple[Holder, Account]:
     """Starts the registration process for a new holder and account.
 
     Args:
@@ -88,7 +93,7 @@ def start_registration_process(bank, writer, temp_db):
     return new_holder, new_account
 
 
-def start_login_process(bank, writer, temp_db):
+def start_login_process(bank: Bank, writer: Writer, temp_db: dict) -> tuple[Holder, Account]:
     """Starts the login process for an existing holder.
 
     Args:
@@ -111,7 +116,7 @@ def start_login_process(bank, writer, temp_db):
     return holder, account
 
 
-def load_database(db_name):
+def load_database(db_name: str) -> dict:
     """Loads the database from the json file.
 
     Args:
@@ -124,7 +129,7 @@ def load_database(db_name):
     return reader.read_file()
 
 
-def holder_registration(bank: Bank):
+def holder_registration(bank: Bank) -> tuple[str, str, str]:
     """Performs the holder registration process.
 
     Args:
@@ -229,7 +234,7 @@ def get_market_data(url: str, key: str) -> dict:
     return data
 
 
-def fetch_api(url: str, key: str, base_currency: str = ""):
+def fetch_api(url: str, key: str, base_currency: str = "") -> dict:
     """Fetches data from an API.
 
     Args:

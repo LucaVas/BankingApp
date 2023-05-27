@@ -2,12 +2,14 @@ import customtkinter as ctk
 from tkinter import messagebox
 from datetime import datetime, date
 import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class HolderRegistrationWindow(ctk.CTk):
     """A window for registering a new holder in the bank."""
 
-    def __init__(self, bank):
+    def __init__(self, bank: Bank):
         """
         Initialize the registration window for the new holder.
 

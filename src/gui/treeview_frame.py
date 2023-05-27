@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from holder import Holder
 
 
 class TreeViewFrame(ctk.CTkFrame):
@@ -14,7 +17,7 @@ class TreeViewFrame(ctk.CTkFrame):
         holder (Holder): The holder object containing the holder information.
         temp_db (dict): A temporary database object containing history records.
     """
-    def __init__(self, parent, holder, temp_db: dict):
+    def __init__(self, parent, holder: Holder, temp_db: dict):
         """Initialize the current frame.
 
         Args:

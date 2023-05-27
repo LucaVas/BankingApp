@@ -1,8 +1,10 @@
-import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 import re
 import sys
+import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class AccountRegistrationWindow(ctk.CTk):
@@ -19,7 +21,7 @@ class AccountRegistrationWindow(ctk.CTk):
     - close(self): Close the window.
     """
 
-    def __init__(self, list_of_currencies: list[str], bank):
+    def __init__(self, list_of_currencies: list[str], bank: Bank):
         super().__init__()
 
         self.currency_list = list_of_currencies

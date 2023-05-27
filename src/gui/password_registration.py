@@ -2,6 +2,8 @@ import customtkinter as ctk
 from tkinter import messagebox
 import bcrypt
 import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class PasswordRegistrationWindow(ctk.CTk):
@@ -20,7 +22,7 @@ class PasswordRegistrationWindow(ctk.CTk):
     - close(self): Close the window.
     """
 
-    def __init__(self, bank):
+    def __init__(self, bank: Bank):
         super().__init__()
 
         self.width = 800

@@ -1,4 +1,7 @@
 import customtkinter as ctk
+import sys
+sys.path.append("src")
+from bank import Bank
 
 
 class BankInfoFrame(ctk.CTkFrame):
@@ -11,7 +14,7 @@ class BankInfoFrame(ctk.CTkFrame):
         parent (tkinter.Widget): The parent widget to which this frame belongs.
         bank (Bank): The bank object containing the bank information.
     """
-    def __init__(self, parent, bank):
+    def __init__(self, parent, bank: Bank):
         """Initialize the current frame.
 
         Args:
