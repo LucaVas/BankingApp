@@ -1,0 +1,3 @@
+2023-05-28 13:18:07,380 - account - INFO - Account number created succesfully: LT997667539243900574
+2023-05-28 13:18:07,382 - account - INFO - Account object created succesfully. Account(ciiNpeaYaBhYQbB3S4jDgZ,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 13:18:07,382 - account - INFO - Account loaded succesfully.

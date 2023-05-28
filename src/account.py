@@ -27,7 +27,7 @@ class Account:
         self.currency = currency
         self._interest_rate = float(interest_rate)
 
-        logger.info(f"Account object created succesfully. {self.__repr__}")
+        logger.info(f"Account object created succesfully. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"This account holds {self.balance:.2f} {self.currency}. The account's interest rate is {self.interest_rate}."

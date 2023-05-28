@@ -23,13 +23,13 @@ class Holder:
         self.accounts: list[str] = ["XXXX"]
         self.connected_accounts: list[str] = []
 
-        logger.info(f"Holder object created succesfully. {self.__repr__}")
+        logger.info(f"Holder object created succesfully. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"Account holder: {self.first_name} {self.last_name}.\nDate of Birth: {self.birth_date}\nOnboarding date: {self.onboarding_date}\nAccount blocked: {self.is_blocked}"
 
     def __repr__(self) -> str:
-        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date},Password:{str(self.password, 'utf-8')})"
+        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date})"
 
     @property
     def password(self) -> bytes:

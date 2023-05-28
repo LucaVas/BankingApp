@@ -15,7 +15,7 @@ class Bank:
         self.share_price = self.calculate_shares(market_data)[0]
         self.shares_delta = self.calculate_shares(market_data)[1]
 
-        logger.info(f"Bank object created. {self.__repr__}")
+        logger.info(f"Bank object created. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"{self.name} was founded in {self.year}. The current amount of shares is {self.shares_amount} at {self.share_price:.2f} $ each. The last market change saw the bank with a result of {self.shares_delta:.2f} %."

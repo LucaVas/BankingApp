@@ -11,7 +11,7 @@ logger.addHandler(handler)
 class Reader:
     def __init__(self, fname: str) -> None:
         self.fname = f"../{fname}"
-        logger.info(f"Reader object succesfully created: {self.__repr__}")
+        logger.info(f"Reader object succesfully created: {self.__repr__()}")
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"

@@ -30,7 +30,7 @@ class Currency:
     def __init__(self, exchange_rates: dict[str, float]) -> None:
         self.exchange_rates = exchange_rates
         self.currencies = self.list_of_currencies
-        logger.info(f"Currency object created succesfully. {self.__repr__}")
+        logger.info(f"Currency object created succesfully. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"List of currencies availabke: {self.currencies}"

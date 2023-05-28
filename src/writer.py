@@ -13,7 +13,7 @@ logger.addHandler(handler)
 class Writer:
     def __init__(self, fname: str) -> None:
         self.fname = f"../{fname}"
-        logger.info(f"Writer object created succesfully. {self.__repr__}")
+        logger.info(f"Writer object created succesfully. {self.__repr__()}")
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"
