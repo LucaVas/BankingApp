@@ -62,6 +62,9 @@ def main() -> None:
     writer.write_to_file(temp_db)
 
 
+
+
+
 def start_registration_process(bank: Bank, writer: Writer, temp_db: dict) -> tuple[Holder, Account]:
     """Starts the registration process for a new holder and account.
 
