@@ -1,10 +1,19 @@
 import json
 from datetime import datetime
+import logging
+
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("writer.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class Writer:
     def __init__(self, fname: str) -> None:
         self.fname = f"../{fname}"
+        logger.info(f"Writer object created succesfully. {self.__repr__}")
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"
@@ -16,7 +25,7 @@ class Writer:
         amount: float,
         recipient: str,
         datestamp: datetime,
-        reason,
+        reason: str,
         db: dict,
     ) -> None:
         output = db.get("history")
@@ -29,6 +38,7 @@ class Writer:
             "datestamp": str(datestamp),
         }
 
+        logger.info(f"Action data added succesfully to temporary database: {data}")
         output.append(data)
 
     def temp_write(self, holder, account, db: dict) -> None:
@@ -60,6 +70,8 @@ class Writer:
                 output[idx] = data
                 return
             continue
+
+        logger.info(f"Holder data succesfully written to temporary database: {data}")
         output.append(data)
 
     def write_to_file(self, data: dict) -> None:
@@ -67,4 +79,6 @@ class Writer:
             with open(self.fname, "r+") as file:
                 json.dump(data, file, indent=4)
         except FileNotFoundError:
-            print("File does not exist.")
+            logger.exception("FileNotFoundError")
+
+        logger.info("Temporary database written to database succesfully.")

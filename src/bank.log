@@ -1,0 +1,3 @@
+2023-05-28 13:10:31,385 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 13:10:31,386 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 13:10:31,387 - bank - INFO - Bank object created. <bound method Bank.__repr__ of Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)>

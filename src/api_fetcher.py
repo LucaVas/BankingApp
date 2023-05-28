@@ -1,7 +1,14 @@
 import requests
 from requests import Response
 import json
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("api_fetcher.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class ApiFetcher:
     def __init__(self, url: str, key: str, base_currency: str):
@@ -9,16 +16,25 @@ class ApiFetcher:
         self.key = key
         self.base_currency = base_currency
 
+        logger.info("ApiFetcher created.")
+
     def fetch(self) -> dict:
         if self.base_currency == "":
-            response = requests.get(f"{self.url}{self.key}")
+            try:
+                response = requests.get(f"{self.url}{self.key}")
+            except Exception as e:
+                logger.exception("Api fetcher exception")
             data = self.parse(response)
         else:
-            response = requests.get(
-                f"{self.url}{self.key}&base_currency={self.base_currency}"
-            )
+            try:
+                response = requests.get(
+                    f"{self.url}{self.key}&base_currency={self.base_currency}"
+                )
+            except Exception:
+                logger.exception("Api fetcher exception")
             data = self.parse(response)
-
+        
+        logger.info("API fetched succesfully")
         return data
         # return self.prettify(data)
 

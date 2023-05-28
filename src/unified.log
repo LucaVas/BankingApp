@@ -1,0 +1,16 @@
+2023-05-28 13:10:29,485 - api_fetcher - INFO - ApiFetcher created.
+2023-05-28 13:10:29,495 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-05-28 13:10:30,480 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=TIME_SERIES_INTRADAY&symbol=BAC&interval=5min&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-05-28 13:10:30,605 - api_fetcher - INFO - API fetched succesfully
+2023-05-28 13:10:30,605 - __main__ - INFO - Market data fetched from API succesfully.
+2023-05-28 13:10:30,605 - api_fetcher - INFO - ApiFetcher created.
+2023-05-28 13:10:30,622 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-05-28 13:10:31,377 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=OVERVIEW&symbol=BAC&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-05-28 13:10:31,384 - api_fetcher - INFO - API fetched succesfully
+2023-05-28 13:10:31,385 - __main__ - INFO - Market data fetched from API succesfully.
+2023-05-28 13:10:31,385 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 13:10:31,386 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 13:10:31,387 - bank - INFO - Bank object created. <bound method Bank.__repr__ of Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)>
+2023-05-28 13:10:31,387 - reader - INFO - Reader object succesfully created: <bound method Reader.__repr__ of Reader(../database.json)>
+2023-05-28 13:10:31,395 - reader - INFO - File read succesfully: {'holders': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'first': 'Pete', 'last': 'Marco', 'birth_date': '1990-01-01', 'password': '$2b$12$hQwyu02FwqvPRZc/J8DPZu0uOuOLBjGkWOUcsCSKr2qcJEjXSx60a', 'is_blocked': False, 'onboarding_date': '2023-05-27 12:10:09.433650', 'last_access': '2023-05-28 12:47:17.585084', 'accounts': [{'id': 'ekAcQse4YXPeif8AQK6c8T', 'number': 'LT992215488056417836', 'base_currency': 'EUR', 'balance': 651.0, 'interest_rate': 2.5, 'is_active': True}], 'connected_accounts': ['LT779510278945612301']}], 'history': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 77.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:13:41.590889'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 42.0, 'reason': 'Transfer back to connected account', 'recipient_account': 'LT779510278945612301', 'datestamp': '2023-05-27 12:14:27.111703'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 50.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:23:12.466402'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 88.0, 'reason': 'Test transfer', 'recipient_account': 'LT227894512345678901', 'datestamp': '2023-05-27 12:23:35.759204'}]}
+2023-05-28 13:10:31,396 - writer - INFO - Writer object created succesfully. <bound method Writer.__repr__ of Reader(../database.json)>

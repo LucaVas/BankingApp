@@ -1,6 +1,7 @@
 import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))  # Set the working directory to the parent directory of 'src'
 
+import logging
 
 from bank import Bank
 from holder import Holder
@@ -19,6 +20,17 @@ from reader import Reader
 from writer import Writer
 from config import db_name, market_price_url, market_company_info_url, exchange_url
 
+# setting level of logging
+log_file = "unified.log"
+logging.basicConfig(level=logging.DEBUG, filename=log_file, filemode="w",
+                    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("main.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
@@ -218,6 +230,8 @@ def get_exchange_rates(url: str, key: str, base_currency: str) -> dict:
         A dictionary containing the exchange rates.
     """
     data = fetch_api(url, key, base_currency)
+
+    logger.info("Exchange data fetched from API succesfully.")
     return data["data"]
 
 
@@ -232,6 +246,7 @@ def get_market_data(url: str, key: str) -> dict:
         A dictionary containing the market data.
     """
     data = fetch_api(url, key)
+    logger.info("Market data fetched from API succesfully.")
     return data
 
 

@@ -1,8 +1,17 @@
 import json
+import logging
+
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("reader.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class Reader:
     def __init__(self, fname: str) -> None:
         self.fname = f"../{fname}"
+        logger.info(f"Reader object succesfully created: {self.__repr__}")
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"
@@ -13,7 +22,9 @@ class Reader:
                 file_data = json.load(file)
                 file.seek(0)
         except FileNotFoundError:
+            logger.exception("FileNotFoundError")
             print("File does not exist.")
             file_data = {}
-
+        
+        logger.info(f"File read succesfully: {file_data}")
         return file_data
