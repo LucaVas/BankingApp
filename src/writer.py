@@ -5,7 +5,7 @@ from typing import Union
 
 # setting up logger
 logger = logging.getLogger(__name__)
-handler = logging.FileHandler("writer.log")
+handler = logging.FileHandler("./main_logs/writer.log")
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)

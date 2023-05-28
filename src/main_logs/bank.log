@@ -1,0 +1,3 @@
+2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 17:32:19,885 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)

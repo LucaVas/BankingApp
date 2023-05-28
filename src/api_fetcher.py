@@ -5,7 +5,7 @@ import logging
 
 # setting up logger
 logger = logging.getLogger(__name__)
-handler = logging.FileHandler("api_fetcher.log")
+handler = logging.FileHandler("./main_logs/api_fetcher.log")
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)

@@ -1,31 +1,16 @@
-2023-05-28 17:28:59,398 - api_fetcher - INFO - ApiFetcher created.
-2023-05-28 17:28:59,400 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
-2023-05-28 17:29:00,202 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=TIME_SERIES_INTRADAY&symbol=BAC&interval=5min&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
-2023-05-28 17:29:00,256 - api_fetcher - INFO - API fetched succesfully
-2023-05-28 17:29:00,256 - __main__ - INFO - Market data fetched from API succesfully.
-2023-05-28 17:29:00,257 - api_fetcher - INFO - ApiFetcher created.
-2023-05-28 17:29:00,258 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
-2023-05-28 17:29:00,714 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=OVERVIEW&symbol=BAC&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
-2023-05-28 17:29:00,715 - api_fetcher - INFO - API fetched succesfully
-2023-05-28 17:29:00,715 - __main__ - INFO - Market data fetched from API succesfully.
-2023-05-28 17:29:00,715 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
-2023-05-28 17:29:00,715 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
-2023-05-28 17:29:00,715 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)
-2023-05-28 17:29:00,716 - reader - INFO - Reader object succesfully created: Reader(../database.json)
-2023-05-28 17:29:00,716 - reader - INFO - File read succesfully: {'holders': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'first': 'Pete', 'last': 'Marco', 'birth_date': '1990-01-01', 'password': '$2b$12$hQwyu02FwqvPRZc/J8DPZu0uOuOLBjGkWOUcsCSKr2qcJEjXSx60a', 'is_blocked': False, 'onboarding_date': '2023-05-27 12:10:09.433650', 'last_access': '2023-05-28 17:20:28.768024', 'accounts': [{'id': 'ekAcQse4YXPeif8AQK6c8T', 'number': 'LT992215488056417836', 'base_currency': 'EUR', 'balance': 651.0, 'interest_rate': 2.5, 'is_active': True}], 'connected_accounts': ['LT779510278945612301']}], 'history': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 77.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:13:41.590889'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 42.0, 'reason': 'Transfer back to connected account', 'recipient_account': 'LT779510278945612301', 'datestamp': '2023-05-27 12:14:27.111703'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 50.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:23:12.466402'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 88.0, 'reason': 'Test transfer', 'recipient_account': 'LT227894512345678901', 'datestamp': '2023-05-27 12:23:35.759204'}]}
-2023-05-28 17:29:00,716 - writer - INFO - Writer object created succesfully. Reader(../database.json)
-2023-05-28 17:29:07,081 - holder - INFO - Holder object created succesfully. Holder(TjDigEKSWANMNmgnYXunLv,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:29:07.080950)
-2023-05-28 17:29:07,081 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
-Date of Birth: 1990-01-01
-Onboarding date: 2023-05-27 12:10:09.433650
-Account blocked: False
-2023-05-28 17:29:07,081 - account - INFO - Account number created succesfully: LT991050971488380746
-2023-05-28 17:29:07,081 - account - INFO - Account object created succesfully. Account(6P5u9mVnJEBqKqMfeBWD67,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
-2023-05-28 17:29:07,081 - account - INFO - Account loaded succesfully.
-2023-05-28 17:29:07,081 - api_fetcher - INFO - ApiFetcher created.
-2023-05-28 17:29:07,082 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.freecurrencyapi.com:443
-2023-05-28 17:29:07,411 - urllib3.connectionpool - DEBUG - https://api.freecurrencyapi.com:443 "GET /v1/latest?apikey=xwzDojm8oL5nSqLbyO1mCgFlVTO9QSD0ZBuzM2ks&base_currency=EUR HTTP/1.1" 200 None
-2023-05-28 17:29:07,412 - api_fetcher - INFO - API fetched succesfully
-2023-05-28 17:29:07,412 - __main__ - INFO - Exchange data fetched from API succesfully.
-2023-05-28 17:29:07,412 - currency - INFO - Currency object created succesfully. Currency({'AUD': 1.646403, 'BGN': 1.956378, 'BRL': 5.35945, 'CAD': 1.461126, 'CHF': 0.972653, 'CNY': 7.581374, 'CZK': 23.693259, 'DKK': 7.451521, 'EUR': 1, 'GBP': 0.869216, 'HKD': 8.405381, 'HRK': 7.5345, 'HUF': 371.41164, 'IDR': 16105.700774, 'ILS': 3.9983, 'INR': 88.603138, 'ISK': 149.401701, 'JPY': 150.941717, 'KRW': 1420.218164, 'MXN': 18.919252, 'MYR': 4.937494, 'NOK': 11.874465, 'NZD': 1.77495, 'PHP': 59.978027, 'PLN': 4.532358, 'RON': 4.960455, 'RUB': 84.777647, 'SEK': 11.603697, 'SGD': 1.448946, 'THB': 37.269969, 'TRY': 21.4336, 'USD': 1.073133, 'ZAR': 21.097695}, ['AUD', 'CHF', 'CZK', 'DKK', 'EUR', 'GBP', 'HRK', 'HUF', 'JPY', 'NOK', 'PLN', 'RON', 'RUB', 'SEK', 'USD'])
-2023-05-28 17:29:53,666 - writer - INFO - Temporary database written to database succesfully.
+2023-05-28 17:32:18,123 - api_fetcher - INFO - ApiFetcher created.
+2023-05-28 17:32:18,125 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-05-28 17:32:19,064 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=TIME_SERIES_INTRADAY&symbol=BAC&interval=5min&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-05-28 17:32:19,085 - api_fetcher - INFO - API fetched succesfully
+2023-05-28 17:32:19,086 - __main__ - INFO - Market data fetched from API succesfully.
+2023-05-28 17:32:19,086 - api_fetcher - INFO - ApiFetcher created.
+2023-05-28 17:32:19,087 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-05-28 17:32:19,883 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=OVERVIEW&symbol=BAC&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-05-28 17:32:19,885 - api_fetcher - INFO - API fetched succesfully
+2023-05-28 17:32:19,885 - __main__ - INFO - Market data fetched from API succesfully.
+2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
+2023-05-28 17:32:19,885 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)
+2023-05-28 17:32:19,885 - reader - INFO - Reader object succesfully created: Reader(../database.json)
+2023-05-28 17:32:19,885 - reader - INFO - File read succesfully: {'holders': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'first': 'Pete', 'last': 'Marco', 'birth_date': '1990-01-01', 'password': '$2b$12$hQwyu02FwqvPRZc/J8DPZu0uOuOLBjGkWOUcsCSKr2qcJEjXSx60a', 'is_blocked': False, 'onboarding_date': '2023-05-27 12:10:09.433650', 'last_access': '2023-05-28 17:29:07.068079', 'accounts': [{'id': 'ekAcQse4YXPeif8AQK6c8T', 'number': 'LT992215488056417836', 'base_currency': 'EUR', 'balance': 651.0, 'interest_rate': 2.5, 'is_active': True}], 'connected_accounts': ['LT779510278945612301']}], 'history': [{'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 77.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:13:41.590889'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 42.0, 'reason': 'Transfer back to connected account', 'recipient_account': 'LT779510278945612301', 'datestamp': '2023-05-27 12:14:27.111703'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'top-up', 'amount': 50.0, 'reason': 'Top up to self', 'recipient_account': 'LT992215488056417836', 'datestamp': '2023-05-27 12:23:12.466402'}, {'id': 'CiGhabEyqH2EWQuKyeDmrM', 'action': 'transfer', 'amount': 88.0, 'reason': 'Test transfer', 'recipient_account': 'LT227894512345678901', 'datestamp': '2023-05-27 12:23:35.759204'}]}
+2023-05-28 17:32:19,885 - writer - INFO - Writer object created succesfully. Reader(../database.json)
