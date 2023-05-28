@@ -4,7 +4,14 @@ import customtkinter as ctk # type: ignore
 import sys 
 sys.path.append("src")
 from holder import Holder # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/treeview_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class TreeViewFrame(ctk.CTkFrame):
     """A custom Tkinter frame for displaying a tree view of records.

@@ -3,7 +3,14 @@ import sys
 sys.path.append("src")
 from holder import Holder # type: ignore
 from account import Account # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/holder_info_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class HolderInfoFrame(ctk.CTkFrame):
     """A custom Tkinter frame for displaying holder information.
@@ -17,6 +24,7 @@ class HolderInfoFrame(ctk.CTkFrame):
         account (Account): The account object associated with the holder.
     """
     def __init__(self, parent, holder: Holder, account: Account):
+        logger.info("New holder info frame created.")
         """Initialize the current frame.
 
         Args:
@@ -31,8 +39,9 @@ class HolderInfoFrame(ctk.CTkFrame):
         self.holder = holder
         self.account = account
 
-        self.grid_columnconfigure((0, 1, 2), weight=1)
-        self.grid_rowconfigure((0, 1, 2), weight=1)
+        for i in range(3):
+            self.grid_columnconfigure(i, weight=1)
+            self.grid_rowconfigure(i, weight=1)
 
         self.holder_name_label_text = "> Holder: "
         self.holder_name_data_label_text = (

@@ -2,7 +2,14 @@ import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
 from account import Account # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/balance_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class BalanceFrame(ctk.CTkFrame):
     """A custom Tkinter frame for displaying the account balance.
@@ -14,6 +21,7 @@ class BalanceFrame(ctk.CTkFrame):
         account (Account): The account object for which the balance is displayed.
     """
     def __init__(self, parent, account: Account):
+        logger.info("Balance frame created succesfully.")
         """Initialize the current frame.
 
         Args:
@@ -26,8 +34,9 @@ class BalanceFrame(ctk.CTkFrame):
         self.parent_window = parent
         self.account = account
 
-        self.grid_columnconfigure((0, 1, 2, 3, 4), weight=1)
-        self.grid_rowconfigure((0), weight=1)
+        for i in range(4):
+            self.grid_columnconfigure(i, weight=1)
+        self.grid_rowconfigure(0, weight=1)
 
         self.balance_label_text = "Your balance:"
         self.balance_amount_label_text = self.account.balance

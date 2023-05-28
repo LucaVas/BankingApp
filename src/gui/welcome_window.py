@@ -2,7 +2,14 @@ import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
 from bank import Bank # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/welcome_window.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class WelcomeWindow(ctk.CTk):
     def __init__(self, bank: Bank):

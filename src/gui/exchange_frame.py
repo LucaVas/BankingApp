@@ -4,7 +4,14 @@ import sys
 sys.path.append("src")
 from account import Account # type: ignore
 from currency import Currency # type: ignore
- 
+import logging
+
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/exchange_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class ExchangeFrame(ctk.CTkFrame):
     """A custom Tkinter frame for currency exchange.
@@ -18,6 +25,7 @@ class ExchangeFrame(ctk.CTkFrame):
         currency_obj (Currency): The currency object containing currency-related information.
     """
     def __init__(self, parent, account: Account, currency_obj: Currency):
+        logger.info("New exchange frame created succesfully.")
         """Initialize the current frame.
 
         Args:
@@ -32,8 +40,10 @@ class ExchangeFrame(ctk.CTkFrame):
         self.account = account
         self.currency_obj = currency_obj
 
-        self.grid_columnconfigure((0, 1, 2), weight=1)
-        self.grid_rowconfigure((0, 1), weight=1)
+        for i in range(3):
+            self.grid_columnconfigure(i, weight=1)
+            if i != 2:
+                self.grid_rowconfigure(i, weight=1)
 
         self.exchange_label_text = "Currency exchange"
         self.currency_optionmenu_options = self.currency_obj.currencies
@@ -79,6 +89,8 @@ class ExchangeFrame(ctk.CTkFrame):
             text=option
         )
 
+        logger.info(f"EXchange balance lable updated with exchanged rate {exchange_rate}")
+
     def get_exchange(self, currency: str) -> float:
         """Get the exchange rate for the specified currency.
 
@@ -90,5 +102,7 @@ class ExchangeFrame(ctk.CTkFrame):
         Returns:
             float: The exchange rate for the specified currency.
 
-        """
-        return self.currency_obj.get_exchange(currency)
+        """ 
+        exchange = self.currency_obj.get_exchange(currency)
+        logger.info(f"Exchange retrieved succesfully {exchange}")
+        return exchange

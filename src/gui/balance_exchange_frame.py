@@ -1,6 +1,13 @@
 import customtkinter as ctk # type: ignore
 from gui.exchange_frame import ExchangeFrame  # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/balance_exchange_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class BalanceExchangeFrame(ctk.CTkFrame):
     """A custom Tkinter frame for displaying exchanged balance information.
@@ -12,6 +19,7 @@ class BalanceExchangeFrame(ctk.CTkFrame):
         exchange_frame (tkinter.Widget): The exchange frame to which this balance frame belongs.
     """
     def __init__(self, parent, exchange_frame: ExchangeFrame):
+        logger.info("Balance exchange frame object created.")
         """Initialize the current frame.
 
         Args:
@@ -23,9 +31,9 @@ class BalanceExchangeFrame(ctk.CTkFrame):
 
         self.parent_window = parent
         self.exchange_frame = exchange_frame
-
-        self.grid_columnconfigure((0, 1, 2, 3, 4), weight=1)
-        self.grid_rowconfigure((0), weight=1)
+        for i in range(4):
+            self.grid_columnconfigure(i, weight=1)
+        self.grid_rowconfigure(0, weight=1)
 
         self.exchange_labance_label_text = "> Exchanged to"
         self.exchange_balance_amount_label_text = "          "

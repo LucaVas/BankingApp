@@ -4,7 +4,14 @@ import re
 import sys
 sys.path.append("src")
 from bank import Bank # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/account_registration.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class AccountRegistrationWindow(ctk.CTk):
     """
@@ -22,6 +29,8 @@ class AccountRegistrationWindow(ctk.CTk):
 
     def __init__(self, list_of_currencies: list[str], bank: Bank):
         super().__init__()
+
+        logger.info("New Account registration window object created")
 
         self.currency_list = list_of_currencies
 
@@ -164,10 +173,12 @@ class AccountRegistrationWindow(ctk.CTk):
         try:
             amount = float(self.amount_entry.get())
         except ValueError:
+            logger.exception("ValueError")
             self.show_error("Invalid amount")
             return
 
         if amount < 0:
+            logger.error("Negative amount entered.")
             self.show_error("Invalid amount")
             return
 
@@ -175,7 +186,9 @@ class AccountRegistrationWindow(ctk.CTk):
         connected_account = self.connected_account_entry.get().strip()
         if re.match(pattern, connected_account):
             self.register_account(amount, connected_account)
+            logger.info(f"Account number created: {connected_account}")
         else:
+            logger.error(f"Invalid account number: {connected_account}")
             self.show_error("Invalid account")
             return
 
@@ -231,6 +244,7 @@ class AccountRegistrationWindow(ctk.CTk):
             "Do you want to quit?\nIf you quit now, the registration process will be stopped.",
             parent=self,
         ):
+            logger.warning("User closed the window unexpectedly.")
             self.destroy()
             sys.exit()
 
@@ -241,4 +255,5 @@ class AccountRegistrationWindow(ctk.CTk):
         Returns:
         None
         """
+        logger.info("Account registration window closed.")
         self.destroy()

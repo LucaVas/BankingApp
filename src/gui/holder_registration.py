@@ -4,12 +4,20 @@ from datetime import datetime, date
 import sys
 sys.path.append("src")
 from bank import Bank # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/holder_registration.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class HolderRegistrationWindow(ctk.CTk):
     """A window for registering a new holder in the bank."""
 
     def __init__(self, bank: Bank):
+        logger.info("New Holder Registration window created.")
         """
         Initialize the registration window for the new holder.
 
@@ -31,8 +39,9 @@ class HolderRegistrationWindow(ctk.CTk):
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # grid layout
-        self.grid_columnconfigure((0, 1, 2), weight=1)
-        self.grid_rowconfigure((0, 1, 2), weight=1)
+        for i in range(3):
+            self.grid_columnconfigure(i, weight=1)
+            self.grid_rowconfigure(i, weight=1)
 
         # holder information
         self.title(bank.name)
@@ -67,8 +76,10 @@ class HolderRegistrationWindow(ctk.CTk):
         self.entries_frame.grid(
             row=1, column=0, columnspan=4, padx=(10, 10), pady=(0, 10), sticky="nsew"
         )
-        self.entries_frame.grid_rowconfigure((0, 1, 2), weight=1)
-        self.entries_frame.grid_columnconfigure((0, 1, 2, 3, 4, 5), weight=1)
+        for i in range(6):
+            self.entries_frame.grid_columnconfigure(i, weight=1)
+            if i < 3:
+                self.entries_frame.grid_rowconfigure(i, weight=1)
 
         self.holder_name_label = ctk.CTkLabel(
             self.entries_frame,
@@ -152,8 +163,10 @@ class HolderRegistrationWindow(ctk.CTk):
         birth_date_day = self.holder_birth_date_day_entry.get().strip()
 
         if not name or not surname:
+            logger.error("Name or surname not entered.")
             self.show_error("Invalid input")
         elif not birth_date_year or not birth_date_month or not birth_date_day:
+            logger.error("Day, month or year not entered.")
             self.show_error("Invalid input")
         else:
             if (
@@ -183,9 +196,11 @@ class HolderRegistrationWindow(ctk.CTk):
             A boolean indicating whether the birth date is valid or not.
         """
         if len(year) != 4:
+            logger.error("Invalid year format")
             self.show_error("Incorrect date format")
             return False
         if len(month) < 1 or len(month) > 2 or len(day) < 1 or len(day) > 2:
+            logger.error("Invalid month or day format.")
             self.show_error("Incorrect date format")
             return False
 
@@ -194,18 +209,22 @@ class HolderRegistrationWindow(ctk.CTk):
             m = int(month)
             d = int(day)
         except ValueError:
+            logger.error("Day, month or year not valid integers.")
             self.show_error("Input not correct")
             return False
 
         year_now = datetime.now().year
 
         if y > int(year_now):
+            logger.error("Future date entered")
             self.show_error("Incorrect year format")
             return False
         elif m < 0 or m > 12:
+            logger.error("Invalid month.")
             self.show_error("Incorrect month format")
             return False
         elif d < 0 or d > 31:
+            logger.error("Invalid day.")
             self.show_error("Incorrect day format")
             return False
 
@@ -213,6 +232,7 @@ class HolderRegistrationWindow(ctk.CTk):
             f_date = f"{year}-{month}-{day}"
             date.fromisoformat(f_date)
         except ValueError:
+            logger.exception("ValueError")
             self.show_error("Input not correct")
             return False
 

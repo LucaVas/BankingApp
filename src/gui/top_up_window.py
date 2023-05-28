@@ -8,7 +8,14 @@ sys.path.append("src")
 from holder import Holder # type: ignore
 from writer import Writer # type: ignore
 from account import Account # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/top_up_window.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class TopUpWindow(ctk.CTkToplevel):

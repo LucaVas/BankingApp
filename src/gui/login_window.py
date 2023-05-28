@@ -5,7 +5,14 @@ from datetime import date, datetime
 import sys
 sys.path.append("src")
 from bank import Bank # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/login_window.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class LoginWindow(ctk.CTk):
     """Class representing the GUI for login window."""

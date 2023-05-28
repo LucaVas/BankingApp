@@ -9,7 +9,14 @@ from account import Account # type: ignore
 from holder import Holder # type: ignore
 from writer import Writer # type: ignore
 from gui.treeview_frame import TreeViewFrame # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/transfer_window.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class TransferWindow(ctk.CTkToplevel):
     """A custom tkinter top-level window for transferring funds."""

@@ -2,7 +2,14 @@ import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
 from bank import Bank # type: ignore
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("./gui_logs/brank_info_frame.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class BankInfoFrame(ctk.CTkFrame):
     """A custom Tkinter frame for displaying bank information.
@@ -15,6 +22,7 @@ class BankInfoFrame(ctk.CTkFrame):
         bank (Bank): The bank object containing the bank information.
     """
     def __init__(self, parent, bank: Bank):
+        logger.info("Bank info frame created succesfully.")
         """Initialize the current frame.
 
         Args:
@@ -27,8 +35,9 @@ class BankInfoFrame(ctk.CTkFrame):
         self.parent_window = parent
         self.bank = bank
 
-        self.grid_columnconfigure((0, 1, 2), weight=1)
-        self.grid_rowconfigure((0, 1, 2), weight=1)
+        for i in range(2):
+            self.grid_columnconfigure(i, weight=1)
+            self.grid_rowconfigure(i, weight=1)
 
         self.shares_amount_label_text = "> Shares: "
         self.shares_amount_data_label_text = self.bank.shares_amount
