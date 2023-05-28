@@ -1,7 +1,14 @@
 from __future__ import annotations
 from datetime import datetime, date
 import shortuuid
+import logging
 
+# setting up logger
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler("holder.log")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class Holder:
     def __init__(self, first: str, last: str, birth_date: date, id=shortuuid.uuid()):
@@ -16,11 +23,13 @@ class Holder:
         self.accounts: list[str] = ["XXXX"]
         self.connected_accounts: list[str] = []
 
+        logger.info(f"Holder object created succesfully. {self.__repr__()}")
+
     def __str__(self) -> str:
         return f"Account holder: {self.first_name} {self.last_name}.\nDate of Birth: {self.birth_date}\nOnboarding date: {self.onboarding_date}\nAccount blocked: {self.is_blocked}"
 
     def __repr__(self) -> str:
-        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date},Password:{str(self.password, 'utf-8')})"
+        return f"Holder({self.id},'{self.first_name}','{self.last_name}',Birth:{self.birth_date},Blocked:{self.is_blocked},Onboarded:{self.onboarding_date})"
 
     @property
     def password(self) -> bytes:
@@ -33,9 +42,12 @@ class Holder:
     def block(self, is_blocked: bool) -> None:
         if is_blocked is True:
             self.is_blocked = True
+            logger.info("Holder blocked.")
         elif is_blocked is False:
             self.is_blocked = False
+            logger.info("Holder unblocked.")
         else:
+            logger.error("Holder 'is_blocked' attribute cannot be set.")
             raise ValueError
 
     @classmethod
@@ -61,7 +73,10 @@ class Holder:
                     account for account in holder["connected_accounts"]
                 ]
 
+                logger.info(f"Current holder loaded correctly: {current_holder}")
                 return current_holder
             else:
                 continue
-        return None
+        
+        logger.error("Current holder cannot be loaded.")
+        raise Exception

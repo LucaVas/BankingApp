@@ -1,0 +1,5 @@
+2023-05-28 13:18:07,373 - holder - INFO - Holder object created succesfully. Holder(3qCVQkbX54Bx2sbEHtoN7c,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 13:18:07.373208)
+2023-05-28 13:18:07,380 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
