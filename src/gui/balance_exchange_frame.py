@@ -1,5 +1,5 @@
-import customtkinter as ctk
-from gui.exchange_frame import ExchangeFrame
+import customtkinter as ctk # type: ignore
+from gui.exchange_frame import ExchangeFrame  # type: ignore
 
 
 class BalanceExchangeFrame(ctk.CTkFrame):

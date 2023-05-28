@@ -1,9 +1,9 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 from tkinter import messagebox
 from datetime import datetime, date
 import sys
 sys.path.append("src")
-from bank import Bank
+from bank import Bank # type: ignore
 
 
 class HolderRegistrationWindow(ctk.CTk):
@@ -20,7 +20,7 @@ class HolderRegistrationWindow(ctk.CTk):
 
         # geometry & positioning
         self.width = 800
-        self.height = 300
+        self.height = 400
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)
@@ -38,7 +38,7 @@ class HolderRegistrationWindow(ctk.CTk):
         self.title(bank.name)
         self.holder_name = ""
         self.holder_surname = ""
-        self.holder_birth_date = ""
+        self.holder_birth_date: date
 
         # widgets variables
         self.holder_registration_label_text = "Holder registration"
@@ -152,9 +152,9 @@ class HolderRegistrationWindow(ctk.CTk):
         birth_date_day = self.holder_birth_date_day_entry.get().strip()
 
         if not name or not surname:
-            self.show_error()
+            self.show_error("Invalid input")
         elif not birth_date_year or not birth_date_month or not birth_date_day:
-            self.show_error()
+            self.show_error("Invalid input")
         else:
             if (
                 self.validate_birth_date(
@@ -183,10 +183,10 @@ class HolderRegistrationWindow(ctk.CTk):
             A boolean indicating whether the birth date is valid or not.
         """
         if len(year) != 4:
-            self.show_error("Error", "Incorrect date format")
+            self.show_error("Incorrect date format")
             return False
         if len(month) < 1 or len(month) > 2 or len(day) < 1 or len(day) > 2:
-            self.show_error("Error", "Incorrect date format")
+            self.show_error("Incorrect date format")
             return False
 
         try:
@@ -194,26 +194,26 @@ class HolderRegistrationWindow(ctk.CTk):
             m = int(month)
             d = int(day)
         except ValueError:
-            self.show_error("Error", "Input not correct")
+            self.show_error("Input not correct")
             return False
 
         year_now = datetime.now().year
 
         if y > int(year_now):
-            self.show_error("Error", "Incorrect year format")
+            self.show_error("Incorrect year format")
             return False
         elif m < 0 or m > 12:
-            self.show_error("Error", "Incorrect month format")
+            self.show_error("Incorrect month format")
             return False
         elif d < 0 or d > 31:
-            self.show_error("Error", "Incorrect day format")
+            self.show_error("Incorrect day format")
             return False
 
         try:
             f_date = f"{year}-{month}-{day}"
             date.fromisoformat(f_date)
         except ValueError:
-            self.show_error("Error", "Input not correct")
+            self.show_error("Input not correct")
             return False
 
         return True

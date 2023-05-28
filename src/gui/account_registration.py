@@ -1,10 +1,9 @@
 from tkinter import messagebox
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import re
 import sys
-import sys
 sys.path.append("src")
-from bank import Bank
+from bank import Bank # type: ignore
 
 
 class AccountRegistrationWindow(ctk.CTk):
@@ -28,7 +27,7 @@ class AccountRegistrationWindow(ctk.CTk):
 
         # geometry & positioning
         self.width = 800
-        self.height = 300
+        self.height = 400
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)
@@ -39,7 +38,7 @@ class AccountRegistrationWindow(ctk.CTk):
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # grid layout
-        self.grid_columnconfigure((0, 1, 3), weight=1)
+        self.grid_columnconfigure((0, 1, 2), weight=1)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
         # holder information
@@ -68,7 +67,7 @@ class AccountRegistrationWindow(ctk.CTk):
         # ============ Top frame with main label ============ #
         self.account_registration_frame = ctk.CTkFrame(self, corner_radius=0)
         self.account_registration_frame.grid(
-            row=0, column=0, columnspan=4, padx=(10, 10), pady=(10, 0), sticky="nsew"
+            row=0, column=0, columnspan=4, padx=(10, 10), pady=(10, 10), sticky="nsew"
         )
         self.account_registration_frame.grid_rowconfigure(0, weight=1)
         self.password_registration_label = ctk.CTkLabel(
@@ -98,6 +97,7 @@ class AccountRegistrationWindow(ctk.CTk):
             self.entries_frame,
             values=self.interest_rate_optionmenu_options,
             variable=self.interest_rate_optionmenu_var,
+            anchor="center"
         )
         self.interest_rate_optionmenu.grid(row=0, column=1, sticky="ew")
 
@@ -111,6 +111,7 @@ class AccountRegistrationWindow(ctk.CTk):
             self.entries_frame,
             values=self.currency_optionmenu_options,
             variable=self.currency_optionmenu_var,
+            anchor="center"
         )
         self.currency_optionmenu.grid(row=1, column=1, sticky="ew")
 
@@ -122,7 +123,7 @@ class AccountRegistrationWindow(ctk.CTk):
         self.amount_label.grid(row=2, column=0, padx=10, pady=(10, 10), sticky="w")
         self.amount_entry = ctk.CTkEntry(self.entries_frame)
         self.amount_entry.grid(
-            row=2, column=1, padx=10, columnspan=2, pady=(10, 10), sticky="ew"
+            row=2, column=1, columnspan=2, sticky="ew"
         )
 
         self.connected_account_label = ctk.CTkLabel(
@@ -135,7 +136,7 @@ class AccountRegistrationWindow(ctk.CTk):
         )
         self.connected_account_entry = ctk.CTkEntry(self.entries_frame)
         self.connected_account_entry.grid(
-            row=3, column=1, padx=10, columnspan=2, pady=(10, 10), sticky="ew"
+            row=3, column=1, columnspan=2, sticky="ew"
         )
 
         self.message_label = ctk.CTkLabel(self, text="")

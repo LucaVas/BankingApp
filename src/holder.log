@@ -3,3 +3,48 @@
 Date of Birth: 1990-01-01
 Onboarding date: 2023-05-27 12:10:09.433650
 Account blocked: False
+2023-05-28 16:57:05,981 - holder - INFO - Holder object created succesfully. Holder(aSSNMNuffRR2jfhahh4XLc,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 16:57:05.981775)
+2023-05-28 16:57:05,982 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:13:55,604 - holder - INFO - Holder object created succesfully. Holder(Hvze3xDbbtFkq6jHMpjzMN,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:13:55.604644)
+2023-05-28 17:13:55,604 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:15:18,285 - holder - INFO - Holder object created succesfully. Holder(CXjt7ToSj8B7raeGXtfCNm,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:15:18.285628)
+2023-05-28 17:15:18,285 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:16:53,557 - holder - INFO - Holder object created succesfully. Holder(46QxbGoCLAPEGsjgoF3xV7,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:16:53.557009)
+2023-05-28 17:16:53,557 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:17:12,454 - holder - INFO - Holder object created succesfully. Holder(8XZFs6EYDaUfMwdkqWY3SW,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:17:12.454221)
+2023-05-28 17:17:12,454 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:20:02,132 - holder - INFO - Holder object created succesfully. Holder(bCQ8kLRwCRcLtkSBNEavsT,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:20:02.132905)
+2023-05-28 17:20:02,134 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:20:28,781 - holder - INFO - Holder object created succesfully. Holder(L5VXTt9tv7h33ow9ZRMLvo,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:20:28.781104)
+2023-05-28 17:20:28,781 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False
+2023-05-28 17:22:09,454 - holder - INFO - Holder object created succesfully. Holder(LfcnM8EWyAxQ236jkaZjjg,'Pippo','Baudo',Birth:1953-12-16,Blocked:False,Onboarded:2023-05-28 17:22:09.454410)
+2023-05-28 17:24:29,443 - holder - INFO - Holder object created succesfully. Holder(3pHGM2MfcQQfvx4ThwQFq7,'Pippo','Baudo',Birth:1993-12-16,Blocked:False,Onboarded:2023-05-28 17:24:29.443258)
+2023-05-28 17:26:19,573 - holder - INFO - Holder object created succesfully. Holder(o4gCNNhGdj3JC4ahxd4jnT,'Pippo','Baudo',Birth:1993-12-16,Blocked:False,Onboarded:2023-05-28 17:26:19.573020)
+2023-05-28 17:27:50,458 - holder - INFO - Holder object created succesfully. Holder(62oUEkp9ph5Ti93cQcGSJx,'Pippo','Baudo',Birth:1993-12-16,Blocked:False,Onboarded:2023-05-28 17:27:50.458211)
+2023-05-28 17:28:46,801 - holder - INFO - Holder object created succesfully. Holder(8CN7BexT6vpiiXYxdZypvR,'Test','Test',Birth:1993-12-12,Blocked:False,Onboarded:2023-05-28 17:28:46.801048)
+2023-05-28 17:29:07,081 - holder - INFO - Holder object created succesfully. Holder(TjDigEKSWANMNmgnYXunLv,'Pete','Marco',Birth:1990-01-01,Blocked:False,Onboarded:2023-05-28 17:29:07.080950)
+2023-05-28 17:29:07,081 - holder - INFO - Current holder loaded correctly: Account holder: Pete Marco.
+Date of Birth: 1990-01-01
+Onboarding date: 2023-05-27 12:10:09.433650
+Account blocked: False

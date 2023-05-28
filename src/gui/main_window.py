@@ -1,20 +1,20 @@
 import tkinter as tk
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
 from tkinter import messagebox
-from gui.top_up_window import TopUpWindow
-from gui.holder_info_frame import HolderInfoFrame
-from gui.bank_info_frame import BankInfoFrame
-from gui.balance_frame import BalanceFrame
-from gui.exchange_frame import ExchangeFrame
-from gui.balance_exchange_frame import BalanceExchangeFrame
-from gui.transfer_window import TransferWindow
-from gui.treeview_frame import TreeViewFrame
-from bank import Bank
-from account import Account
-from writer import Writer
-from holder import Holder
+from gui.top_up_window import TopUpWindow # type: ignore
+from gui.holder_info_frame import HolderInfoFrame # type: ignore
+from gui.bank_info_frame import BankInfoFrame # type: ignore
+from gui.balance_frame import BalanceFrame # type: ignore
+from gui.exchange_frame import ExchangeFrame # type: ignore
+from gui.balance_exchange_frame import BalanceExchangeFrame # type: ignore
+from gui.transfer_window import TransferWindow # type: ignore
+from gui.treeview_frame import TreeViewFrame # type: ignore
+from bank import Bank # type: ignore
+from account import Account # type: ignore
+from writer import Writer # type: ignore
+from holder import Holder # type: ignore
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -46,17 +46,19 @@ class MainWindow(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # geometry & positioning
-        self.width = 1500
-        self.height = 900
+
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
+        self.width = 1500 if (self.screen_width > 1500) else (self.screen_width - 200)
+        self.height = 900 if (self.screen_height > 900) else (self.screen_height - 400)
         self.x = (self.screen_width / 2) - (self.width / 2)
         self.y = (self.screen_height / 2) - (self.height / 2)
         self.geometry(f"{self.width}x{self.height}+{int(self.x)}+{int(self.y)}")
 
         # grid layout
-        self.grid_columnconfigure((0, 1, 2, 3, 4, 5), weight=1)
-        self.grid_rowconfigure((0, 1, 2, 3, 4, 5, 6), weight=1)
+        for i in range(6):
+            self.grid_columnconfigure(i, weight=1)
+            self.grid_rowconfigure(i, weight=1)
 
         # variables
         self.title(bank.name)
@@ -102,6 +104,7 @@ class MainWindow(tk.Tk):
             self.sidebar_frame,
             values=["Light", "Dark", "System"],
             command=self.change_appearance_mode_event,
+            anchor="center"
         )
         self.appearance_mode_optionemenu.grid(
             row=6, column=1, sticky="ew", padx=(5, 5), pady=(5, 5)

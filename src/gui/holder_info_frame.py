@@ -1,8 +1,8 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
-from holder import Holder
-from account import Account
+from holder import Holder # type: ignore
+from account import Account # type: ignore
 
 
 class HolderInfoFrame(ctk.CTkFrame):

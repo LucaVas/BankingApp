@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 from datetime import datetime
-from gui.treeview_frame import TreeViewFrame
+from gui.treeview_frame import TreeViewFrame # type: ignore
 import sys
 sys.path.append("src")
-from holder import Holder
-from writer import Writer
-from account import Account
+from holder import Holder # type: ignore
+from writer import Writer # type: ignore
+from account import Account # type: ignore
 
 
 

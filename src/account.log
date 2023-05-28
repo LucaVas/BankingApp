@@ -1,3 +1,24 @@
 2023-05-28 13:18:07,380 - account - INFO - Account number created succesfully: LT997667539243900574
 2023-05-28 13:18:07,382 - account - INFO - Account object created succesfully. Account(ciiNpeaYaBhYQbB3S4jDgZ,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
 2023-05-28 13:18:07,382 - account - INFO - Account loaded succesfully.
+2023-05-28 16:57:05,982 - account - INFO - Account number created succesfully: LT997864647592030019
+2023-05-28 16:57:05,982 - account - INFO - Account object created succesfully. Account(BGyPFuDxi4H9ws8T3YTCK8,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 16:57:05,982 - account - INFO - Account loaded succesfully.
+2023-05-28 17:13:55,605 - account - INFO - Account number created succesfully: LT996573901245952819
+2023-05-28 17:13:55,605 - account - INFO - Account object created succesfully. Account(CpWJNtKqBbcCNQuipxyhPp,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:13:55,605 - account - INFO - Account loaded succesfully.
+2023-05-28 17:15:18,286 - account - INFO - Account number created succesfully: LT993642906515761556
+2023-05-28 17:15:18,286 - account - INFO - Account object created succesfully. Account(Fy9ttsvamY3N4TuLMMcqyi,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:15:18,286 - account - INFO - Account loaded succesfully.
+2023-05-28 17:16:53,557 - account - INFO - Account number created succesfully: LT995420803852317931
+2023-05-28 17:16:53,557 - account - INFO - Account object created succesfully. Account(BViRr5vBCwDmzBBD6PibyT,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:16:53,557 - account - INFO - Account loaded succesfully.
+2023-05-28 17:17:12,454 - account - INFO - Account number created succesfully: LT994054466273203555
+2023-05-28 17:17:12,454 - account - INFO - Account object created succesfully. Account(Nbp6nzWa5rqEEygwQbY4tT,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:17:12,454 - account - INFO - Account loaded succesfully.
+2023-05-28 17:20:02,135 - account - INFO - Account number created succesfully: LT992883078797623652
+2023-05-28 17:20:02,135 - account - INFO - Account object created succesfully. Account(AyLNwVWLvLxoWqRizbX8D8,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:20:02,135 - account - INFO - Account loaded succesfully.
+2023-05-28 17:20:28,782 - account - INFO - Account number created succesfully: LT995939829248000822
+2023-05-28 17:20:28,782 - account - INFO - Account object created succesfully. Account(T7wmmVbHKtjUrvvui8u5Jp,CiGhabEyqH2EWQuKyeDmrM,Active:True,651.0,EUR,2.50%)
+2023-05-28 17:20:28,782 - account - INFO - Account loaded succesfully.

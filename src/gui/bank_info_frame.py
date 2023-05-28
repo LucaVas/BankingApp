@@ -1,7 +1,7 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
-from bank import Bank
+from bank import Bank # type: ignore
 
 
 class BankInfoFrame(ctk.CTkFrame):

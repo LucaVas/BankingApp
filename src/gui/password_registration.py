@@ -1,9 +1,9 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 from tkinter import messagebox
 import bcrypt
 import sys
 sys.path.append("src")
-from bank import Bank
+from bank import Bank # type: ignore
 
 
 class PasswordRegistrationWindow(ctk.CTk):
@@ -26,7 +26,7 @@ class PasswordRegistrationWindow(ctk.CTk):
         super().__init__()
 
         self.width = 800
-        self.height = 300
+        self.height = 400
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)

@@ -1,7 +1,7 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
-from account import Account
+from account import Account # type: ignore
 
 
 class BalanceFrame(ctk.CTkFrame):

@@ -42,4 +42,4 @@ class Currency:
         """
         Function which accepts a foreign currency str value, and returns the current conversion rate float
         """
-        return self.exchange_rates.get(currency)
+        return self.exchange_rates[currency]

@@ -1,24 +1,24 @@
 import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))  # Set the working directory to the parent directory of 'src'
 
-import logging
+from bank import Bank # type: ignore
+from holder import Holder # type: ignore
+from account import Account # type: ignore
+from currency import Currency # type: ignore
+from api_fetcher import ApiFetcher # type: ignore
+from gui.welcome_window import WelcomeWindow # type: ignore
+from gui.login_window import LoginWindow # type: ignore
+from gui.holder_registration import HolderRegistrationWindow # type: ignore
+from gui.password_registration import PasswordRegistrationWindow # type: ignore
+from gui.account_registration import AccountRegistrationWindow # type: ignore
+from gui.main_window import MainWindow # type: ignore
+from decouple import config # type: ignore
+import customtkinter as ctk # type: ignore
+from reader import Reader # type: ignore
+from writer import Writer # type: ignore
+from config import db_name, market_price_url, market_company_info_url, exchange_url # type: ignore
 
-from bank import Bank
-from holder import Holder
-from account import Account
-from currency import Currency
-from api_fetcher import ApiFetcher
-from gui.welcome_window import WelcomeWindow
-from gui.login_window import LoginWindow
-from gui.holder_registration import HolderRegistrationWindow
-from gui.password_registration import PasswordRegistrationWindow
-from gui.account_registration import AccountRegistrationWindow
-from gui.main_window import MainWindow
-from decouple import config
-import customtkinter as ctk
-from reader import Reader
-from writer import Writer
-from config import db_name, market_price_url, market_company_info_url, exchange_url
+import logging
 
 # setting level of logging
 log_file = "unified.log"

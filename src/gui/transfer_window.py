@@ -1,14 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import re
 from datetime import datetime
 import sys
 sys.path.append("src")
-from account import Account
-from holder import Holder
-from writer import Writer
-from gui.treeview_frame import TreeViewFrame
+from account import Account # type: ignore
+from holder import Holder # type: ignore
+from writer import Writer # type: ignore
+from gui.treeview_frame import TreeViewFrame # type: ignore
 
 
 class TransferWindow(ctk.CTkToplevel):

@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-import customtkinter as ctk
-import sys
+import customtkinter as ctk # type: ignore
+import sys 
 sys.path.append("src")
-from holder import Holder
+from holder import Holder # type: ignore
 
 
 class TreeViewFrame(ctk.CTkFrame):
@@ -52,7 +52,7 @@ class TreeViewFrame(ctk.CTkFrame):
         self.tree["columns"] = ("Action", "Amount", "Recipient account", "Date")
         self.tree["displaycolumns"] = (0,1,2,3)
         # format columns
-        self.tree.column("#0", width=0, stretch="no")
+        self.tree.column("#0", width=0, stretch=False)
         self.tree.column("Action", anchor="center", width=5)
         self.tree.column("Amount", anchor="center", width=5)
         self.tree.column("Recipient account", anchor="center", width=80)
@@ -94,7 +94,7 @@ class TreeViewFrame(ctk.CTkFrame):
             self.tree.insert(
                 parent="",
                 index=0,
-                iid=self.counter,
+                iid=str(self.counter),
                 text="",
                 values=val,
                 tags=("evenrow",),
@@ -103,7 +103,7 @@ class TreeViewFrame(ctk.CTkFrame):
             self.tree.insert(
                 parent="",
                 index=0,
-                iid=self.counter,
+                iid=str(self.counter),
                 text="",
                 values=val,
                 tags=("oddrow",),
@@ -131,7 +131,7 @@ class TreeViewFrame(ctk.CTkFrame):
                     self.tree.insert(
                         parent="",
                         index=0,
-                        iid=self.counter,
+                        iid=str(self.counter),
                         text="",
                         values=val,
                         tags=("evenrow",),
@@ -140,7 +140,7 @@ class TreeViewFrame(ctk.CTkFrame):
                     self.tree.insert(
                         parent="",
                         index=0,
-                        iid=self.counter,
+                        iid=str(self.counter),
                         text="",
                         values=val,
                         tags=("oddrow",),

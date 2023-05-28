@@ -1,7 +1,7 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 import sys
 sys.path.append("src")
-from bank import Bank
+from bank import Bank # type: ignore
 
 
 class WelcomeWindow(ctk.CTk):
@@ -18,7 +18,7 @@ class WelcomeWindow(ctk.CTk):
 
         # geometry & positioning
         self.width = 800
-        self.height = 300
+        self.height = 400
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.x = (self.screen_width / 2) - (self.width / 2)
@@ -32,7 +32,7 @@ class WelcomeWindow(ctk.CTk):
 
         # holder information
         self.title(self.bank.name)
-        self.choice = ""
+        self.choice: int
 
         # widgets variables
         self.welcome_label_text = f"Welcome to {self.bank.name}"

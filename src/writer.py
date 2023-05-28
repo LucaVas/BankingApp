@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 import logging
+from typing import Union
 
 # setting up logger
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ class Writer:
         reason: str,
         db: dict,
     ) -> None:
-        output = db.get("history")
+        output = db["history"]
         data = {
             "id": holder.id,
             "action": action,
@@ -42,7 +43,7 @@ class Writer:
         output.append(data)
 
     def temp_write(self, holder, account, db: dict) -> None:
-        output = db.get("holders")
+        output = db["holders"]
         data = {
             "id": holder.id,
             "first": holder.first_name,
