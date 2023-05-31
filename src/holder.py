@@ -1,6 +1,6 @@
 from __future__ import annotations
 from datetime import datetime, date
-import shortuuid
+import shortuuid # type: ignore
 import logging
 
 # setting up logger
@@ -23,7 +23,7 @@ class Holder:
         self.accounts: list[str] = ["XXXX"]
         self.connected_accounts: list[str] = []
 
-        logger.info(f"Holder object created succesfully. {self.__repr__()}")
+        logger.info(f"Holder object created successfully. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"Account holder: {self.first_name} {self.last_name}.\nDate of Birth: {self.birth_date}\nOnboarding date: {self.onboarding_date}\nAccount blocked: {self.is_blocked}"
