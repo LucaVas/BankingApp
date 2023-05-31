@@ -3,3 +3,5 @@ __pycache__
 /src/unified.log
 /src/main_logs/
 /src/gui_logs/
+Pipfile
+Pipfile.lock
