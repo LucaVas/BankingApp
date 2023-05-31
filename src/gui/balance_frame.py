@@ -21,7 +21,7 @@ class BalanceFrame(ctk.CTkFrame):
         account (Account): The account object for which the balance is displayed.
     """
     def __init__(self, parent, account: Account):
-        logger.info("Balance frame created succesfully.")
+        logger.info("Balance frame created successfully.")
         """Initialize the current frame.
 
         Args:

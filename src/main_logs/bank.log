@@ -1,3 +1,51 @@
 2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
 2023-05-28 17:32:19,885 - bank - INFO - Last price of share (28.30) and delta (-0.00999999999999801) calculated succesfully.
 2023-05-28 17:32:19,885 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.3, -0.00999999999999801)
+2023-05-31 22:14:59,065 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:14:59,065 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:14:59,065 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:26:26,002 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:26:26,003 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:26:26,003 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:27:05,068 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:27:05,068 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:27:05,069 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:28:11,476 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:28:11,476 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:28:11,477 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:30:48,698 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:30:48,699 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:30:48,699 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:34:51,776 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:34:51,777 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:34:51,777 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:35:41,750 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:35:41,750 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:35:41,750 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:36:51,505 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:36:51,505 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:36:51,505 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:37:39,147 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:37:39,147 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:37:39,147 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-05-31 22:54:33,085 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:54:33,086 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-05-31 22:54:33,086 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:07:55,061 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:07:55,061 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:07:55,061 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:08:45,891 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:08:45,891 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:08:45,891 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:08:59,997 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:08:59,997 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:08:59,997 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:11:18,883 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:11:18,883 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:11:18,883 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:11:57,230 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:11:57,230 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated succesfully.
+2023-06-01 00:11:57,231 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)
+2023-06-01 00:16:56,022 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated successfully.
+2023-06-01 00:16:56,022 - bank - INFO - Last price of share (28.26) and delta (0.0) calculated successfully.
+2023-06-01 00:16:56,022 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 28.26, 0.0)

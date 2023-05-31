@@ -6,7 +6,7 @@ import logging
 
 # setting up logger
 logger = logging.getLogger(__name__)
-handler = logging.FileHandler("./gui_logs/brank_info_frame.log")
+handler = logging.FileHandler("./gui_logs/bank_info_frame.log")
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
@@ -22,7 +22,7 @@ class BankInfoFrame(ctk.CTkFrame):
         bank (Bank): The bank object containing the bank information.
     """
     def __init__(self, parent, bank: Bank):
-        logger.info("Bank info frame created succesfully.")
+        logger.info("Bank info frame created successfully.")
         """Initialize the current frame.
 
         Args:
@@ -35,13 +35,13 @@ class BankInfoFrame(ctk.CTkFrame):
         self.parent_window = parent
         self.bank = bank
 
-        for i in range(2):
+        for i in range(3):
             self.grid_columnconfigure(i, weight=1)
             self.grid_rowconfigure(i, weight=1)
 
-        self.shares_amount_label_text = "> Shares: "
+        self.shares_amount_label_text = "> Bank shares: "
         self.shares_amount_data_label_text = self.bank.shares_amount
-        self.shares_price_label_text = "> PPS: "
+        self.shares_price_label_text = "> Price per Share: "
         self.shares_price_data_label_text = self.bank.share_price
         self.shares_delta_label_text = "> Shares price delta: "
         self.shares_delta_data_label_text = f"{self.bank.shares_delta:.2f}%"

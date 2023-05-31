@@ -1,1 +1,25 @@
 2023-05-28 17:32:19,885 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:14:59,067 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:26:26,005 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:27:05,070 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:28:11,478 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:30:48,702 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:34:51,779 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:35:41,751 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:36:51,506 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:37:28,710 - writer - INFO - Holder data succesfully written to temporary database: {'id': 'XjkQW6gPH83B3FXemEbUVy', 'first': 'First', 'last': 'Last', 'birth_date': '2000-01-01', 'password': '$2a$12$Z5C7MAPhSPo..aM/BafeBeiQyCnQkZc3TvNrPh8FT5XKa6zZURVMe', 'is_blocked': False, 'onboarding_date': '2023-05-31 22:37:12.494331', 'last_access': '2023-05-31 22:37:12.494364', 'accounts': [{'id': '4B5xQHxEgULMdiBqLffBCj', 'number': 'LT991743816640458404', 'base_currency': 'CZK', 'balance': 12345.0, 'interest_rate': 2.0, 'is_active': True}], 'connected_accounts': ['LT601234512345678901']}
+2023-05-31 22:37:34,947 - writer - INFO - Temporary database written to database succesfully.
+2023-05-31 22:37:39,148 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-05-31 22:54:33,088 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:07:55,062 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:08:45,892 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:08:59,997 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:09:30,779 - writer - INFO - Holder data succesfully written to temporary database: {'id': 'T3xfTad8T88Yw7y8DcaqUR', 'first': 'Pete', 'last': 'Marco', 'birth_date': '2000-01-01', 'password': '$2a$12$/x2t7O3H3ogc6dCMO0aYHepYlOuB6Y5PXp.qooBLOZvg6KAJ1hGGC', 'is_blocked': False, 'onboarding_date': '2023-06-01 00:09:08.585080', 'last_access': '2023-06-01 00:09:08.585085', 'accounts': [{'id': 'C2gQZ9PjNCziqvpwpbUURa', 'number': 'LT996659875307780731', 'base_currency': 'DKK', 'balance': 12345.0, 'interest_rate': 2.0, 'is_active': True}], 'connected_accounts': ['LT990987612345098761']}
+2023-06-01 00:09:43,620 - writer - INFO - Action data added succesfully to temporary database: {'id': 'T3xfTad8T88Yw7y8DcaqUR', 'action': 'top-up', 'amount': 111.0, 'reason': 'Top up to self', 'recipient_account': 'LT996659875307780731', 'datestamp': '2023-06-01 00:09:43.619904'}
+2023-06-01 00:10:00,100 - writer - INFO - Action data added succesfully to temporary database: {'id': 'T3xfTad8T88Yw7y8DcaqUR', 'action': 'transfer', 'amount': 11.0, 'reason': 'Test', 'recipient_account': 'LT601234512345678901', 'datestamp': '2023-06-01 00:10:00.100193'}
+2023-06-01 00:10:04,045 - writer - INFO - Temporary database written to database succesfully.
+2023-06-01 00:11:18,883 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:11:57,231 - writer - INFO - Writer object created succesfully. Reader(../database.json)
+2023-06-01 00:16:56,022 - writer - INFO - Writer object created successfully. Reader(../database.json)
+2023-06-01 00:17:25,587 - writer - INFO - Holder data successfully written to temporary database: {'id': 'ivLBeLNUkFo4LYzifd6f58', 'first': 'First', 'last': 'Last', 'birth_date': '1990-01-01', 'password': '$2a$12$KGAErNZECtkf15DTviCa/uwECpBi1exW6QM2Cn09UCP4aEf9j981i', 'is_blocked': False, 'onboarding_date': '2023-06-01 00:17:05.613923', 'last_access': '2023-06-01 00:17:05.613928', 'accounts': [{'id': 'HdfNiVFDot6MbAqcwbNzzA', 'number': 'LT996115648447461085', 'base_currency': 'DKK', 'balance': 123.0, 'interest_rate': 1.8, 'is_active': True}], 'connected_accounts': ['LT601234512345678901']}
+2023-06-01 00:17:28,814 - writer - INFO - Temporary database written to database successfully.

@@ -33,5 +33,5 @@ class Bank:
             market_data["Time Series (5min)"][previous]["4. close"]
         )
 
-        logger.info(f"Last price of share ({share_last_price:.2f}) and delta ({delta}) calculated succesfully.")
+        logger.info(f"Last price of share ({share_last_price:.2f}) and delta ({delta}) calculated successfully.")
         return share_last_price, delta

@@ -104,5 +104,5 @@ class ExchangeFrame(ctk.CTkFrame):
 
         """ 
         exchange = self.currency_obj.get_exchange(currency)
-        logger.info(f"Exchange retrieved succesfully {exchange}")
+        logger.info(f"Exchange retrieved successfully {exchange}")
         return exchange

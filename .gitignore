@@ -1,2 +1,5 @@
 __pycache__
 .env
+/src/unified.log
+/src/main_logs/
+/src/gui_logs/

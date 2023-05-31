@@ -234,7 +234,7 @@ def get_exchange_rates(url: str, key: str, base_currency: str) -> dict:
     """
     data = fetch_api(url, key, base_currency)
 
-    logger.info("Exchange data fetched from API succesfully.")
+    logger.info("Exchange data fetched from API successfully.")
     return data["data"]
 
 
@@ -249,7 +249,7 @@ def get_market_data(url: str, key: str) -> dict:
         A dictionary containing the market data.
     """
     data = fetch_api(url, key)
-    logger.info("Market data fetched from API succesfully.")
+    logger.info("Market data fetched from API successfully.")
     return data
 
 

@@ -1,7 +1,6 @@
 import json
 from datetime import datetime
 import logging
-from typing import Union
 
 # setting up logger
 logger = logging.getLogger(__name__)
@@ -14,7 +13,7 @@ logger.addHandler(handler)
 class Writer:
     def __init__(self, fname: str) -> None:
         self.fname = f"../{fname}"
-        logger.info(f"Writer object created succesfully. {self.__repr__()}")
+        logger.info(f"Writer object created successfully. {self.__repr__()}")
 
     def __repr__(self) -> str:
         return f"Reader({self.fname})"
@@ -39,7 +38,7 @@ class Writer:
             "datestamp": str(datestamp),
         }
 
-        logger.info(f"Action data added succesfully to temporary database: {data}")
+        logger.info(f"Action data added successfully to temporary database: {data}")
         output.append(data)
 
     def temp_write(self, holder, account, db: dict) -> None:
@@ -49,7 +48,7 @@ class Writer:
             "first": holder.first_name,
             "last": holder.last_name,
             "birth_date": str(holder.birth_date),
-            "password": holder.password.decode("utf-8"),
+            "password": holder.password,
             "is_blocked": holder.is_blocked,
             "onboarding_date": str(holder.onboarding_date),
             "last_access": str(holder.last_access),
@@ -72,7 +71,7 @@ class Writer:
                 return
             continue
 
-        logger.info(f"Holder data succesfully written to temporary database: {data}")
+        logger.info(f"Holder data successfully written to temporary database: {data}")
         output.append(data)
 
     def write_to_file(self, data: dict) -> None:
@@ -82,4 +81,4 @@ class Writer:
         except FileNotFoundError:
             logger.exception("FileNotFoundError")
 
-        logger.info("Temporary database written to database succesfully.")
+        logger.info("Temporary database written to database successfully.")

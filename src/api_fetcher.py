@@ -34,7 +34,7 @@ class ApiFetcher:
                 logger.exception("Api fetcher exception")
             data = self.parse(response)
         
-        logger.info(f"API fetched succesfully")
+        logger.info(f"API fetched successfully")
         return data
         # return self.prettify(data)
 

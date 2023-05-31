@@ -189,7 +189,7 @@ class AccountRegistrationWindow(ctk.CTk):
             logger.info(f"Account number created: {connected_account}")
         else:
             logger.error(f"Invalid account number: {connected_account}")
-            self.show_error("Invalid account")
+            self.show_error("Invalid account. The account must begin with 'LT' followed by 18 digits.")
             return
 
     def register_account(self, amount: float, connected_account: str) -> None:

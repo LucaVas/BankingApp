@@ -1,5 +1,5 @@
 from __future__ import annotations
-import shortuuid
+import shortuuid # type: ignore
 import random
 import logging
 
@@ -16,7 +16,7 @@ class Account:
         owner_id: int,
         balance: float,
         interest_rate: str,
-        currency: str = "EUR",
+        currency: str,
         id=shortuuid.uuid(),
     ) -> None:
         self.id = id
@@ -27,7 +27,7 @@ class Account:
         self.currency = currency
         self._interest_rate = float(interest_rate)
 
-        logger.info(f"Account object created succesfully. {self.__repr__()}")
+        logger.info(f"Account object created successfully. {self.__repr__()}")
 
     def __str__(self) -> str:
         return f"This account holds {self.balance:.2f} {self.currency}. The account's interest rate is {self.interest_rate}."
@@ -43,7 +43,7 @@ class Account:
     def interest_rate(self, rate: float) -> None:
         try:
             self._interest_rate = float(rate)
-            logger.info("Interest rate set succesfully.")
+            logger.info("Interest rate set successfully.")
         except TypeError:
             logger.exception("TypeError")
             raise TypeError("Incorrect type of interest rate.")
@@ -83,7 +83,7 @@ class Account:
 
     def create_account_number(self) -> str:
         rand_digits = random.randint(10**15, (10**16) - 1)
-        logger.info(f"Account number created succesfully: LT99{rand_digits}")
+        logger.info(f"Account number created successfully: LT99{rand_digits}")
         return f"LT99{rand_digits}"
 
     @classmethod
@@ -100,7 +100,7 @@ class Account:
                 current_account.account_number = holder["accounts"][0]["number"]
                 current_account.is_active = holder["accounts"][0]["is_active"]
 
-                logger.info("Account loaded succesfully.")
+                logger.info("Account loaded successfully.")
                 return current_account
             else:
                 continue

@@ -23,7 +23,7 @@ class LoginWindow(ctk.CTk):
 
         Args:
             bank (Bank): An instance of the Bank class.
-            temp_db (dict): The dictionary where the databse is loaded.
+            temp_db (dict): The dictionary where the database is loaded.
 
         Returns:
             None.
