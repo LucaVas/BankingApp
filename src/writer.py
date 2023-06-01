@@ -48,7 +48,7 @@ class Writer:
             "first": holder.first_name,
             "last": holder.last_name,
             "birth_date": str(holder.birth_date),
-            "password": holder.password,
+            "password": str(holder.password),
             "is_blocked": holder.is_blocked,
             "onboarding_date": str(holder.onboarding_date),
             "last_access": str(holder.last_access),

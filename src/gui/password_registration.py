@@ -173,7 +173,8 @@ class PasswordRegistrationWindow(ctk.CTk):
         Returns:
         bytes: The hashed password.
         """
-        return bcrypt.hashpw(password, bcrypt.gensalt())
+        salt = bcrypt.gensalt()
+        return bcrypt.hashpw(password, salt)
 
     def register_password(self, password: bytes) -> None:
         """
