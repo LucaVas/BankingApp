@@ -160,7 +160,7 @@ class LoginWindow(ctk.CTk):
             if (
                 self.first == holder["first"]
                 and self.last == holder["last"]
-                and bcrypt.checkpw(self.password, hashed)
+                and bcrypt.hashpw(self.password, hashed) == hashed
             ):
                 self.id = holder["id"]
                 self.last_access = datetime.now()

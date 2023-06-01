@@ -1,0 +1,7 @@
+2023-06-01 12:50:43,577 - gui.account_registration - INFO - New Account registration window object created
+2023-06-01 12:50:50,265 - gui.account_registration - INFO - Account registration window closed.
+2023-06-01 12:50:50,280 - gui.account_registration - INFO - Account number created: LT601234512345678901
+2023-06-01 12:52:12,002 - gui.account_registration - INFO - New Account registration window object created
+2023-06-01 12:52:15,648 - gui.account_registration - ERROR - Invalid account number: LT
+2023-06-01 12:52:24,858 - gui.account_registration - INFO - Account registration window closed.
+2023-06-01 12:52:24,873 - gui.account_registration - INFO - Account number created: LT601234512345678901

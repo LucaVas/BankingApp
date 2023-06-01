@@ -1,0 +1,6 @@
+2023-06-01 12:50:30,083 - reader - INFO - Reader object successfully created: Reader(../database.json)
+2023-06-01 12:50:30,084 - reader - INFO - File read successfully: {'holders': [], 'history': []}
+2023-06-01 12:52:01,422 - reader - INFO - Reader object successfully created: Reader(../database.json)
+2023-06-01 12:52:01,422 - reader - INFO - File read successfully: {'holders': [], 'history': []}
+2023-06-01 12:52:32,755 - reader - INFO - Reader object successfully created: Reader(../database.json)
+2023-06-01 12:52:32,755 - reader - INFO - File read successfully: {'holders': [{'id': 'GpguaCQUdWF6uPtJRMKwQc', 'first': 'Luca', 'last': 'Vassos', 'birth_date': '2022-02-02', 'password': '$2b$12$VkcS955z3EzrPZn9r5RNjO4GFPmW5feXwihQHkeIJXvf9Rg4VkogW', 'is_blocked': False, 'onboarding_date': '2023-06-01 12:52:09.677375', 'last_access': '2023-06-01 12:52:09.677380', 'accounts': [{'id': 'WTU4sUcXsf8fxCj4ZzHmkX', 'number': 'LT991465383792448055', 'base_currency': 'AUD', 'balance': 1234.0, 'interest_rate': 1.8, 'is_active': True}], 'connected_accounts': ['LT601234512345678901']}], 'history': []}

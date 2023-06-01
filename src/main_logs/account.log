@@ -1,0 +1,7 @@
+2023-06-01 12:50:50,280 - account - INFO - Account number created successfully: LT995765046879051642
+2023-06-01 12:50:50,280 - account - INFO - Account object created successfully. Account(J4voDbMHrFq938HSqvMxPE,5qPLUS65BEyaLukcSPH9MM,Active:True,12345.0,AUD,1.80%)
+2023-06-01 12:52:24,873 - account - INFO - Account number created successfully: LT991465383792448055
+2023-06-01 12:52:24,873 - account - INFO - Account object created successfully. Account(WTU4sUcXsf8fxCj4ZzHmkX,GpguaCQUdWF6uPtJRMKwQc,Active:True,1234.0,AUD,1.80%)
+2023-06-01 12:52:39,239 - account - INFO - Account number created successfully: LT998402707046639379
+2023-06-01 12:52:39,239 - account - INFO - Account object created successfully. Account(2Gjqs86NFJiCKJCZKrDecr,GpguaCQUdWF6uPtJRMKwQc,Active:True,1234.0,AUD,1.80%)
+2023-06-01 12:52:39,239 - account - INFO - Account loaded successfully.

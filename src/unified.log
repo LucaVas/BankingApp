@@ -1,0 +1,36 @@
+2023-06-01 12:52:31,595 - api_fetcher - INFO - ApiFetcher created.
+2023-06-01 12:52:31,597 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-06-01 12:52:32,037 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=TIME_SERIES_INTRADAY&symbol=BAC&interval=5min&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-06-01 12:52:32,075 - api_fetcher - INFO - API fetched successfully
+2023-06-01 12:52:32,076 - __main__ - INFO - Market data fetched from API successfully.
+2023-06-01 12:52:32,076 - api_fetcher - INFO - ApiFetcher created.
+2023-06-01 12:52:32,078 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.alphavantage.co:443
+2023-06-01 12:52:32,754 - urllib3.connectionpool - DEBUG - https://www.alphavantage.co:443 "GET /query?function=OVERVIEW&symbol=BAC&apikey=TYSURE37MP9N5OP7 HTTP/1.1" 200 None
+2023-06-01 12:52:32,754 - api_fetcher - INFO - API fetched successfully
+2023-06-01 12:52:32,755 - __main__ - INFO - Market data fetched from API successfully.
+2023-06-01 12:52:32,755 - bank - INFO - Last price of share (27.80) and delta (-0.00999999999999801) calculated successfully.
+2023-06-01 12:52:32,755 - bank - INFO - Last price of share (27.80) and delta (-0.00999999999999801) calculated successfully.
+2023-06-01 12:52:32,755 - bank - INFO - Bank object created. Bank('Bank of America Corp', 1956, 7969150000, 27.8, -0.00999999999999801)
+2023-06-01 12:52:32,755 - reader - INFO - Reader object successfully created: Reader(../database.json)
+2023-06-01 12:52:32,755 - reader - INFO - File read successfully: {'holders': [{'id': 'GpguaCQUdWF6uPtJRMKwQc', 'first': 'Luca', 'last': 'Vassos', 'birth_date': '2022-02-02', 'password': '$2b$12$VkcS955z3EzrPZn9r5RNjO4GFPmW5feXwihQHkeIJXvf9Rg4VkogW', 'is_blocked': False, 'onboarding_date': '2023-06-01 12:52:09.677375', 'last_access': '2023-06-01 12:52:09.677380', 'accounts': [{'id': 'WTU4sUcXsf8fxCj4ZzHmkX', 'number': 'LT991465383792448055', 'base_currency': 'AUD', 'balance': 1234.0, 'interest_rate': 1.8, 'is_active': True}], 'connected_accounts': ['LT601234512345678901']}], 'history': []}
+2023-06-01 12:52:32,756 - writer - INFO - Writer object created successfully. Reader(../database.json)
+2023-06-01 12:52:39,238 - holder - INFO - Holder object created successfully. Holder(GbY4BzP7u8Bpb8NFSHmmpw,'Luca','Vassos',Birth:2022-02-02,Blocked:False,Onboarded:2023-06-01 12:52:39.238873)
+2023-06-01 12:52:39,239 - holder - INFO - Current holder loaded correctly: Account holder: Luca Vassos.
+Date of Birth: 2022-02-02
+Onboarding date: 2023-06-01 12:52:09.677375
+Account blocked: False
+2023-06-01 12:52:39,239 - account - INFO - Account number created successfully: LT998402707046639379
+2023-06-01 12:52:39,239 - account - INFO - Account object created successfully. Account(2Gjqs86NFJiCKJCZKrDecr,GpguaCQUdWF6uPtJRMKwQc,Active:True,1234.0,AUD,1.80%)
+2023-06-01 12:52:39,239 - account - INFO - Account loaded successfully.
+2023-06-01 12:52:39,239 - api_fetcher - INFO - ApiFetcher created.
+2023-06-01 12:52:39,240 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.freecurrencyapi.com:443
+2023-06-01 12:52:39,615 - urllib3.connectionpool - DEBUG - https://api.freecurrencyapi.com:443 "GET /v1/latest?apikey=xwzDojm8oL5nSqLbyO1mCgFlVTO9QSD0ZBuzM2ks&base_currency=AUD HTTP/1.1" 200 None
+2023-06-01 12:52:39,615 - api_fetcher - INFO - API fetched successfully
+2023-06-01 12:52:39,616 - __main__ - INFO - Exchange data fetched from API successfully.
+2023-06-01 12:52:39,617 - currency - INFO - Currency object created successfully. Currency({'AUD': 1, 'BGN': 1.190285, 'BRL': 3.289678, 'CAD': 0.882712, 'CHF': 0.592123, 'CNY': 4.627005, 'CZK': 14.431236, 'DKK': 4.530997, 'EUR': 0.608418, 'GBP': 0.522733, 'HKD': 5.095145, 'HRK': 4.584126, 'HUF': 225.527493, 'IDR': 9753.294157, 'ILS': 2.429969, 'INR': 53.78399, 'ISK': 91.085404, 'JPY': 90.519346, 'KRW': 860.164767, 'MXN': 11.510265, 'MYR': 3.002889, 'NOK': 7.200204, 'NZD': 1.079964, 'PHP': 36.665764, 'PLN': 2.754293, 'RON': 3.018243, 'RUB': 53.05721, 'SEK': 7.05414, 'SGD': 0.879218, 'THB': 22.537124, 'TRY': 13.527087, 'USD': 0.650609, 'ZAR': 12.836496}, ['AUD', 'CHF', 'CZK', 'DKK', 'EUR', 'GBP', 'HRK', 'HUF', 'JPY', 'NOK', 'PLN', 'RON', 'RUB', 'SEK', 'USD'])
+2023-06-01 12:52:39,742 - gui.holder_info_frame - INFO - New holder info frame created.
+2023-06-01 12:52:39,779 - gui.exchange_frame - INFO - New exchange frame created succesfully.
+2023-06-01 12:52:39,924 - gui.bank_info_frame - INFO - Bank info frame created successfully.
+2023-06-01 12:52:39,957 - gui.balance_frame - INFO - Balance frame created successfully.
+2023-06-01 12:52:39,975 - gui.balance_exchange_frame - INFO - Balance exchange frame object created.
+2023-06-01 12:52:40,720 - writer - INFO - Temporary database written to database successfully.

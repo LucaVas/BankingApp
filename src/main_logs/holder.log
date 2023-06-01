@@ -1,0 +1,7 @@
+2023-06-01 12:50:41,032 - holder - INFO - Holder object created successfully. Holder(5qPLUS65BEyaLukcSPH9MM,'Luca','Vassos',Birth:2000-11-11,Blocked:False,Onboarded:2023-06-01 12:50:41.032795)
+2023-06-01 12:52:09,677 - holder - INFO - Holder object created successfully. Holder(GpguaCQUdWF6uPtJRMKwQc,'Luca','Vassos',Birth:2022-02-02,Blocked:False,Onboarded:2023-06-01 12:52:09.677375)
+2023-06-01 12:52:39,238 - holder - INFO - Holder object created successfully. Holder(GbY4BzP7u8Bpb8NFSHmmpw,'Luca','Vassos',Birth:2022-02-02,Blocked:False,Onboarded:2023-06-01 12:52:39.238873)
+2023-06-01 12:52:39,239 - holder - INFO - Current holder loaded correctly: Account holder: Luca Vassos.
+Date of Birth: 2022-02-02
+Onboarding date: 2023-06-01 12:52:09.677375
+Account blocked: False
